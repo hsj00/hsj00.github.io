@@ -5,7 +5,7 @@ layout: page
 
 <p><div class="side-by-side">
     <div class="toleft">
-        <img class="image" src="http://localhost:4000/assets/images/profile.jpg" alt="Alt Text">        
+        <img class="image" src="/assets/images/profile.jpg" alt="Alt Text">        
     </div>
 
     <div class="toright">
