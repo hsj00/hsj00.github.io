@@ -30,8 +30,8 @@ layout: page
 <h2>Skills</h2>
 
 <ul class="skill-list">
-	<li>Thin Film Growth</li>
 	<li>Atomic Layer Deposition (ALD)</li>
+	<li>Thin Film Growth</li>
 	<li>Thin Film Characterization</li>
 	<li>Granulation using Ceramic Powder</li>
 	<!-- <li>Industrial Gelation using flavor and ingredient</li> -->
