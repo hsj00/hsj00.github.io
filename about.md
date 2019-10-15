@@ -9,12 +9,12 @@ layout: page
     </div>
 
     <div class="toright">
-        <p><h1>Seung-Joo, Han</h1>
-		<h4>"Carve a huge footprint with a tiny step."</h4></p>
-		R&D engineer in company<br>
+        <h1>Seung-Joo, Han</h1>
+		<h4>"Carve a huge footprint with a tiny step."</h4>
+		<p>R&D engineer in company<br>
 		Seeking sustainable fun something<br>
 		Python newbie<br>		
-		Wannabe the Coding Monkey Spanner
+		Wannabe the Coding Monkey Spanner</p>
     </div>
 </div></p>
 
