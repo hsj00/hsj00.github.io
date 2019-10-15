@@ -53,7 +53,7 @@ layout: page
 
 <h4>Publications (SCI)</h4>
 <ul class="publication">
-	<li><strong>Seung-Joo Han</strong>, Seokhee Shin, Sungjoon Kim, Dong-Hyun Ko, Zhenyu Jin, Sun Young Lee, and Yo-Sep Min, “<em>1,5-pentanediol as an oxygen precursor for atomic layer deposition of zinc oxide thin films</em>”, <b>Chem. Mater.</b>, 29, 3371 (2017)</li>
-	<li>Jae-Yup Kim, Jin Soo Kang, Junyoung Shin, Jin Kim, <strong>Seung-Joo Han</strong>, Jongwoo Park, Yo-Sep Min, Min Jae Ko and Yung-Eun Sung, “<em>Highly uniform and vertically aligned SnO2 nanochannel arrays for photovoltaic applications</em>”, <b>Nanoscale</b>, 7, 8368 (2015)</li>
-	<li>Zhenyu Jin, Seokhee Shin, Do Hyun Kwon, <strong>Seung-Joo Han</strong> and Yo-Sep Min “<em>Novel chemical route for atomic layer deposition of MoS2 thin film on SiO2/Si substrate</em>”, <b>Nanoscale</b>, 6, 14453 (2014)</li>
+	<li><strong>Seung-Joo Han</strong>, Seokhee Shin, Sungjoon Kim, Dong-Hyun Ko, Zhenyu Jin, Sun Young Lee, and Yo-Sep Min, “<a class="link" href="http://home.konkuk.ac.kr/~ysmin/papers/Han_Chem_Mater_2017_29_3371.pdf"><em>1,5-pentanediol as an oxygen precursor for atomic layer deposition of zinc oxide thin films</em></a>”, <b>Chem. Mater.</b>, 29, 3371 (2017)</li>
+	<li>Jae-Yup Kim, Jin Soo Kang, Junyoung Shin, Jin Kim, <strong>Seung-Joo Han</strong>, Jongwoo Park, Yo-Sep Min, Min Jae Ko and Yung-Eun Sung, “<a class="link" href="http://home.konkuk.ac.kr/~ysmin/papers/JY%20Kim%20Nanoscale%202015%207%208171.pdf"><em>Highly uniform and vertically aligned SnO2 nanochannel arrays for photovoltaic applications</em></a>”, <b>Nanoscale</b>, 7, 8368 (2015)</li>
+	<li>Zhenyu Jin, Seokhee Shin, Do Hyun Kwon, <strong>Seung-Joo Han</strong> and Yo-Sep Min “<a class="link" href="http://home.konkuk.ac.kr/~ysmin/papers/Jin_Nanoscale_2014_6_14453.pdf"><em>Novel chemical route for atomic layer deposition of MoS2 thin film on SiO2/Si substrate</em></a>”, <b>Nanoscale</b>, 6, 14453 (2014)</li>
 </ul>
