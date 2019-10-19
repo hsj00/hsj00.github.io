@@ -26,7 +26,7 @@ markdown: kramdown
 highlighter: rouge
 
 # To enable google analytics, supply your token below
-analytics-google: 'UA-149580551-1'
+analytics-google: "UA-149580551-1"
 
 # To enable piwik tracking, supply your url & site ID below
 # analytics-piwik-url: 'piwik.my-host.com'
@@ -58,12 +58,12 @@ github: hsj00
 email: cmdsjhan@gmail.com
 
 authors:
-    hsj00:
-        name: Seung-Joo, Han
-        bio: An R&D engineer seeking sustainable fun something
-        external-image: false
-        picture: assets/images/profile.jpg
-        github: https://hsj00.github.io
+  hsj00:
+    name: Seung-Joo, Han
+    bio: An R&D engineer seeking sustainable fun something
+    external-image: false
+    picture: assets/images/profile.jpg
+    github: https://hsj00.github.io
 
 # do you want a larger site? change the option below
 # options: [normal, large] | default: normal
@@ -107,12 +107,13 @@ plugins:
   - jekyll-admin
 
 jekyll-mentions:
-    base_url: /indigo/
+  base_url: /indigo/
 
 compress_html:
-    ignore:
-        envs:
-        - development
-        - stage
+  ignore:
+    envs:
+      - development
+      - stage
 
-exclude: ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md"]
+exclude:
+  ["travis.sh", "Rakefile", "README.md", "Gemfile", "Gemfile.lock", "FAQ.md"]
