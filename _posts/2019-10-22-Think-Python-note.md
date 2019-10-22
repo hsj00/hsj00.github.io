@@ -7,7 +7,6 @@ tag:
 - Think Python
 - Programming
 - Study
-- note
 - Book
 headerImage: false
 image: 
