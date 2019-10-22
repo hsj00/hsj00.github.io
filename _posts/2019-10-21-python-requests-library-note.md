@@ -8,6 +8,7 @@ tag:
 - Programming
 - Study
 - note
+- Python library
 headerImage: false
 image: 
 description: 191021 Python library `requests` study note
