@@ -131,7 +131,7 @@ NameError: name 'xy' is not defined
 
 #### A) Exercise 2.2.
 
-##### 1. The volume of a sphere with radius r $$V = \frac{4}{3} πr^3$$What is the volume of a sphere with radius 5?
+##### 1. The volume of a sphere with radius r, volume is $$V = \frac{4}{3} πr^3$$. What is the volume of a sphere with radius 5?
 
 ```python
 >>> import math
