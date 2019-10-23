@@ -1,15 +1,16 @@
 ---
-title: "Think Python 2nd edition 읽는 포스트: Chapter 01, The way of the program"
+title: "Think Python 2nd edition 읽는 포스트: Chapter 01, `The way of the program`"
 layout: post
 date: 2019-10-22 23:00
 tag:
-- Python
-- Think Python
-- Programming
-- Study
-- Book
+    - Python
+    - Think Python
+    - Programming
+    - Study
+    - Book
+    - Note
 headerImage: false
-image: 
+image:
 description: 191022 `Think Python 2nd edition` study note
 category: blog
 author: hsj00
@@ -21,20 +22,22 @@ share: true
 
 # Think Python - How to Think Like a Computer Scientist
 
-`Python` 공부할 자료들 찾다가 [Green Tea Press][Homepage]에서 제공하는 [Think Python 2e pdf][book]를 찾았다. 분량도 생각보다 많지 않은데다가 영어지만 쉽게 읽히는 편이라서 한 챕터씩 읽고 연습문제도 풀고 간단하게 내용도 정리해보려고 한다. 역시나, 당연하게도 앞부분은 쉽다. 마치 수학책의 지수/로그 단원은 쉽게 느껴지는 것처럼.
+`Python` 공부할 자료들 찾다가 [Green Tea Press][homepage]에서 제공하는 [Think Python 2e pdf][book]를 찾았다. 분량도 생각보다 많지 않은데다가 영어지만 쉽게 읽히는 편이라서 한 챕터씩 읽고 연습문제도 풀고 간단하게 내용도 정리해보려고 한다. 역시나, 당연하게도 앞부분은 쉽다. 마치 수학책의 지수/로그 단원은 쉽게 느껴지는 것처럼.
 
 이 책은 저작권에 문제가 없는 무료 e북이다.
 
-----------
+---
+
 ## Ch. 01: The way of the program
 
 '문제 해결 능력'은 전산 과학(Computer Science)에서 가장 중요한 기술이다.
 문제를 해결하는 능력은
-  1. 문제점을 서술하고
-  2. 해결을 위해 창의적으로 생각하고
-  3. 해결 방안을 알기 쉽고 명확하게 표현하는 것을 의미한다.
 
->The single most important skill for a computer scientist is problem solving. Problem solv- ing means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately.
+1. 문제점을 서술하고
+2. 해결을 위해 창의적으로 생각하고
+3. 해결 방안을 알기 쉽고 명확하게 표현하는 것을 의미한다.
+
+> The single most important skill for a computer scientist is problem solving. Problem solv- ing means the ability to formulate problems, think creatively about solutions, and express a solution clearly and accurately.
 
 ---
 
@@ -54,12 +57,14 @@ share: true
 
 > learn to parse the program in your head, identifying the tokens and interpreting the structure.
 
-----------
+---
 
 ### 1.9 Exercises
 
-#### A) Exercise 1.1.                     
+#### A) Exercise 1.1.
+
 ##### 1. In a print statement, what happens if you leave out one of the parentheses, or both?
+
 ```python
 # 정상 작동
 >>> print("Hello, World")
@@ -80,12 +85,15 @@ SyntaxError: Missing parentheses in call to 'print'. Did you mean print("Hello, 
 
 # incomplete sentence
 >>> print("Hello, World"
-... 
-... 
-... 
+...
+...
+...
 ```
+
 ---
+
 ##### 2. If you are trying to print a string, what happens if you leave out one of the quotation marks, or both?
+
 ```python
 # incomplete sentence
 >>> print("Hello, World!)
@@ -119,8 +127,11 @@ SyntaxError: invalid syntax
                       ^
 SyntaxError: invalid syntax
 ```
+
 ---
+
 ##### 3. You can use a minus sign to make a negative number like -2. What happens if you put a plus sign before a number? What about 2++2?
+
 ```python
 >>> 2++2
 4
@@ -141,8 +152,11 @@ SyntaxError: invalid syntax
       ^
 SyntaxError: invalid syntax
 ```
+
 ---
+
 ##### 4. In math notation, leading zeros are okay, as in 02. What happens if you try this in Python?
+
 ```python
 >>> 02
   File "<stdin>", line 1
@@ -154,8 +168,11 @@ SyntaxError: leading zeros in decimal integer literals are not permitted; use an
 >>> 0x12
 18
 ```
+
 ---
+
 ##### 5. What happens if you have two values with no operator between them?
+
 ```python
 # int, float -> SyntaxError
 >>> 9 8 7
@@ -174,7 +191,8 @@ SyntaxError: invalid syntax
 >>> 'Hello' 'World'
 'HelloWorld'
 ```
-----------
 
-[Homepage]: <https://greenteapress.com/wp/think-python-2e/>
-[book]: <http://greenteapress.com/thinkpython2/thinkpython2.pdf>
+---
+
+[homepage]: https://greenteapress.com/wp/think-python-2e/
+[book]: http://greenteapress.com/thinkpython2/thinkpython2.pdf
