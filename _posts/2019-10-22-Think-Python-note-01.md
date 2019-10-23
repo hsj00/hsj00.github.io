@@ -1,5 +1,5 @@
 ---
-title: "Think Python 2nd edition 읽는 포스트: Chapter 01, `The way of the program`"
+title: "Think Python 2nd edition 읽는 포스트: Chapter 01, 'The way of the program'"
 layout: post
 date: 2019-10-22 23:00
 tag:

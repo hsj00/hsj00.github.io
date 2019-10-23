@@ -1,5 +1,5 @@
 ---
-title: "Think Python 2nd edition 읽는 포스트: Chapter 02, `Variables, expressions and statements`"
+title: "Think Python 2nd edition 읽는 포스트: Chapter 02, 'Variables, expressions and statements'"
 layout: post
 date: 2019-10-23 16:30
 tag:
