@@ -25,6 +25,11 @@ permalink: /:title/
 markdown: kramdown
 highlighter: rouge
 
+# add code for using mathjax style
+lsi: false
+excerpt_separator: "\n\n"
+incremental: false
+
 # To enable google analytics, supply your token below
 analytics-google: "UA-149580551-1"
 

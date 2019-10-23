@@ -18,6 +18,7 @@ externalLink: true
 published: true
 comments: true
 share: true
+use_math: true
 ---
 
 # Think Python - How to Think Like a Computer Scientist
