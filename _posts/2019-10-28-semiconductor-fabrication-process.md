@@ -59,6 +59,7 @@ TOC는 다음과 같다.
 - 절연막을 형성하여 회로와 회로 사이에 누설 전류가 흐르는 것을 차단
 - [이온주입공정(ion implantation)]에서 확산 방지막 역할
 - [식각공정(Etching)]에서 불량을 방지하는 식각 방지막 역할
+
 ### (2) Method
 - Thermal oxidation
   - dry oxidation (more dense): O<sub>2</sub>
