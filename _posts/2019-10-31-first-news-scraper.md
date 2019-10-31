@@ -111,7 +111,7 @@ driver.implicitly_wait(3)
 ![xpath][img001]
 
 그렇게 확인한 `xpath`를 `driver.find_element_by_xpath()`로 받아서 `search` 변수에 저장한다. 그리고 실행할 동작들을 지정하여 코드를 작성했다.
-```
+```python
 search = driver.find_element_by_xpath(
     '//*[@id="gb"]/div[2]/div[2]/div/form/div[1]/div/div/div/div/div[1]/input[2]')
 
