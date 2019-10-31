@@ -273,9 +273,9 @@ DeprecationWarning: use options instead of chrome_options
 [05]: https://www.a-ha.io/questions/4d1c8589dcb22246af4a4d4960834bcf
 [06]: https://m.blog.naver.com/PostView.nhn?blogId=kiddwannabe&logNo=221177292446&proxyReferer=https%3A%2F%2Fwww.google.com%2F
 [07]: https://beomi.github.io/gb-crawling/posts/2017-09-28-HowToMakeWebCrawler-Headless-Chrome.html
-[08]: ./assets/files/posts/2019-10-31/Atomic_Layer_Deposition.csv
-[09]: ./assets/files/posts/2019-10-31/Atomic_Layer_Deposition.xlsx
-[10]: ./assets/files/posts/2019-10-31/news_scraper.py
+[08]: /assets/files/posts/2019-10-31/Atomic_Layer_Deposition.csv
+[09]: /assets/files/posts/2019-10-31/Atomic_Layer_Deposition.xlsx
+[10]: /assets/files/posts/2019-10-31/news_scraper.py
 
 <!-- referrences -->
 [^01]: https://blog.naver.com/PostView.nhn?blogId=okkam76&logNo=221300244255&parentCategoryNo=&categoryNo=21&viewDate=&isShowPopularPosts=false&from=postView
@@ -287,11 +287,11 @@ DeprecationWarning: use options instead of chrome_options
 [^07]: https://beomi.github.io/gb-crawling/posts/2017-09-28-HowToMakeWebCrawler-Headless-Chrome.html
 
 <!-- images -->
-[img001]: ./assets/images/posts/2019-10-31/img001.png
-[term01]: ./assets/images/posts/2019-10-31/term01.png
-[term02]: ./assets/images/posts/2019-10-31/term02.png
-[test01]: ./assets/images/posts/2019-10-31/test.png
-[test02]: ./assets/images/posts/2019-10-31/google.png
-[test03]: ./assets/images/posts/2019-10-31/csv.png
-[test04]: ./assets/images/posts/2019-10-31/xlsx.png
-[console]: ./assets/images/posts/2019-10-31/user_agent.png
+[img001]: /assets/images/posts/2019-10-31/img001.png
+[term01]: /assets/images/posts/2019-10-31/term01.png
+[term02]: /assets/images/posts/2019-10-31/term02.png
+[test01]: /assets/images/posts/2019-10-31/test.png
+[test02]: /assets/images/posts/2019-10-31/google.png
+[test03]: /assets/images/posts/2019-10-31/csv.png
+[test04]: /assets/images/posts/2019-10-31/xlsx.png
+[console]: /assets/images/posts/2019-10-31/user_agent.png
