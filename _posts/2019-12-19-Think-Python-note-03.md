@@ -262,4 +262,4 @@ def gridraw(col, row):
 
 [homepage]: https://greenteapress.com/wp/think-python-2e/
 [book]: http://greenteapress.com/thinkpython2/thinkpython2.pdf
-[file]: assets/files/posts/2019-12-19/2019-12-19-Think-Python-note-03.py
+[file]: /assets/files/posts/2019-12-19/2019-12-19-Think-Python-note-03.py
