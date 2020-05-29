@@ -90,16 +90,16 @@ use_math: false
 
 ----------
 <!-- link -->
-[wiki]: https://en.wikipedia.org/wiki/Atomic_layer_deposition
+[wiki]: <https://en.wikipedia.org/wiki/Atomic_layer_deposition>
 [Tuomo Suntola]: <https://en.wikipedia.org/wiki/Tuomo_Suntola>
 
 <!-- references -->
-[^1]: <https://doi.org/10.1002/cvde.201402012>
-[^2]: <https://www.asm.com/about/strategy-and-focus-areas/breakthrough-technology>
-[^3]: <https://doi.org/10.1016/0040-6090(92)90874-B>
-[^4]: <https://doi.org/10.1116/1.1622676>
-[^5]: <https://doi.org/10.1116/1.1305809>
-[^6]: <https://doi.org/10.1116/1.1486233>
-[^7]: <https://doi.org/10.1063/1.2338776>
-[^7]: <https://doi.org/10.3390/inorganics6010034>
-[^8]: <https://doi.org/10.1016/B978-0-444-63304-0.00027-5>
+[^1]: <https://doi.org/10.1002/cvde.201402012>{: target="_blank"}
+[^2]: <https://www.asm.com/about/strategy-and-focus-areas/breakthrough-technology>{: target="_blank"}
+[^3]: <https://doi.org/10.1016/0040-6090(92)90874-B>{: target="_blank"}
+[^4]: <https://doi.org/10.1116/1.1622676>{: target="_blank"}
+[^5]: <https://doi.org/10.1116/1.1305809>{: target="_blank"}
+[^6]: <https://doi.org/10.1116/1.1486233>{: target="_blank"}
+[^7]: <https://doi.org/10.1063/1.2338776>{: target="_blank"}
+[^7]: <https://doi.org/10.3390/inorganics6010034>{: target="_blank"}
+[^8]: <https://doi.org/10.1016/B978-0-444-63304-0.00027-5>{: target="_blank"}
