@@ -28,7 +28,25 @@ use_math: false
 
 첫 번째 포스팅의 TOC는 다음과 같다.
 
-{:toc}
+- [New development of Atomic Layer Deposition: Processes, Methods and Applications](#new-development-of-atomic-layer-deposition-processes-methods-and-applications)
+  - [Abstract](#abstract)
+  - [1. Introduction](#1-introduction)
+    - [1.1 Definition of ALD](#11-definition-of-ald)
+    - [1.2 Backgroud](#12-backgroud)
+        - [Figure.01](#figure01)
+        - [Figure.02](#figure02)
+    - [1.3 Thin Film Applications](#13-thin-film-applications)
+    - [1.4 Comparison of ALD with other coating techniques](#14-comparison-of-ald-with-other-coating-techniques)
+        - [Table.01](#table01)
+        - [Table.02](#table02)
+    - [1.5 Advantages and Disadvantages of ALD](#15-advantages-and-disadvantages-of-ald)
+        - [Table.03](#table03)
+    - [1.6 Complex 3D nanostructures](#16-complex-3d-nanostructures)
+        - [Table.04](#table04)
+  - [2. ALD Processes](#2-ald-processes)
+        - [Table.05](#table05)
+        - [Figure.05](#figure05)
+  - [References](#references)
 
 ----------
 
@@ -54,11 +72,13 @@ use_math: false
 4. Purge or evacuation of the excess second precursor and by-products
 5. The process is repeated until the required film thickness is achieved
 
-##### Fig.01 Illustration of ALD for ZnO thin film deposition
+##### Figure.01
+Figure.01 Illustration of ALD for ZnO thin film deposition
 ![figure01][fig01]
 `'Numerical modelling in the atomic layerdeposition process: A short review', unpublished.`
 
-##### Fig.02 A model ALD process for depositing TiO2 on hydroxyl groups functionalized substrate using TiCl4 and H2O as precursors [^ref13]
+##### Figure.02
+Figure.02 A model ALD process for depositing TiO2 on hydroxyl groups functionalized substrate using TiCl4 and H2O as precursors[^ref13]
 ![figure02][fig02]
 
 ----------
@@ -73,7 +93,8 @@ use_math: false
 
 ----------
 ### 1.4 Comparison of ALD with other coating techniques
-##### Table.01 Different types of film deposition methods (adapted from [^ref54]), the sputtering was adapted from [^ref55] while the breath figure method was adapted from [^ref56]
+##### Table.01
+Table.01 Different types of film deposition methods (adapted from [^ref54]), the sputtering was adapted from [^ref55] while the breath figure method was adapted from [^ref56]
 
 | Method                           | Description and types                                                                                                                                                                                                                                                                                                                                                   | Advantages                                                                                                                                                | Applications                                                                                                                                                                                                          |
 | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -88,7 +109,8 @@ use_math: false
 
 ----------
 
-##### Table.02 Comparison of thinfilmdeposition techniques which are similar to ALD [^ref57]
+##### Table.02
+Table.02 Comparison of thinfilmdeposition techniques which are similar to ALD [^ref57]
 
 | **Property**          |         |         |         |               |                | **Deposition Technique** |
 | --------------------- | ------- | ------- | ------- | ------------- | -------------- | ------------------------ |
@@ -107,7 +129,8 @@ use_math: false
 ----------
 ### 1.5 Advantages and Disadvantages of ALD
 
-##### Table.03 Advantages and disadvantages of ALD
+##### Table.03
+Table.03 Advantages and disadvantages of ALD
 
 | Advantages                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            | Disadvantages                                                                                                                                                                                                                                            |
 | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -118,7 +141,8 @@ use_math: false
 - A variety of materials such as semiconductors, magnetic materials, noble metals, and insulators are being fabricated using ALD to form 3D complex nanostructures
 - "The precursor flow will be hindered, and hence the reactions can be different from those reactions on a planar surface, in terms of both mechanism of nucleation and growth of the film. ... The specific challenges for the characterization of 3D nanoarchitectures were summarized in the [^ref63]."
 
-##### Table.04 Materials, reactants and templates used in ALD coating of nano-porous structures. Republished with permission from [^ref59]
+##### Table.04
+Table.04 Materials, reactants and templates used in ALD coating of nano-porous structures. Republished with permission from [^ref59]
 
 | **Materials** |              **Reactants**              | **Temperature** | **Template**  |
 | :-----------: | :-------------------------------------: | :-------------: | :-----------: |
@@ -145,7 +169,8 @@ use_math: false
 ----------
 
 ## 2. ALD Processes
-##### Table.05 Advantages and disadvantages of PEALD
+##### Table.05
+Table.05 Advantages and disadvantages of PEALD
 
 | **Advantages**                               | **Disadvantages**                   |
 | -------------------------------------------- | ----------------------------------- |
@@ -160,7 +185,8 @@ use_math: false
 
 ----------
 
-##### Fig.05 Schematic representation of the three different types of plasma-assisted atomic layer deposition that can be distinguished: (a) direct plasma (b) remote plasma, and (c) radical enhanced
+##### Figure.05
+Figure.05 Schematic representation of the three different types of plasma-assisted atomic layer deposition that can be distinguished: (a) direct plasma (b) remote plasma, and (c) radical enhanced
 ![figure05][fig05]
 
 **`'Recently a branch of ALD, called the photo-assisted ALD or UV-enhanced ALD, has been developed. There the illumination by UV light is adapted as a part of the ALD cycle. UV exposure has been shown to enhance the surface reactions and lead to improved film properties.'`** [^ref65]
