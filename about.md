@@ -37,6 +37,8 @@ layout: page
 	<li>OriginLab</li>
 	<li>Git/<a class="link" href="https://github.com/hsj00">Github</a></li>
 	<li>Python</li>
+	<li>GC/FID</li>
+	<li>Patents investigation</li>
 </ul>
 
 <h2>Activities</h2>
