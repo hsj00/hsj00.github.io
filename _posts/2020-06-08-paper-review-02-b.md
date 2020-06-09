@@ -1,5 +1,5 @@
 ---
-title: "논문 읽기 02-A: 'New development of Atomic Layer Deposition: Processes, Methods and Applications', Sci. Technol. Adv. Mater., 20, (2019), 66"
+title: "논문 읽기 02-B: 'New development of Atomic Layer Deposition: Processes, Methods and Applications', Sci. Technol. Adv. Mater., 20, (2019), 66"
 layout: post
 date: 2020-06-08 20:45
 tag:
