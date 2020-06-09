@@ -26,7 +26,7 @@ use_math: false
 요즘 ALD 트렌드가 어떤지 공부도 할겸 논문 한 편 구해서 읽는다. 읽으면서 체크했던 내용들 요약하듯 짜깁기해서 정리해본다.
 대충 절반으로 쪼개서 앞부분과 뒷부분으로 나눠 올릴 예정이다.
 
-첫 번째 포스팅의 TOC는 다음과 같다.
+두 번째 포스팅의 TOC는 다음과 같다.
 
 - [New development of Atomic Layer Deposition: Processes, Methods and Applications](#new-development-of-atomic-layer-deposition-processes-methods-and-applications)
   - [3. Methods for studying ALD](#3-methods-for-studying-ald)
