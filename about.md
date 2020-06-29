@@ -23,7 +23,7 @@ layout: page
 <ul class="education-list">
 	<li>Konkuk University MS degree in Chemical Engineering (2017)<br>
 	- Advisor: <a class="link" href="http://home.konkuk.ac.kr/~ysmin">Prof. Yo-Sep, Min</a> (Chemisty of Materials & Devices Lab)</li>
-	<li>Konkuk University MS degree in Chemical Engineering (2014)</li>
+	<li>Konkuk University BS degree in Chemical Engineering (2014)</li>
 </ul>
 
 <h2>Skills</h2>
