@@ -1,5 +1,5 @@
 ---
-title: "MAC에서 Manin 설치하기"
+title: "MAC에서 Manim 설치하기"
 layout: post
 date: 2020-07-31 20:30
 tag:
