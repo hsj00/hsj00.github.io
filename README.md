@@ -1,21 +1,15 @@
----
-title: About
-layout: page
----
-
 <p><div class="side-by-side">
     <div class="toleft">
         <img class="image" src="/assets/images/profile.jpg" alt="Alt Text">        
     </div>
 
-    <div class="toright">
-        <h1>Seung-Joo, Han</h1>
+		<h1>Seung-Joo, Han</h1>
 		<h4>"Carve a huge footprint with a tiny step."</h4>
 		<p>R&D engineer in company<br>
 		Seeking sustainable fun something<br>
 		Python newbie<br>		
 		Wannabe the Coding Monkey Spanner</p>
-    </div>
+    
 </div></p>
 
 <h2>Education</h2>
