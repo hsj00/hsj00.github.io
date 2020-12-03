@@ -20,7 +20,7 @@ share: true
 use_math: false
 ---
 
-[KIPRIS](www.kipris.or.kr)에서 진행하는 활용 세미나를 들으며 정리한 내용을 블로그 포스팅으로 남긴다.
+[KIPRIS](http://www.kipris.or.kr/)에서 진행하는 활용 세미나를 들으며 정리한 내용을 블로그 포스팅으로 남긴다.
 
 첫 번째 포스팅은, **"지재권 제도 및 특허동향"**이란 제목으로 IP의 이해, 특허명세서의 이해에 대한 내용을 다룬 강의 내용이다. [특허법인 남앤남](http://www.nampat.co.kr/ko/)의 [김승환 변리사](http://www.nampat.co.kr/ko/portfolio-item/seung-whan-kim-sr-patent-attorney/)님이 진행하셨다.
 
