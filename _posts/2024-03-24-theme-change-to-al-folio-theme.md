@@ -16,6 +16,8 @@ authors:
 
 bibliography: false
 
+render_with_liquid: false
+
 # Optionally, you can add a table of contents to your post.
 # NOTES:
 #   - make sure that TOC names match the actual section names
@@ -23,7 +25,6 @@ bibliography: false
 #   - we may want to automate TOC generation in the future using
 #     jekyll-toc plugin (https://github.com/toshimaru/jekyll-toc).
 toc: true
-toc_sticky: false
 
 # Below is an example of injecting additional post-specific styles.
 # If you use this post as a template, delete this _styles block.
@@ -92,6 +93,39 @@ _styles: >
 #### `_pages`
 
 각 `about.md`나 `cv.md`, `blog.md`와 같은 파일들은 제목과 동일한 이름을 갖는 블로그의 각 페이지 내용들과 연결되어있다. 파일 내용을 수정하면 블로그에 반영이 된다. `about.md`는 블로그 첫 화면 내용과 직접적으로 연결되어있는 내용이 포함되어있어서 좀 신경써서 수정했다.
+
+#### `_layouts`
+
+`_layouts` 폴더엔 `*.liquid` 확장자를 갖는 파일들이 들어있다. 이 파일들은 블로그 홈페이지를 구성하는 각 페이지를 어떤 양식을 따라 렌더링할지 결정하는 정보들이 담겨있는 것 같다.
+
+임시로 블로그 포스팅 최상단에 `Table of Contents`가 나오게끔 설정하려고 `post.liquid` 파일 내용 일부를 수정했다.
+
+<details>
+<summary><b>기존 코드</b></summary>
+
+{% raw %}
+  <div id="markdown-content">
+    {{ content | toc }}
+  </div>
+{% endraw %}
+
+</details><br>
+
+
+<details>
+<summary><b>수정한 코드</b></summary>
+
+{% raw %}
+  <div id="markdown-content">
+    {% if page.toc %}
+      <h2>Table of Contents</h2>
+    {% endif %}
+    {{ content | toc }}
+  </div>
+{% endraw %}
+
+</details>
+<br>
 
 #### `_news`
 

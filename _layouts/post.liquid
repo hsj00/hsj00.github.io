@@ -64,7 +64,10 @@ layout: default
       <hr>
     {% endif %}
     <div id="markdown-content">
-      {{ content }}
+      {% if page.toc %}
+        <h2>Table of Contents</h2>
+      {% endif %}
+      {{ content | toc }}
     </div>
   </article>
 
