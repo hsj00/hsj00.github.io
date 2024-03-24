@@ -1,3 +1,5 @@
+# ruby '3.3.0'
+
 source 'https://rubygems.org'
 group :jekyll_plugins do
     gem 'classifier-reborn'
@@ -15,10 +17,12 @@ group :jekyll_plugins do
     gem 'jekyll-sitemap'
     gem 'jekyll-toc'
     gem 'jekyll-twitter-plugin'
+    gem 'jekyll-seo-tag'
     gem 'jemoji'
     gem 'mini_racer'
     gem 'unicode_utils'
     gem 'webrick'
+    gem 'csv'
 end
 group :other_plugins do
     gem 'feedjira'
