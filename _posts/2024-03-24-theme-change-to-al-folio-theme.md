@@ -70,9 +70,9 @@ _styles: >
 
 이번에도 역시 블로그가 제대로 동작하게끔 설정하기까지 무수한 삽질이 있었고, 그 삽질 과정을 조금이라도 줄여준 보물같은 블로그들이 있었다. 아래는 삽질에 도움을 받은 블로그 목록이다.
 
-[Yehyun Suh Github blog](https://yehyunsuh.github.io/)<br>
-[Yehyun Suh Tistory blog](https://yehyunsuh.tistory.com/)<br>
-[George C. de Araújo Github blog](https://george-gca.github.io/)
+[Yehyun Suh Github blog](https://yehyunsuh.github.io/)  
+[Yehyun Suh Tistory blog](https://yehyunsuh.tistory.com/)  
+[George C. de Araújo Github blog](https://george-gca.github.io/)  
 
 `jekyll-indio`를 사용했던 가장 큰 이유는 간결함에서 오는 세팅의 편의성과 웹과 모바일에서 표시되는 화면 구성의 차이가 거의 없기 때문이었는데, 그에 비하면 `al-folio`는 블로그가 어떤 식으로 작동하고 구현되는지 좀 더 깊은 이해도가 필요했다. 가령, `jekyll`과 `ruby`, `yaml`과 같은 것들을 조금은 더 알아야지 세팅이 수월했다. 물론 나는 아직도 잘 모르겠다. `Google`과 `ChatGPT`, `Copilot`이 없었다면 엄두도 못냈을 것이다. 일단 테마 변경부터 끝내놓고 자잘한 오류들은 천천히 처리해야할 것 같다. 첫 술에 배부를 순 없으니 일단 뭐든 되게 만들고 보자.
 
