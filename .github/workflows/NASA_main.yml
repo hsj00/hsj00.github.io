@@ -1,5 +1,11 @@
+name: Update NASA Image
+
+on:
+  schedule:
+    - cron: '0 0 * * *'  # 매일 자정에 실행
+
 jobs:
-  update_nasa_image:
+  update_image:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -17,5 +23,5 @@ jobs:
 
       - name: Execute script
         env:
-          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}  # GitHub Secret에서 API 키 가져오기
-        run: python update_nasa_image.py
+          NASA_API_KEY: ${{ secrets.NASA_API_KEY }}
+        run: python path/to/update_nasa_image.py
