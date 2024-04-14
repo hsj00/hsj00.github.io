@@ -10,3 +10,7 @@ Gemfile.lock
 node_modules/
 vendor
 .backup/
+__pycache__
+
+NASA_API_KEY
+API_KEY.txt
