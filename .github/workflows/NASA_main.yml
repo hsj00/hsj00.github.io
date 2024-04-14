@@ -18,4 +18,4 @@ jobs:
       - name: Execute script
         env:
           NASA_API_KEY: ${{ secrets.NASA_API_KEY }}  # GitHub Secret에서 API 키 가져오기
-        run: python main.py
+        run: python update_nasa_image.py
