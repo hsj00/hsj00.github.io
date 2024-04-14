@@ -19,8 +19,8 @@ def create_directory():
     """
     Function to create directories 'json' and 'images' if they do not exist
     """
-    json_path = "/assets/json/NASA"
-    img_path = "/assets/img/NASA"
+    json_path = "assets/json/NASA"
+    img_path = "assets/img/NASA"
     if not os.path.exists(json_path):
         os.makedirs(json_path)
         print("JSON directory created.")
