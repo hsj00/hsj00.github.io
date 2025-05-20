@@ -131,6 +131,8 @@ bing_site_verification: # out your bing-site-verification ID (Bing Webmaster)
 blog_name: A tiny step # blog_name will be displayed in your blog page
 blog_description: Blogging for exploring fun things
 permalink: /blog/:year/:title/
+future: true
+published: true
 
 # Pagination
 pagination:
