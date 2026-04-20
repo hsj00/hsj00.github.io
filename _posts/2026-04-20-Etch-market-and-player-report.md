@@ -117,8 +117,24 @@ ALE 전용 TAM(Total Addressable Market, 잠재 시장 규모)은 대부분의 m
 > **📘 용어: Ion-neutral synergy**
 > Plasma ALE의 핵심 개념입니다. 중성 반응종(radical)만 쏘거나 이온만 쏠 때는 거의 식각이 안 일어나지만, **두 개를 번갈아 쏘면** 표면이 깎이는 현상. Kanarik et al.(2017)이 이를 정량화해서 “synergy 값 = 80–100%일 때 이상적 ALE”라고 정의했습니다.
 
-> **📘 용어: ALE window**
-> Plasma ALE에서 두 번째 단계(이온 충격)의 에너지 범위. 너무 낮으면 변형된 층이 안 떨어지고, 너무 높으면 아래 bulk까지 손상됩니다. 이 좁은 에너지 “창문” 안에서만 self-limiting이 성립합니다.
+> **📘 용어: ALE Process Window (ALE 공정창)**
+>
+> ALE에서 self-limiting이 성립하는 **공정 조건의 허용 범위**를 뜻합니다.
+> Plasma ALE와 Thermal ALE에서 "창문"의 축이 다릅니다.
+>
+> - **Plasma ALE — Ion Energy Window:**
+>   제거 단계의 이온 에너지 범위. 너무 낮으면 수정층이 제거되지 않고,
+>   너무 높으면 벌크까지 sputtering됩니다.
+>   이 좁은 에너지 범위 안에서만 "수정층만 선택적으로 제거"가 성립합니다.
+>   (Kanarik et al., 2015; 2017)
+>
+> - **Thermal ALE — Temperature Window:**
+>   수정 단계의 반응물 흡착률과 제거 단계의 생성물 탈착률이
+>   **동시에 충분한 속도를 갖는 온도 범위**입니다.
+>   너무 낮으면 생성물이 탈착되지 않고, 너무 높으면 반응물이 흡착되지 못합니다.
+>   자기제한은 이 온도창 자체보다는 **수정층의 확산 장벽**에 의해 보장됩니다.
+>   (Fischer et al., 2021, Section II.A–III.C, Fig. 1 & Fig. 3)
+
 
 > **📘 용어: Fluorination + Ligand-exchange**
 > Thermal ALE의 두 단계 반응.
@@ -133,6 +149,29 @@ ALE 전용 TAM(Total Addressable Market, 잠재 시장 규모)은 대부분의 m
 - **Directional ALE**: Plasma ALE의 일반형. 이온이 sheath에서 가속되어 수직으로 입사 → FinFET fin etch, gate etch, contact open 등에 사용.
 - **Isotropic ALE**: Thermal ALE가 대표적. 또는 원격 플라즈마에서 이온을 걸러내고 radical만 보내는 방식(AMAT Selectra 구조와 유사). GAA SiGe recess나 inner spacer 형성에 사용.
 - **Quasi-ALE / Pseudo-ALE**: self-limiting까지 완전 포화시키지 않고 시간으로 제어하지만 ALE에 준하는 정밀도를 얻는 방식. 생산성을 높이기 위해 실제 양산 라인에서 자주 채택됩니다.
+
+> **📘 RIE와 Directional ALE는 어떻게 다른가?**
+>
+> 둘 다 이온 가속에 의한 수직 방향성을 갖는다는 점에서 겉보기에 비슷하지만,
+> 공정 설계 철학이 근본적으로 다릅니다.
+>
+> | 구분 | RIE (Reactive Ion Etching) | Directional ALE |
+> |---|---|---|
+> | **반응종 공급** | 반응 가스·이온·라디칼이 **동시에(simultaneously)** 웨이퍼에 도달 | 수정(modification)과 제거(removal)가 **순차적(sequential)** — 가스를 바꿔가며 교대 노출 |
+> | **자기제한성** | ❌ 없음 — 시간이 길면 더 깎임 | ✅ 최소 1단계가 self-limiting — 시간을 더 줘도 추가 식각 없음 |
+> | **이온 에너지** | 비교적 높음 (수백 eV~수 keV) | 수정층과 벌크의 **sputtering threshold 사이**로 정밀 조절 (수~수십 eV) |
+> | **EPC 제어** | 시간·RF power·가스 유량으로 제어 (연속적) | **사이클 수**로 제어 (디지털적) |
+> | **식각률** | 높음 (nm/s~μm/min) | 낮음 (~1 Å/cycle) — 정밀도 우선 |
+> | **균일성 확보** | 반응기 설계(가스 분배·RF 균일성)에 크게 의존 | EPC가 재료 고유값이므로 반응기 의존도 대폭 감소 |
+> | **ARDE** | 고종횡비에서 심각한 문제 | 포화 영역 운전 시 크게 완화 |
+>
+> **공통점:** 이온의 수직 가속에 의한 **이방성(anisotropic) 프로파일**을 얻는다는 점,
+> 그리고 할로겐 기반 화학을 주로 사용한다는 점은 동일합니다.
+>
+> **핵심 차이의 한 줄 요약:**
+> RIE는 "반응종을 동시에 쏘고 시간으로 제어"하고,
+> Directional ALE는 "반응종을 교대로 쏘고 사이클 수로 제어"합니다.
+> (Fischer et al., JVST A 39, 030801, 2021, Section IV.A 참조)
 
 ### 2.3 Selective Etch — 선택성은 어떻게 얻어지는가
 
