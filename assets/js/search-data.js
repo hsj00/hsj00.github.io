@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-mo-ald-특허-분석-도구를-만들었다-kiprisplus-api-streamlit-cloud-배포",
+        },{id: "post-ai-report-ale-amp-selective-etch-장비-기술-심층분석-2023-2026",
+        
+          title: "AI report - ALE &amp; Selective Etch 장비·기술 심층분석 (2023–2026)",
+        
+        description: "260420, AI report - ALE &amp; Selective Etch Advanced Equipment and Tech Analysis (2023–2026)",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/Etch-market-and-player-report/";
+          
+        },
+      },{id: "post-mo-ald-특허-분석-도구를-만들었다-kiprisplus-api-streamlit-cloud-배포",
         
           title: "Mo ALD 특허 분석 도구를 만들었다 — KIPRISPlus API + Streamlit Cloud 배포...",
         
