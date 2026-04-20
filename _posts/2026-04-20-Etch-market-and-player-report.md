@@ -11,7 +11,6 @@ tag:
     - Selective Etch
     - Study
     - Report
-headerImage: false
 description: 260420 `AI report - ALE & Selective Etch: Advanced Equipment and Tech Analysis (2023–2026)`
 category: blog
 author: hsj00
