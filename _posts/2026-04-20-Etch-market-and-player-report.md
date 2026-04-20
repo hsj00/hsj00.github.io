@@ -3,14 +3,14 @@ title: “AI report - ALE & Selective Etch 장비·기술 심층분석 (2023–2
 layout: post
 date: 2026-04-20 17:35
 tag:
-    - ALE
-    - Atomic Layer Etch
-    - Semiconductor
-    - Thermal ALE
-    - Plasma ALE
-    - Selective Etch
-    - Study
-    - Report
+- ALE
+- Atomic Layer Etch
+- Semiconductor
+- Thermal ALE
+- Plasma ALE
+- Selective Etch
+- Study
+- Report
 description: 260420 `AI report - ALE & Selective Etch: Advanced Equipment and Tech Analysis (2023–2026)`
 category: blog
 author: hsj00
