@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-mo-ald-특허-분석-도구를-만들었다-kiprisplus-api-streamlit-cloud-배포",
+        },{id: "post-",
+        
+          title: "",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/2026-04-20-Etch-market-and-player-report/";
+          
+        },
+      },{id: "post-mo-ald-특허-분석-도구를-만들었다-kiprisplus-api-streamlit-cloud-배포",
         
           title: "Mo ALD 특허 분석 도구를 만들었다 — KIPRISPlus API + Streamlit Cloud 배포...",
         
