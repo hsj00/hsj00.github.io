@@ -13,7 +13,7 @@ released: 2023-04-18
 publisher: 부키
 pages: 368
 stars: 4
-status: Reading
+status: Finished
 ---
 나를 힘들게 하는 관계의 틀을 바꾸는 '애착 회복 연습'
 
