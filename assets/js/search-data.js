@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-ai-report-ale-amp-selective-etch-장비-기술-심층분석-2023-2026",
+        },{id: "post-har-구조에서-step-coverage를-지배하는-공정-파라미터-feeding-time과-purge-time의-물리적-근거",
+        
+          title: "HAR 구조에서 Step Coverage를 지배하는 공정 파라미터 - Feeding Time과 Purge Time의 물리적...",
+        
+        description: "260624 `Step Coverage in High Aspect Ratio Structures - Why Feeding Time and Purge Time Matter in ALD`",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/HAR-structure-ALD/";
+          
+        },
+      },{id: "post-ai-report-ale-amp-selective-etch-장비-기술-심층분석-2023-2026",
         
           title: "AI report - ALE &amp; Selective Etch 장비·기술 심층분석 (2023–2026)",
         
