@@ -19,7 +19,6 @@ tag:
     - Study
     - Note
 headerImage: false
-image:
 description: 260624 `Step Coverage in High Aspect Ratio Structures: Why Feeding Time and Purge Time Matter in ALD`
 category: blog
 author: hsj00
