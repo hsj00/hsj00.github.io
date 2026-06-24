@@ -37,18 +37,7 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-",
-        
-          title: "",
-        
-        description: "",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2026/2026-06-24-HAR-structure-ALD/";
-          
-        },
-      },{id: "post-ai-report-ale-amp-selective-etch-장비-기술-심층분석-2023-2026",
+        },{id: "post-ai-report-ale-amp-selective-etch-장비-기술-심층분석-2023-2026",
         
           title: "AI report - ALE &amp; Selective Etch 장비·기술 심층분석 (2023–2026)",
         
