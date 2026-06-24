@@ -3,23 +3,24 @@ title: "HAR 구조에서 Step Coverage를 지배하는 공정 파라미터: Feed
 layout: post
 date: 2026-06-24 10:00
 tag:
-- ALD
-- Atomic Layer Deposition
-- Step coverage
-- HAR
-- Molybdenum
-- ALD-Mo
-- NAND Flash
-- Wordline Metallization
-- Semiconductor
-- Memory Device
-- Chemical Kinetics
-- Transport Modeling
-- Knudsen diffusion
-- Study
-- Note
+    - ALD
+    - Atomic Layer Deposition
+    - Step coverage
+    - HAR
+    - Molybdenum
+    - ALD-Mo
+    - NAND Flash
+    - Wordline Metallization
+    - Semiconductor
+    - Memory Device
+    - Chemical Kinetics
+    - Transport Modeling
+    - Knudsen diffusion
+    - Study
+    - Note
 headerImage: false
-description: 260624 `Step Coverage in High Aspect Ratio Structures: Why Feeding Time and Purge Time Matter in ALD`
+image: 
+description: 260624 `Step Coverage in High Aspect Ratio Structures - Why Feeding Time and Purge Time Matter in ALD`
 category: blog
 author: hsj00
 externalLink: true
@@ -34,6 +35,8 @@ toc:
 
 > ALD(Atomic Layer Deposition) 기반 공정에서 Precursor Feeding Time과 Purge Time이
 > HAR Hole/Trench의 Step Coverage를 어떻게 결정하는가
+
+---
 
 ## 서론
 
