@@ -27,10 +27,10 @@ published: true
 giscus_comments: true
 share: true
 use_math: true
+toc:
+  beginning: true
+  sidebar: left
 ---
-
-> ALD(Atomic Layer Deposition) 기반 공정에서 Precursor Feeding Time과 Purge Time이
-> HAR Hole/Trench의 Step Coverage를 어떻게 결정하는가
 
 ## 서론
 
