@@ -32,8 +32,6 @@ use_math: true
 > ALD(Atomic Layer Deposition) 기반 공정에서 Precursor Feeding Time과 Purge Time이
 > HAR Hole/Trench의 Step Coverage를 어떻게 결정하는가
 
----
-
 ## 서론
 
 ### 1.1 3D NAND의 수직 집적화와 HAR 구조의 등장
