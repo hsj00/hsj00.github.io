@@ -1,5 +1,5 @@
 ---
-title: "ALD Step Coverage - 공정 파라미터와 메커니즘"
+title: "HAR structure에서의 ALD step coverage - Process parameter와 mechanism"
 layout: post
 date: 2026-07-02 10:00 +0900
 tags:
@@ -24,56 +24,11 @@ toc:
   sidebar: left
 ---
 
-기존에 감각적으로 알고 있었던 내용들을 좀 더 명확하게 정리하기 위해서 관련 논문들을 추려서 AI를 활용해 내용을 정리했다. 요즘 내 최대 관심사가 HAR 구조에서의 ALD여서 그런지 step coverage를 개선하기 위해서 계속 이것저것 찾아보게 된다. 3D NAND W/L과 같은 HAR 구조에서의 ALD 공정 조건을 잡으려면 어떤 점들을 고려해야하는지, 물리적 한계는 어디까지인지 알기 위해서 계속 공부해야할 것 같다. 나중에 공부할 때 참고하기 위해서 포스팅으로 남겨둔다. ToC는 아래와 같다.
+기존에 감각적으로 알고 있었던 내용들을 좀 더 명확하게 정리하기 위해서 관련 논문들을 추려서 AI를 활용해 내용을 정리했다. 요즘 내 최대 관심사가 HAR 구조에서의 ALD여서 그런지 step coverage를 개선하기 위해서 계속 이것저것 찾아보게 된다. 3D NAND W/L과 같은 HAR 구조에서의 ALD 공정 조건을 잡으려면 어떤 점들을 고려해야하는지, 물리적 한계는 어디까지인지 알기 위해서 계속 공부해야할 것 같다. 나중에 공부할 때 참고하기 위해서 포스팅으로 남겨둔다. ToC는 위와 같다.
 
 ---
 
-- [HAR structure에서의 ALD step coverage - 3D NAND W/L을 목적으로 한 ALD 전략](#har-structure에서의-ald-step-coverage---3d-nand-wl을-목적으로-한-ald-전략)
-  - [1. Step Coverage를 떨어뜨리는 두 가지 근본 원인](#1-step-coverage를-떨어뜨리는-두-가지-근본-원인)
-    - [1.1 물질 전달 제한 (Mass Transport / Diffusion Limited) - "도달"의 문제](#11-물질-전달-제한-mass-transport--diffusion-limited---도달의-문제)
-    - [1.2 반응 속도론 제한 (Reaction Kinetics Limited) - "반응"의 문제](#12-반응-속도론-제한-reaction-kinetics-limited---반응의-문제)
-  - [2. Pulse / Purge 시간이 Step Coverage에 미치는 영향](#2-pulse--purge-시간이-step-coverage에-미치는-영향)
-    - [2.1 Pulse 시간 - precursor가 표면을 다 덮었는가(포화)](#21-pulse-시간---precursor가-표면을-다-덮었는가포화)
-    - [2.2 Purge 시간 - 다음 반응물과 미리 섞이지 않게](#22-purge-시간---다음-반응물과-미리-섞이지-않게)
-    - [2.3 그 밖에 챙길 파라미터](#23-그-밖에-챙길-파라미터)
-    - [2.4 Knudsen 체계와 압력 - 숫자로 확인하기](#24-knudsen-체계와-압력---숫자로-확인하기)
-  - [3. Thermal Metal ALD(H₂ 환원)가 유독 까다로운 이유](#3-thermal-metal-aldh-환원가-유독-까다로운-이유)
-    - [3.1 병목이 하나 더 있다](#31-병목이-하나-더-있다)
-    - [3.2 H₂가 반응물로서 약한 이유](#32-h가-반응물로서-약한-이유)
-    - [3.3 환원이 덜 되면 연쇄적으로 문제가 생긴다](#33-환원이-덜-되면-연쇄적으로-문제가-생긴다)
-    - [3.4 부산물이 남기는 위험](#34-부산물이-남기는-위험)
-    - [3.5 Incubation Period - 시작이 늦는 문제](#35-incubation-period---시작이-늦는-문제)
-  - [4. Nitride Seed Layer가 Metal ALD를 돕는 이유](#4-nitride-seed-layer가-metal-ald를-돕는-이유)
-    - [4.1 반응물의 반응성부터 다르다](#41-반응물의-반응성부터-다르다)
-    - [4.2 핵생성 거동 비교](#42-핵생성-거동-비교)
-    - [4.3 nitride가 좋은 seed가 되는 세 가지 이유](#43-nitride가-좋은-seed가-되는-세-가지-이유)
-    - [4.4 nitride ALD에도 한계는 있다](#44-nitride-ald에도-한계는-있다)
-    - [4.5 전체 비교 요약](#45-전체-비교-요약)
-  - [5. H₂ 환원이 왜 가장 느린 단계(RLS, rate-limiting step)가 되는가](#5-h-환원이-왜-가장-느린-단계rls-rate-limiting-step가-되는가)
-    - [5.1 H₂는 먼저 쪼개져야 반응한다 (Dissociative Chemisorption)](#51-h는-먼저-쪼개져야-반응한다-dissociative-chemisorption)
-    - [5.2 반응 순서 (Langmuir-Hinshelwood 메커니즘)](#52-반응-순서-langmuir-hinshelwood-메커니즘)
-    - [5.3 그래서 온도에 민감하다 (Arrhenius)](#53-그래서-온도에-민감하다-arrhenius)
-    - [5.4 금속마다 H₂를 쪼개는 난이도가 다르다 (d-band center 모델)](#54-금속마다-h를-쪼개는-난이도가-다르다-d-band-center-모델)
-    - [5.5 두 가지 구체 사례](#55-두-가지-구체-사례)
-    - [5.6 HAR 안에서 H\*가 아래로 갈수록 줄어드는 이유](#56-har-안에서-h가-아래로-갈수록-줄어드는-이유)
-  - [6. H₂를 많이 넣으면 좋아질까 - 한계와 부작용](#6-h를-많이-넣으면-좋아질까---한계와-부작용)
-    - [6.1 이론적으로 보면 (Langmuir-Hinshelwood 속도식)](#61-이론적으로-보면-langmuir-hinshelwood-속도식)
-    - [6.2 분압을 올릴 때 속도가 어떻게 변하나](#62-분압을-올릴-때-속도가-어떻게-변하나)
-    - [6.3 왜 H₂만으로는 근본 한계를 못 넘나](#63-왜-h만으로는-근본-한계를-못-넘나)
-    - [6.4 오히려 H₂를 과하게 넣으면 생기는 부작용](#64-오히려-h를-과하게-넣으면-생기는-부작용)
-    - [6.5 그럼 H₂ 증량이 실제로 통하는 구간은](#65-그럼-h-증량이-실제로-통하는-구간은)
-  - [7. Step Coverage 개선 전략](#7-step-coverage-개선-전략)
-    - [7.1 방법별 효과 비교](#71-방법별-효과-비교)
-    - [7.2 판단 흐름 - 무엇부터 볼 것인가](#72-판단-흐름---무엇부터-볼-것인가)
-    - [7.3 Metal ALD 최적화 가이드](#73-metal-ald-최적화-가이드)
-  - [참고: 핵심 용어 정리](#참고-핵심-용어-정리)
-    - [계산 근거 (재현용)](#계산-근거-재현용)
-  - [References](#references)
-
-
----
-
-# HAR structure에서의 ALD step coverage - 3D NAND W/L을 목적으로 한 ALD 전략
+# HAR structure에서의 ALD step coverage - 3D NAND W/L을 목표로
 
 깊고 좁은 구조 위에 두께가 고른 박막을 올리는 것은 ALD로 가장 잘할 수 있는 일이면서, 동시에 가장 어려운 일이기도 하다. 여기서 얼마나 두께가 고르게 올랐는지를 재는 지표가 step coverage다. 구조 위쪽(입구)에 쌓인 두께에 대해 아래쪽(바닥)에 쌓인 두께가 몇 %인지를 보는 값으로, 100%에 가까울수록 위아래가 똑같이 덮였다는 뜻이다.
 
