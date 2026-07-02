@@ -37,9 +37,9 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-ald-step-coverage-공정-파라미터와-메커니즘",
+        },{id: "post-har-structure에서의-ald-step-coverage-process-parameter와-mechanism",
         
-          title: "ALD Step Coverage - 공정 파라미터와 메커니즘",
+          title: "HAR structure에서의 ALD step coverage - Process parameter와 mechanism",
         
         description: "260702 `ALD Step Coverage - Process parameter &amp; Mechanism`",
         section: "Posts",
