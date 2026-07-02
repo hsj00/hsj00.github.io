@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-har-구조에서-step-coverage를-지배하는-공정-파라미터-feeding-time과-purge-time의-물리적-근거",
+        },{id: "post-ald-step-coverage-공정-파라미터와-메커니즘",
+        
+          title: "ALD Step Coverage - 공정 파라미터와 메커니즘",
+        
+        description: "260702 `ALD Step Coverage - Process parameter &amp; Mechanism`",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/HAR-ALD-SC-Summary/";
+          
+        },
+      },{id: "post-har-구조에서-step-coverage를-지배하는-공정-파라미터-feeding-time과-purge-time의-물리적-근거",
         
           title: "HAR 구조에서 Step Coverage를 지배하는 공정 파라미터 - Feeding Time과 Purge Time의 물리적...",
         
