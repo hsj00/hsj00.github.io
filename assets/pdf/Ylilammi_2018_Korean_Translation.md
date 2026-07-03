@@ -1,338 +1,260 @@
-# ALD 성장 모델링: 고종횡비 구조에서의 등각 박막 증착
+# ALD 성장 kinetics 모델링: 측면 고종횡비(LHAR) 구조에서의 박막 성장
 
-**원문**: "Modeling growth of atomic layer deposited thin films in high-aspect-ratio structures"  
-**저자**: Markku Ylilammi, Oksana Ylivaara, Riikka Puurunen  
-**저널**: Journal of Applied Physics, 2018  
-**DOI**: 10.1063/1.5028178  
-**번역 및 주석**: ALD 전문가 검토본 (Mo ALD / 3D NAND Wordline 특화 주석 포함)
+**원문**: "Modeling growth kinetics of thin films made by atomic layer deposition in lateral high-aspect-ratio structures"
+**저자**: Markku Ylilammi, Oili M. E. Ylivaara, Riikka L. Puurunen (VTT Technical Research Centre of Finland / Aalto University)
+**저널**: *Journal of Applied Physics* **123**, 205301 (2018)
+**DOI**: [10.1063/1.5028178](https://doi.org/10.1063/1.5028178)
+**번역·주석**: 원문 대조 교정본 (Mo ALD / 3D NAND Wordline 특화 주석 포함)
 
 ---
 
-> **번역 방침**  
-> - 기술 용어는 영문 병기를 원칙으로 함  
-> - 수식 번호는 원문 기준 유지  
-> - 각주(†)는 번역자 보충 설명  
-> - `【원문비교】` 블록은 오해 가능성이 있는 핵심 구절에 대해 영문 원문과 번역을 나란히 제시  
+> **번역 방침**
+> - 기술 용어는 영문 병기를 원칙으로 한다.
+> - 수식 번호(식 N)는 원 논문 기준을 유지한다.
+> - 각주(†)는 번역자 보충 설명이다.
+> - `【원문 대조】` 블록은 오해 가능성이 있는 구절에 대해 원문의 취지를 명시한다. (저작권상 원문은 짧은 핵심 어구만 인용하고 나머지는 원문 취지로 기술한다.)
+> - ⚠ 표시는 원 논문에 없는, 번역자의 도메인 해석·추론임을 뜻한다.
+> - 이 문서는 원 논문의 실제 장 구성(I~IX)을 따른다.
 
 ---
 
 ## 목차
 
-1. [초록 (Abstract)](#1-초록)
-2. [서론 (Introduction)](#2-서론)
-3. [고종횡비 구조체 (LHAR Structure)](#3-고종횡비-구조체)
-4. [물리 모델 (Physical Model)](#4-물리-모델)
-5. [해석적 근사해 (Analytical Approximation)](#5-해석적-근사해)
-6. [수치 시뮬레이션 (Numerical Simulation)](#6-수치-시뮬레이션)
-7. [Al₂O₃ ALD 실험 검증](#7-al₂o₃-ald-실험-검증)
-8. [TiO₂ ALD 실험 검증](#8-tio₂-ald-실험-검증)
-9. [토론 (Discussion)](#9-토론)
-10. [결론 (Conclusion)](#10-결론)
-11. [기호 정리 (Symbol Table)](#11-기호-정리)
-12. [Mo ALD 적용 시사점 — V12/V13 3D NAND Wordline](#12-mo-ald-적용-시사점--v12v13-3d-nand-wordline)
+1. [초록](#1-초록)
+2. [서론 (Section I)](#2-서론-section-i)
+3. [좁은 채널에서의 기체 확산 (Section II)](#3-좁은-채널에서의-기체-확산-section-ii)
+4. [박막 성장 모델링 (Section III)](#4-박막-성장-모델링-section-iii)
+5. [확산 방정식의 근사해 (Section IV)](#5-확산-방정식의-근사해-section-iv)
+6. [두께 프로파일과 침투 깊이 (Section V)](#6-두께-프로파일과-침투-깊이-section-v)
+7. [Gordon 모델과의 비교 (Section VI)](#7-gordon-모델과의-비교-section-vi)
+8. [실험 (Section VII)](#8-실험-section-vii)
+9. [결과 (Section VIII)](#9-결과-section-viii)
+10. [결론 (Section IX)](#10-결론-section-ix)
+11. [기호 정리](#11-기호-정리)
+12. [Mo ALD 적용 시사점 (번역자 해설)](#12-mo-ald-적용-시사점-번역자-해설)
 
 ---
 
 ## 1. 초록
 
-원자층 증착법(ALD, Atomic Layer Deposition)을 이용한 고종횡비(HAR, High-Aspect-Ratio) 구조 내부의 박막 성장을 설명하는 물리 기반 모델을 제안한다. 이 모델은 전구체 분자의 **Knudsen 확산(Knudsen diffusion)**과 표면에서의 **Langmuir 흡착(Langmuir-type adsorption)** 메커니즘을 결합하고, 박막이 성장함에 따라 좁아지는 채널 단면적 변화를 함께 고려한다.
+원자층 증착법(ALD)으로 성장시킨 박막의 등각성(conformality)을, 길고 좁은 측면 채널을 갖는 **전(全)실리콘 테스트 구조(all-silicon LHAR)**를 이용해 연구하였다. 본 연구에서 개발한 **확산 모델(diffusion model)**로 좁은 채널 내 ALD 성장의 전파를 분석한다. 이 확산 모델은 (1) 저압에서의 기체 수송, (2) 박막 성장을 기술하는 **동적 Langmuir 흡착 모델**, (3) 박막 성장에 따른 **채널 협착(channel narrowing)** 효과를 함께 고려한다.
 
-모델로부터 등각성(step coverage)을 지배하는 핵심 무차원 파라미터 **C_tp**를 도출하였으며, 이를 이용한 해석적 근사해(analytical approximation)와 수치 시뮬레이션(numerical simulation) 결과를 실험 데이터와 비교하여 검증하였다.
+박막 성장은 표면 반응을 포함한 확산 방정식을 풀어 계산하며, 측정된 두께 프로파일에 모델을 맞추기 위한 **효율적인 해석적 근사해(analytic approximate solution)**를 제시한다. 이 피팅으로부터 **흡착 평형상수 K**와 **고착 계수 c(sticking coefficient)**를 얻는다. 본 모델을 Gordon의 plug-flow 모델과 비교하며, 시뮬레이션은 Al₂O₃ 및 TiO₂ ALD 공정의 실험 결과를 잘 예측한다.
 
-Al₂O₃ ALD(TMA/H₂O계)와 TiO₂ ALD(TiCl₄/H₂O계) 두 공정 시스템에 대해 실험 데이터를 성공적으로 재현하였다.
+> **†각주 1**: ALD에서 등각성(conformality/step coverage)은 3차원 구조 내부까지 균일한 두께로 박막이 증착되는 정도를 뜻한다. 이상적인 ALD는 100% 등각성을 지향하지만, 실제 고종횡비 구조에서는 내부로 갈수록 두께가 감소한다.
 
-> **†각주 1**: ALD에서 "등각성(step coverage)"이란 복잡한 3차원 구조물 내부까지 균일한 두께로 박막이 증착되는 정도를 의미한다. 이상적인 ALD는 100% step coverage를 달성하지만, 실제 HAR 구조에서는 내부로 갈수록 두께가 감소하는 현상이 발생한다.
-
----
-
-## 2. 서론
-
-### 2.1 연구 배경
-
-ALD는 전구체(precursor) 기체를 교대로 공급하여 표면 반응을 통해 한 번에 한 원자층씩 박막을 성장시키는 기술이다. 자기제한적(self-limiting) 반응 특성 덕분에 복잡한 3차원 구조물에도 우수한 등각성을 발휘한다는 것이 ALD의 핵심 장점으로 알려져 있다.
-
-그러나 반도체 소자의 고집적화가 진행됨에 따라 **고종횡비(HAR, High-Aspect-Ratio)** 구조가 등장하였고, 이러한 구조에서는 ALD의 등각성도 크게 저하될 수 있다. 대표적인 예가 3D NAND 플래시 메모리의 워드라인(wordline) 구조, DRAM 커패시터 홀(capacitor hole), 그리고 딥 트렌치(deep trench) 구조 등이다.
-
-【원문비교】  
-> **영문 원문**: "Although ALD is known for its ability to deposit conformal thin films on complex three-dimensional structures, this conformality is compromised in high-aspect-ratio (HAR) structures."  
-> **한국어**: "ALD는 복잡한 3차원 구조물에 등각 박막을 증착할 수 있는 능력으로 잘 알려져 있지만, 이 등각성은 고종횡비(HAR) 구조에서는 저하된다."
-
-### 2.2 기존 모델의 한계
-
-HAR 구조에서의 ALD 성장을 모델링하려는 시도는 이전에도 있었다. 그러나 기존 모델들은 다음과 같은 한계를 가지고 있었다:
-
-1. **채널 협착 효과 무시**: 박막이 성장할수록 채널 내부 단면적이 줄어드는 효과를 고려하지 않았다.
-2. **Langmuir 흡착 미반영**: 표면 흡착 부위(adsorption site) 포화 효과를 단순화하여 처리하였다.
-3. **해석적 해의 부재**: 대부분의 모델이 수치 시뮬레이션에만 의존하여, 공정 파라미터의 직관적 해석이 어려웠다.
-
-본 논문은 이 세 가지 한계를 모두 극복하는 통합 모델을 제안한다.
-
-> **†각주 2**: 기존 대표 모델로는 Dendooven et al. (2009), Gordon et al. (2003)의 모델 등이 있다. Gordon 모델은 반응 확률(reaction probability)이 일정하다고 가정하는 단순 모델이었으며, 이는 포화(saturation) 거동을 재현하지 못하는 한계가 있었다.
+【원문 대조】
+> 이 논문의 산출물은 **K와 c** 두 파라미터다. (원 번역본이 내세운 무차원 파라미터 `C_tp`는 원문에 존재하지 않는다. §5, §11 참조.)
 
 ---
 
-## 3. 고종횡비 구조체
+## 2. 서론 (Section I)
 
-### 3.1 LHAR 구조체 설계
+반도체 소자의 3차원화(through-silicon-via, FinFET, **3D NAND flash memory**)가 진행되면서 박막 공정이 등각적으로 도달해야 하는 종횡비 요구가 높아지고 있다. ALD는 최소 두 가지 이상의 반응물이 고체 기판 위에서 반복적·자기제한적(self-terminating) 반응을 일으키는 기술로(Puurunen 2005; George 2010), 이러한 등각성 요구를 충족할 수 있다. ALD 등각막은 MEMS, 에너지, 고표면적 촉매 등 본질적으로 3차원성을 요구하는 분야에서도 필요하다.
 
-본 연구에서는 모델 검증을 위한 실험 플랫폼으로 **LHAR(Lateral High-Aspect-Ratio) 구조체**를 사용하였다. 이 구조체는 두 장의 실리콘 웨이퍼를 접합하여 형성한 좁고 긴 채널로 구성되며, 채널 입구에서 내부로 진행할수록 전구체 분자가 확산해 들어가는 1차원 확산 문제로 단순화할 수 있다.
+그럼에도 등각성에 대한 실험 데이터는 문헌에 드물게 보고되어 왔는데, 저자들은 그 원인을 **사용하기 쉬운 표준 분석 구조와 방법의 부재**로 지목한다. (예외로 Dendooven 2010, Rose & Bartha 2009, Schwille 2017, Yanguas-Gil 2017을 든다.)
 
-LHAR 구조체의 기하학적 특성:
-- **채널 길이 (L)**: 수 mm ~ 수십 mm
-- **채널 높이 (H)**: 수 μm ~ 수십 μm  
-- **종횡비 (AR = L/H)**: 수십 ~ 수천
+본 연구는 선행 연구(Gao 2015)를 이어, 측면 고종횡비 구조(LHAR) 프로토타입을 사용한다. 이 구조는 polysilicon 멤브레인 안에 형성된, 높이 약 500 nm의 길고 좁은 측면 갭으로, **수직 트렌치를 90° 눕힌 것과 등가**이며 pillar가 멤브레인을 지지한다. 본 연구는 이전(Gao 2015)과 유사한 공정으로 제작한 **새로운 all-silicon 설계의 PillarHall® 프로토타입**을 사용한다. 제작된 채널 길이는 1 μm~5 mm이며, 전형적 갭 높이 500 nm 기준으로 종횡비는 **2:1~10,000:1** 범위다.
 
-### 3.2 구조체의 장점
+> **†각주 2**: 본 논문이 비교 대상으로 삼는 대표 모델은 **Gordon (2003)** 모델이다. 이는 확산 없이 일정 농도의 전선(front)이 전진한다고 가정하는 plug-flow 모델로, 침투 깊이는 예측하지만 **두께 프로파일의 형상과 반응 kinetics는 제공하지 못한다.** (§7 참조)
 
-LHAR 구조체는 실제 반도체 소자 구조(예: DRAM 커패시터 홀, 3D NAND 채널 홀)와 달리 증착 후 단면을 TEM 또는 SEM으로 직접 관찰하기 용이하다는 장점이 있다.
+【원문 대조】
+> 원 논문이 보고하는 핵심 관찰: **채널이 충분히 길면 침투 깊이는 채널 길이 L에 의존하지 않는다.** 즉 침투 깊이는 구조가 아니라 공정·전구체의 고유 특성이다.
 
-> **†각주 3**: LHAR 구조체는 실제 반도체 구조(수직 HAR)와 달리 수평 방향으로 긴 채널을 가진다. 기하학적으로는 동일한 확산 방정식이 적용되므로, LHAR에서 얻은 모델 파라미터를 수직 HAR 구조(3D NAND 등)에 그대로 적용할 수 있다.
+본 연구의 목표는 고종횡비 트렌치에서의 ALD 두께 프로파일을 계산하는 모델을 개발하고, 이를 통해 측정된 두께 프로파일로부터 성장 kinetics 정보를 추출하는 것이다. Al₂O₃용 TMA/H₂O 공정과 TiO₂용 염화물(TiCl₄) 공정으로 모델을 검증한다.
 
 ---
 
-## 4. 물리 모델
+## 3. 좁은 채널에서의 기체 확산 (Section II)
 
-### 4.1 모델의 기본 가정
+### 3.1 충돌률과 평균 속력
 
-본 모델은 다음의 가정 위에 구축된다:
+Hard-sphere 모델(Levine 1978)로 혼합 기체(전구체 A + 캐리어 B)의 충돌률 $z_A$를 기술한다(식 1). 분자 A의 평균 속력은
 
-1. **Knudsen 확산 지배**: HAR 구조 내부에서 전구체 분자의 평균 자유 경로(mean free path)가 채널 치수보다 크므로, 분자-분자 충돌이 아닌 분자-벽면 충돌이 지배적인 수송 메커니즘이다. → **Knudsen 확산 체제**
-2. **Langmuir 흡착**: 표면 흡착은 비어있는 흡착 부위(empty adsorption site)에만 일어나며, 이미 점유된 부위에서는 흡착이 일어나지 않는다.
-3. **1차원 채널 근사**: 전구체 농도는 채널 깊이 방향(x)으로만 변화하며, 채널 단면 내에서는 균일하다고 가정한다.
-4. **채널 협착(channel narrowing) 반영**: 박막이 성장함에 따라 채널의 유효 단면적이 줄어드는 효과를 ALD 사이클별로 업데이트한다.
+$$\bar{v}_A = \left(\frac{8RT}{\pi M_A}\right)^{1/2} \tag{2}$$
 
-> **†각주 4**: **Knudsen 확산**이란 기체 분자의 평균 자유 경로(λ)가 채널 직경(d)보다 클 때(Kn = λ/d >> 1) 지배적이 되는 확산 형태이다. ALD 공정에서 전형적인 압력(수 Torr)과 채널 치수(수 nm ~ 수십 nm)를 고려하면 HAR 구조 내부에서는 항상 Knudsen 체제가 성립한다.
+이며, 기상 확산계수는 $D_A = \dfrac{3\pi}{16}\dfrac{\bar{v}_A^2}{z_A}$ (식 3)이다.
 
-### 4.2 확산 방정식
+> **†각주 3**: 식 (2)는 $R = k_B N_0$, $M_A = m N_0$ 관계로 $\bar{v}=\sqrt{8k_BT/\pi m}$과 동등하다. 무거운 분자일수록 같은 온도에서 느리다. 이 때문에 원 논문은 가벼운 H₂O가 아니라 **무거운 금속 전구체의 확산이 성장 제한 인자**라고 가정한다.
 
-Knudsen 확산 체제에서 채널 내 전구체 분자의 수 농도(number concentration) **n(x, t)**는 다음의 확산 방정식을 따른다:
+### 3.2 Knudsen 확산과 Bosanquet 결합 — 이 논문 수송 모델의 핵심
 
-$$rac{\partial n}{\partial t} = D_K rac{\partial^2 n}{\partial x^2} - rac{v_{ads}}{H}$$
+좁은 채널·저압에서는 분자–벽 충돌이 지배적인 **Knudsen(분자류) 영역**이 되며, 확산계수는(Poodt 2017)
 
-여기서:
-- `x`: 채널 입구로부터의 거리 [m]  
-- `t`: 시간 [s]  
-- `D_K`: Knudsen 확산 계수 [m²/s]  
-- `v_ads`: 단위 표면적당 흡착 속도 [m/s]  
-- `H`: 채널의 반 높이(half-height) [m]
+$$D_{Kn} = h\left(\frac{8RT}{9\pi M_A}\right)^{1/2} \tag{4}, \qquad h = \frac{2}{\dfrac{1}{H}+\dfrac{1}{W}} \tag{5}$$
 
-Knudsen 확산 계수는 다음과 같이 정의된다:
+이다. 여기서 $h$는 높이 $H$, 폭 $W$인 직사각형 채널의 **수력지름(hydraulic diameter)**이다. 실제 공정은 기상 확산과 Knudsen 확산이 공존하는 **천이 영역**이므로, 두 저항을 합친 **Bosanquet 관계**로 유효 확산계수를 구한다(Poodt 2017).
 
-$$D_K = rac{2H ar{v}}{3}$$
+$$\frac{1}{D_{eff}} = \frac{1}{D_A} + \frac{1}{D_{Kn}} \tag{6}$$
 
-여기서 **v̄**는 기체 분자의 평균 열속도(mean thermal velocity)이다:
+> **†각주 4**: ⚠ 주의 — Knudsen만으로 단순화하는 것은 부정확하다. 원 논문은 식 (6)의 Bosanquet 결합으로 bulk 확산(D_A)과 Knudsen 확산(D_Kn)을 **모두** 반영한다. 다만 좁은 채널·저압에서는 대개 $D_{Kn}\ll D_A$이므로 D_eff는 실질적으로 D_Kn이 지배한다. 또한 $D_{Kn}\propto h$이므로, 막이 자라 채널이 좁아지면 수송도 즉시 느려진다.
 
-$$ar{v} = \sqrt{rac{8k_B T}{\pi m}}$$
+### 3.3 분자 지름과 흡착 밀도
 
-> **†각주 5**: 평균 열속도 v̄는 Maxwell-Boltzmann 분포로부터 유도된다. 온도 300°C(573K), MoO₂Cl₂ 분자량 M ≈ 198 g/mol을 대입하면 v̄ ≈ 130 m/s가 된다. 이 값은 채널 내 전구체 수송 속도를 결정하는 핵심 파라미터이다.
+전구체 분자 지름은 점도(식 7) 또는 응축상 밀도(식 8)로 추정한다. Knudsen 확산이 병목이고 $D_{Kn}$에는 분자 지름이 들어가지 않으므로, 거친 추정으로 충분하다. 논문 사용값: $d_{H_2O}=418$ pm, $d_{N_2}=374$ pm, $d_{TMA}=591$ pm, $d_{TiCl_4}=703.9$ pm. (TMA는 215 °C 이상에서 96% 이상 단량체이므로 단량체 값 사용; Almenningen 1971.)
 
-### 4.3 흡착 모델 (Langmuir)
+한 사이클에 화학흡착되는 양(포화 흡착 밀도 q)은 실측 가능한 값들로부터 계산한다.
 
-표면에서의 흡착 속도는 Langmuir 등온식을 따른다:
+$$q = \frac{b_{film}}{b_A}\,\frac{\rho\,gpc_{sat}}{M}\,N_0 \tag{9}$$
 
-$$v_{ads} = rac{ar{v}}{4} \cdot s_0 \cdot (1 - 	heta)$$
+여기서 $b_{film}$은 막 formula unit당 금속 원자 수, $b_A$는 전구체 분자당 금속 원자 수다. TMA→Al₂O₃는 $b_{film}=2, b_A=1$; TiCl₄→TiO₂는 $b_{film}=1, b_A=1$.
 
-여기서:
-- `s₀`: 초기 고착 계수(initial sticking coefficient), 즉 빈 표면에서 분자가 흡착될 확률 [무차원]  
-- `θ`: 표면 피복률(surface coverage), 0 ≤ θ ≤ 1 [무차원]  
-- `(1 - θ)`: 비어있는 흡착 부위의 비율
-
-【원문비교】  
-> **영문 원문**: "The adsorption rate per unit surface area is modeled using a Langmuir-type expression: v_ads = (v̄/4) · s₀ · (1−θ), where s₀ is the initial sticking coefficient on a clean surface."  
-> **한국어**: "단위 표면적당 흡착 속도는 Langmuir형 식으로 모델링된다: v_ads = (v̄/4)·s₀·(1−θ). 여기서 s₀는 깨끗한 표면(빈 표면)에서의 초기 고착 계수이다."
-
-표면 피복률의 시간 변화는:
-
-$$rac{d	heta}{dt} = rac{ar{v}}{4} \cdot s_0 \cdot n \cdot (1 - 	heta) \cdot rac{1}{n_s}$$
-
-여기서 **n_s**는 단위 표면적당 최대 흡착 부위 수(surface site density) [m⁻²]이다.
-
-> **†각주 6**: **고착 계수(sticking coefficient) s₀**는 전구체 분자가 표면과 충돌할 때 실제로 흡착될 확률을 나타낸다. 이 값은 전구체 종류, 온도, 표면 상태에 따라 크게 달라지며, ALD에서는 일반적으로 0.001 ~ 0.1 범위의 값을 가진다. s₀가 클수록 전구체가 채널 입구 근처에서 빠르게 소모되어 내부까지 도달하기 어려워진다.
-
-### 4.4 경계 조건
-
-- **입구(x = 0)**: `n(0, t) = n₀` (일정한 전구체 농도, 충분한 외부 공급)  
-- **끝단(x = L)**: `∂n/∂x = 0` (막힌 끝, 플럭스 없음)  
-- **초기 조건**: `θ(x, 0) = 0` (ALD 사이클 시작 시 깨끗한 표면)
+> **†각주 5**: q가 크다는 것은 벽이 전구체를 많이 소모한다는 뜻이며, 같은 dose로 도달 가능한 침투 깊이가 짧아짐을 의미한다. ⚠ 고밀도 금속막(Mo 등)은 q가 크기 쉬우므로, 산화막 ALD의 침투 경험치를 금속 ALD에 그대로 이관하면 안 된다.
 
 ---
 
-## 5. 해석적 근사해
+## 4. 박막 성장 모델링 (Section III)
 
-### 5.1 핵심 무차원 파라미터 C_tp
+### 4.1 1차원 확산-반응 방정식
 
-모델 방정식을 무차원화하면, 등각성을 지배하는 핵심 무차원 파라미터 **C_tp**가 도출된다:
+채널이 납작해(높이 방향 농도 평형 시간상수 $H^2/D_{eff}\approx10$ ns) y·z 방향 농도 구배가 없다고 두면, 문제는 채널 축(x) 1차원으로 환원된다. 지배 방정식은 **수 농도가 아니라 분압 $p_A$** 기준이다.
 
-$$C_{tp} = rac{9 \cdot n_s \cdot s_0 \cdot L^2}{2 \cdot ar{v} \cdot H^2}$$
+$$\frac{\partial p_A}{\partial t} = D_{eff}\frac{\partial^2 p_A}{\partial x^2} - g\cdot\frac{4}{h}\cdot\frac{RT}{N_0} \tag{10}$$
 
-이를 종횡비 AR = L/H로 표현하면:
+- 첫째 항: 확산에 의한 유입·유출.
+- 둘째 항(소모항): 벽 흡착에 의한 기체 소모. $g$는 순 흡착률(1/m²s), $4/h$는 채널의 **표면적/부피 비**(W≫H이면 4/h→2/H).
 
-$$C_{tp} = rac{9 \cdot n_s \cdot s_0}{2 \cdot ar{v} / H} \cdot AR^2$$
+【원문 대조】
+> 원 번역본은 이 식을 $\partial n/\partial t = D_K\,\partial^2 n/\partial x^2 - v_{ads}/H$ (농도 n 기준, $D_K=2H\bar v/3$)로 적었으나, 원문은 위 식 (10)과 같이 **분압 기준·$4/h$ 소모항·$D_{eff}$**를 쓴다.
 
-**C_tp의 물리적 의미**:
-- C_tp가 **작을수록** → 전구체가 채널 깊은 곳까지 균일하게 도달 → **우수한 step coverage**
-- C_tp가 **클수록** → 전구체가 채널 입구에서 빠르게 소모 → **불량한 step coverage**
+### 4.2 Langmuir 흡착 모델
 
-【원문비교】  
-> **영문 원문**: "The key dimensionless parameter that determines the step coverage is C_tp = 9·n_s·s₀·L²/(2·v̄·H²). When C_tp is small, the precursor penetrates deeply into the channel and the step coverage is good."  
-> **한국어**: "step coverage를 결정하는 핵심 무차원 파라미터는 C_tp = 9·n_s·s₀·L²/(2·v̄·H²)이다. C_tp가 작을 때, 전구체는 채널 깊은 곳까지 침투하여 step coverage가 양호해진다."
+흡착률은 Hertz–Knudsen flux에 고착 확률과 빈자리 비율을 곱한 형태다.
 
-> **†각주 7**: C_tp 파라미터는 AR²에 비례하므로, 종횡비가 2배 증가하면 요구되는 공정 조건은 4배 더 엄격해진다. V9 세대(AR ≈ 500) 대비 V12/V13 세대(AR ≈ 1500~2000)에서 C_tp를 동일하게 유지하려면 s₀를 약 9~16배 낮추거나 등가적인 다른 파라미터를 조정해야 한다.
+$$f_{ads} = (1-\theta)\frac{c\,N_0\,p_A}{\sqrt{2\pi M_A RT}} \tag{11}, \qquad f_{des} = q\,\theta\,P_d \tag{12}$$
 
-### 5.2 전구체 침투 깊이 근사식
+평형($f_{ads}=f_{des}$)에서 흡착 평형상수 K를 정의한다.
 
-ALD 사이클에서 전구체 펄스 시간이 충분히 길 때, 전구체가 의미 있는 농도로 침투하는 깊이 **x_p**의 근사식은 다음과 같다:
+$$K = \frac{\theta_{eq}/p_A}{1-\theta_{eq}} = \frac{cQ}{qP_d} \tag{13}, \qquad Q = \frac{N_0}{\sqrt{2\pi M_A RT}} \tag{14}$$
 
-$$x_p pprox L \cdot \sqrt{rac{1}{C_{tp}}}$$
+순 흡착률 $g=f_{ads}-f_{des}$ (식 15), 피복률 변화 $d\theta/dt=g/q$ (식 16).
 
-이로부터 step coverage가 100%가 되기 위한 조건:
-
-$$x_p \geq L \quad \Rightarrow \quad C_{tp} \leq 1$$
-
-실용적으로는 90% step coverage 달성 조건으로 **C_tp ≤ 0.1**이 권장된다.
-
-### 5.3 포화 펄스 시간 (Saturation Pulse Time)
-
-채널 내부의 모든 표면이 포화(θ → 1)되기 위해 필요한 최소 전구체 펄스 시간 **t_sat**:
-
-$$t_{sat} pprox rac{n_s \cdot L^2}{D_K \cdot n_0} = rac{9 \cdot n_s \cdot L^2}{2 \cdot ar{v} \cdot H \cdot n_0}$$
-
-이 식은 전구체 농도 n₀에 반비례하므로, 전구체 분압을 높이면 포화 시간을 단축할 수 있다.
-
-> **†각주 8**: 실제 공정에서 전구체 펄스 시간은 t_sat보다 충분히 길게 설정해야 한다. 통상적으로 **안전 마진 2~5배**를 적용한다. 그러나 3D NAND 워드라인과 같이 AR이 극단적으로 큰 구조에서는 t_sat 자체가 수초 ~ 수십초에 달할 수 있어 throughput 저하 문제가 발생한다.
+> **†각주 6**: ⚠ 중요 — 원 논문의 c는 **lumped sticking coefficient**다. 즉 "깨끗한 표면에서의 초기 고착 확률"이 아니라, **물리흡착·화학반응·리간드 제거 등 모든 순차·병렬 표면 과정을 하나로 묶은 유효 확률**이다. 피팅으로 얻은 c를 특정 소반응의 확률로 해석하면 안 된다. 또한 펄스 동안 순 흡착률이 항상 양이므로, **가역/비가역 흡착은 $P_d$ 하나로 포괄**된다(비가역이면 $P_d=0$).
 
 ---
 
-## 6. 수치 시뮬레이션
+## 5. 확산 방정식의 근사해 (Section IV)
 
-### 6.1 시뮬레이션 알고리즘
+이 장이 원 논문의 핵심 기여다. 수천 사이클을 매번 수치해석하는 것은 비현실적이므로, 압력 분포를 **선형 구간 + 지수 꼬리**로 근사한다.
 
-수치 시뮬레이션은 ALD 사이클 단위로 진행되며, 각 사이클에서 다음 절차를 반복한다:
+**선형 구간 (x < x_t).** 입구 쪽 포화 표면은 기체를 소모하지 않으므로($g\approx0$) 정상상태에서 압력이 직선으로 감소한다.
 
-1. **전구체 펄스 단계**: 확산 방정식을 수치적으로 풀어 `n(x, t)`와 `θ(x, t)`를 계산
-2. **퍼지 단계**: 채널 내 잔류 전구체 제거 (n → 0으로 리셋)
-3. **박막 두께 업데이트**: `θ`로부터 증착된 두께 Δd(x) 계산
-4. **채널 기하 업데이트**: 증착된 두께만큼 채널 높이 H(x) 감소
+$$p_A(x,t) = p_{A0}\left(1-\frac{x}{x_s}\right) \tag{18}, \qquad x_s = \sqrt{Dt} \tag{19}$$
 
-이 과정을 목표 총 두께에 도달할 때까지 반복한다.
+**겉보기 종방향 확산상수 D.** "유입 분자 수 = 흡착 분자 수"라는 물질 수지로부터 유도된다(식 20–23).
 
-### 6.2 채널 협착 효과
+$$\boxed{\;D = \frac{p_{A0}\,H\,D_{eff}}{q\,k_B T\left(1-\dfrac{\ln(Kp_{A0}+1)}{Kp_{A0}}\right)}\;} \tag{23}$$
 
-사이클이 반복될수록 채널 내부 단면이 좁아진다. 이를 반영하기 위해 위치 x에서의 유효 채널 높이를 매 사이클 후 업데이트한다:
+- $p_{A0}$↑, $H$↑, $D_{eff}$↑ → 전선 빨라짐. $q$↑ → 느려짐.
+- 괄호 항은 Langmuir 등온선 보정으로, $Kp_{A0}\gg1$이면 1에 수렴한다.
 
-$$H_{eff}(x, N) = H_0 - 2 \cdot d(x, N)$$
+**지수 꼬리 구간 (x > x_t).** 성장 전선 부근은 피복률이 낮아 흡착이 활발하므로 압력이 지수적으로 급락한다. 선형–지수 접합점은
 
-여기서 `d(x, N)`은 N번째 사이클 후 위치 x에서의 총 박막 두께이다.
+$$x_t = x_s - \sqrt{\frac{h\,N_0\,D_{eff}}{4RT\,cQ}} \quad (\ge 0) \tag{28}$$
 
-> **†각주 9**: 채널 협착 효과는 특히 최종 목표 두께가 초기 채널 높이의 5% 이상인 경우 step coverage에 유의미한 영향을 미친다. 3D NAND 워드라인에서 Mo 증착 목표 두께가 ~8-10nm인 경우, 채널 높이 ~10nm의 갭에서는 이 효과가 매우 중요하다.
+여기서 $\sqrt{hN_0D_{eff}/4RTcQ}$는 **반응-확산 길이**로, 꼬리의 폭(=두께 프로파일 기울기)을 정한다. **c가 클수록 꼬리가 짧고 가파르다**(전선에서 즉시 소모). 근사해와 완전 수치해는 Fig. 2·3에서 사실상 일치한다.
 
----
+【원문 대조】
+> 원 번역본의 "핵심 무차원 파라미터 $C_{tp}=9n_ss_0L^2/2\bar vH^2$"와 "$x_p\approx L/\sqrt{C_{tp}}$", "포화시간 $t_{sat}$" 및 "$C_{tp}\le1$이면 100% 등각" 조건은 **원 논문에 없다.** 원 논문의 침투 척도는 $x_s=\sqrt{Dt}$ (식 19)와 식 (23)의 D이며, 침투 깊이 정의는 §6의 절반두께 $x_p$다.
 
-## 7. Al₂O₃ ALD 실험 검증
+피복률의 시간 발전은 상미분방정식(식 31)으로 기술되며, 피팅당 1만 회 이상 호출되므로 **4차 Runge–Kutta**로 푼다(보통 1 ms 간격 100점).
 
-### 7.1 실험 조건
-
-Al₂O₃ ALD 공정에 대한 검증을 수행하였다:
-- **전구체**: TMA(Trimethylaluminum, Al(CH₃)₃) / H₂O
-- **기판**: LHAR 구조체 (Si 웨이퍼 접합)
-- **종횡비**: AR = 30 ~ 2000
-- **증착 온도**: 200°C
-
-### 7.2 피팅 결과
-
-모델 계산 결과가 실험 측정값과 잘 일치하였다. 피팅을 통해 추출된 TMA의 파라미터:
-- **고착 계수**: `s₀(TMA) ≈ 0.0085`
-- **표면 부위 밀도**: `n_s ≈ 4.8 × 10¹⁸ m⁻²`
-
-이 값들은 이전 문헌에서 보고된 값들과 일치한다.
-
-【원문비교】  
-> **영문 원문**: "The model fits the experimental data well with a sticking coefficient s₀ = 0.0085 for TMA, which is consistent with previously reported values."  
-> **한국어**: "모델은 TMA의 고착 계수 s₀ = 0.0085로 실험 데이터에 잘 부합하며, 이는 이전에 보고된 값들과 일치한다."
-
-### 7.3 채널 협착 효과의 유의성
-
-수백 ALD 사이클 후에는 채널 협착 효과가 step coverage 프로파일에 측정 가능한 영향을 미쳤다. 채널 협착을 무시한 모델은 실험값과의 편차가 커지는 반면, 채널 협착을 포함한 모델은 훨씬 정확한 결과를 보였다.
+$$\frac{d\theta}{dt} = \frac{cQ\,p_A}{q} - \left(\frac{cQ\,p_A}{q}+P_d\right)\theta \tag{31}$$
 
 ---
 
-## 8. TiO₂ ALD 실험 검증
+## 6. 두께 프로파일과 침투 깊이 (Section V)
 
-### 8.1 실험 조건
+### 6.1 절반 두께 침투 깊이
 
-TiO₂ ALD 공정에 대한 추가 검증:
-- **전구체**: TiCl₄ / H₂O
-- **종횡비**: AR = 50 ~ 1000
-- **증착 온도**: 120°C
+침투 깊이 $x_p$는 **막 두께가 입구 두께의 절반이 되는 지점**으로 정의한다.
 
-### 8.2 피팅 결과
+$$s(x_p) = \frac{s(0)}{2} \tag{34}$$
 
-TiCl₄의 피팅 파라미터:
-- **고착 계수**: `s₀(TiCl₄) ≈ 0.0015`
-- TMA에 비해 낮은 s₀를 가져, 동일한 AR에서 더 우수한 step coverage 달성
+두께 곡선의 기울기가 최대인 지점이 절반 두께 지점이므로, 같은 두께 오차 $\Delta s$에 대해 위치 오차 $\Delta x_p=\Delta s/|ds/dx|$ (식 33)가 최소가 된다. → 측정 재현성이 가장 좋은 정의.
 
-> **†각주 10**: TiCl₄의 낮은 s₀는 MoO₂Cl₂와의 비교에서 중요한 참고점이 된다. MoO₂Cl₂의 s₀는 공정 온도와 표면 상태에 따라 변화하며, 낮은 온도에서는 s₀가 증가하는 경향이 있다. Mo ALD에서 step coverage를 개선하려면 s₀를 TiCl₄ 수준 또는 그 이하로 제어하는 것이 핵심이다.
+### 6.2 채널 협착
 
-### 8.3 두 시스템 비교
+막은 위·아래 양면에서 자라므로 N 사이클 후 남은 높이는
 
-| 파라미터 | TMA (Al₂O₃) | TiCl₄ (TiO₂) |
+$$H(N) = H(0) - 2N\cdot gpc \tag{35}$$
+
+원 논문은 채널 높이를 전 구간 균일하다고 두고 매 펄스 후 입구값으로 갱신한다(단순화). 이 때문에 깊은 쪽 두께 감소를 실제보다 약간 가파르게 예측한다. Fig. 4에서 초기 높이 **0.2 μm** 채널은 1000 사이클 후 **입구가 완전히 폐색(plug-up)**된다.
+
+【원문 대조】
+> 원 번역본은 이 현상을 "채널 중간에서 먼저 닫혀 **seam(심)**이 생긴다"고 서술했으나, 원 논문은 **seam을 언급하지 않으며** 다루는 것은 **입구의 완전 폐색**이다. (다만 gap-fill에서의 seam 논의는 ⚠ 도메인 확장으로 §12에서 별도 취급.)
+
+최종 두께 프로파일은 각 사이클의 피복률 기여를 합산해 얻는다: $s(x)=\theta(x)\cdot gpc_{sat}$ (식 36–37).
+
+---
+
+## 7. Gordon 모델과의 비교 (Section VI)
+
+Gordon(2003) 모델은 확산 없이 일정 농도의 전선이 전진한다고 가정한다. 분자류 유량(식 41)을 적분하면 침투 깊이가
+
+$$x_p = H\cdot\frac{\sqrt{1+\tfrac{3}{4}Ct_p}-1}{0.375} \tag{45}, \qquad C = \frac{p_{A0}N_0}{2q\sqrt{2\pi M_A RT}} \tag{44}$$
+
+로 나온다. 여기서 **C는 단위 1/s의 상수이지 무차원 파라미터가 아니며**, 원 번역본의 `C_tp`와 무관하다. Gordon 모델에서 도달 종횡비 $x_p/H$는 H에 무관하다.
+
+| 항목 | Gordon (2003) | 본 논문 확산 모델 |
 |---|---|---|
-| s₀ | 0.0085 | 0.0015 |
-| n_s [m⁻²] | 4.8 × 10¹⁸ | ~4 × 10¹⁸ |
-| 상대 C_tp | 높음 | 낮음 |
-| 동일 AR에서 step coverage | 낮음 | 높음 |
+| 침투 깊이 | ○ (Fig. 5에서 꽤 정확) | ○ |
+| 두께 프로파일 형상 | ✕ (계단형 가정) | ○ (선형+지수 꼬리) |
+| kinetics(c, K) 추출 | ✕ | **○ (본 모델의 존재 이유)** |
 
 ---
 
-## 9. 토론
+## 8. 실험 (Section VII)
 
-### 9.1 C_tp를 이용한 공정 파라미터 분석
+| 항목 | Al₂O₃ | TiO₂ |
+|---|---|---|
+| 전구체 | TMA(Al(CH₃)₃) + H₂O | TiCl₄ + H₂O |
+| **증착 온도** | **300 °C** | **110 °C** |
+| 반응기 | Picosun R-150 (4 reactant lines) | 동일 |
+| 펄스/퍼지 | 0.1 s / 4.0 s (양 전구체) | 0.1 s / 4.0 s |
+| 사이클 | 500 (≈50 nm) | 1000 (≈50 nm) |
+| 챔버 압력 | ≈300 Pa | ≈300 Pa |
+| N₂ 유량 | 라인당 150 sccm | 동일 |
+| 구조 | PillarHall® 3세대, **H=500 nm**, L=1 mm (구조적 AR **2000**) | 동일 |
 
-C_tp = 9·n_s·s₀·L²/(2·v̄·H²) 식으로부터, step coverage 개선을 위한 공정 레버(lever)를 분석할 수 있다:
+측정은 SCI FilmTek 2000M 분광 반사계로 100점 라인스캔(2 μm 스텝, 총 200 μm), 50× 대물(스팟 ≈5 μm). 두께 정밀도 ≈ **3 nm**(채널 표면 거칠기가 제한 인자).
 
-**C_tp를 낮추는 방법 (step coverage 개선 방향):**
-
-| 레버 | 방법 | 효과 | 주의사항 |
-|---|---|---|---|
-| **s₀ 감소** | 증착 온도 최적화 (높임) | C_tp에 직접 비례 | 너무 높으면 CVD 모드 전환 위험 |
-| **v̄ 증가** | 증착 온도 증가 | √T에 비례 | s₀와 트레이드오프 관계 존재 |
-| **n_s 감소** | 표면 화학 제어 | C_tp에 직접 비례 | 물질 고유 특성, 조절 범위 제한적 |
-| **펄스 시간 증가** | t_pulse 연장 | 포화도 향상 | Throughput 저하 |
-| **전구체 분압 증가** | 공급량 증가 | n₀ 증가 → t_sat 감소 | 가스 소비량 증가 |
-
-### 9.2 채널 협착과 seam 형성
-
-채널 협착 효과가 축적되면, 채널 끝단(막힌 쪽)이 아닌 중간 지점에서 채널이 먼저 닫히는 **seam(심) 형성** 현상이 발생할 수 있다.
-
-【원문비교】  
-> **영문 원문**: "Channel narrowing can lead to premature closure of the channel at some point along its length, creating a seam in the deposited film."  
-> **한국어**: "채널 협착은 채널 길이를 따라 어느 지점에서 채널이 조기에 닫히도록 하여, 증착된 박막 내에 심(seam)을 형성할 수 있다."
-
-> **†각주 11**: **seam**은 채널의 양쪽 벽에서 성장하는 박막이 만나는 지점에 생기는 계면 결함이다. 3D NAND 워드라인에서 seam이 형성되면 (1) 채널 저항 증가, (2) 전기 신호의 산란 중심으로 작용, (3) 열 사이클 중 응력 집중점이 되어 신뢰성 저하를 야기한다. Seam을 최소화하려면 step coverage를 최대화하여 채널 내부 두께 균일도를 높여야 한다.
-
-### 9.3 모델의 적용 범위와 한계
-
-**모델의 강점:**
-- 해석적 C_tp 파라미터로 공정 직관적 이해 가능
-- 채널 협착 효과 포함으로 실제 공정 재현성 향상
-- 다양한 ALD 시스템에 적용 가능한 범용성
-
-**모델의 한계:**
-- 1차원 근사 → 실제 3D 구조의 코너(corner) 효과 미반영
-- 단일 전구체 펄스 모델 → 양방향 반응(co-reactant) 단계 별도 분석 필요
-- 표면 반응 메커니즘의 단순화 (Langmuir 단분자층 흡착 가정)
+> **†각주 7**: ⚠ LHAR 구조는 all-silicon 설계로 제작되며, "두 장의 웨이퍼 접합"이 아니다. 또한 실험은 단일 종횡비(AR 2000)에서 수행되었다.
 
 ---
 
-## 10. 결론
+## 9. 결과 (Section VIII)
 
-본 논문은 HAR 구조에서의 ALD 성장을 기술하는 물리 기반 모델을 제시하고 검증하였다. 주요 기여는 다음과 같다:
+### 9.1 추출된 파라미터 (Table I)
 
-1. **통합 모델 제안**: Knudsen 확산 + Langmuir 흡착 + 채널 협착을 통합한 완전한 모델
-2. **핵심 파라미터 도출**: C_tp = 9·n_s·s₀·L²/(2·v̄·H²) — 공정 설계의 핵심 지표
-3. **해석적 근사해**: 수치 시뮬레이션 없이도 step coverage를 빠르게 예측 가능
-4. **실험 검증**: Al₂O₃(TMA/H₂O) 및 TiO₂(TiCl₄/H₂O) 시스템에서 성공적으로 검증
-5. **공정 설계 가이드라인**: C_tp ≤ 1을 목표로 한 파라미터 최적화 방향 제시
+| 재료 | Cycles | H (nm) | $p_{A0}$ (Pa) | **c** | **K (Pa⁻¹)** | $gpc_{sat}$ (pm) | rms 오차 (nm) |
+|---|---|---|---|---|---|---|---|
+| Al₂O₃ | 500 | 500 | 147 | **0.00572** | **219** | 105.6 | 0.974 |
+| TiO₂ | 1000 | 500 | 25.7 | **0.10** | **0.252** | 54.4 | 1.525 |
+
+포화 성장률 환산: $gpc_{sat}=\dfrac{1+Kp_A}{Kp_A}\,gpc$ (식 46).
+
+### 9.2 두 재료의 프로파일 형상이 다르다 — 논문의 핵심 결과
+
+- **Al₂O₃ (Fig. 6)**: 입구부터 침투 깊이 근처까지 **두께가 일정**하다가 급락. c가 작고(0.57%) **K가 매우 큼(219)** → 붙기는 어렵지만 사실상 비가역 → 앞에서부터 차례로 완전 포화.
+- **TiO₂ (Fig. 7)**: **어디서도 평탄하지 않고** 깊이에 따라 점진적으로 감소. c가 크고(10%) **K가 매우 작음(0.252)** → 잘 붙지만 잘 떨어짐 → 어느 위치도 완전 포화에 못 미침.
+
+【원문 대조】
+> 원 번역본은 "TiCl₄의 낮은 s₀ → 더 우수한 step coverage"라 했으나 **정반대**다. TiO₂의 c(0.10)는 Al₂O₃의 c(0.00572)보다 **약 17배 크고**, TiO₂ 프로파일이 오히려 경사형(덜 이상적)이다.
+
+### 9.3 원인 가설: 반응 부산물
+
+저자들은 프로파일 차이의 근본 원인을 부산물로 본다. TiCl₄/H₂O는 **반응성이 큰 HCl**을 내어 성장 표면과 상호작용하는 반면(Knapas & Ritala 2013), TMA/H₂O는 상대적으로 **불활성인 CH₄**를 낸다(Puurunen 2005). 반응 메커니즘을 알면 Langmuir 식(식 31)을 대체해 더 정확히 피팅할 수 있다.
+
+> **†각주 8**: ⚠ **우리 관점의 핵심 시사점** — MoO₂Cl₂·MoCl₅ 등 할라이드계 금속 전구체는 모두 HCl류 부산물을 낸다. TiO₂에서 관찰된 "경사형 프로파일 + 낮은 K"는 Cl계 Mo ALD의 HAR 거동을 이해하는 직접적 참조점이다. (§12 참조)
+
+---
+
+## 10. 결론 (Section IX)
+
+1. 본 모델은 좁은 채널 내 ALD 두께 분포를 잘 기술하며, 새 소자의 증착 공정 설계·최적화에 사용할 수 있다.
+2. 측정 프로파일을 피팅하면 성장 반응 모델의 파라미터(**c, K**)를 얻는다.
+3. Langmuir는 최소 모델이며, **식 (31)만 교체하면 임의의 반응 메커니즘으로 확장**할 수 있다. 단, 파라미터가 늘수록 더 방대한 측정 데이터가 필요하다.
 
 ---
 
@@ -340,124 +262,74 @@ C_tp = 9·n_s·s₀·L²/(2·v̄·H²) 식으로부터, step coverage 개선을 
 
 | 기호 | 설명 | 단위 |
 |---|---|---|
-| n(x, t) | 전구체 분자의 수 농도 | m⁻³ |
-| n₀ | 채널 입구에서의 전구체 농도 | m⁻³ |
-| n_s | 표면 흡착 부위 밀도 | m⁻² |
-| θ(x, t) | 표면 피복률 | 무차원 |
-| s₀ | 초기 고착 계수 | 무차원 |
-| D_K | Knudsen 확산 계수 | m²/s |
-| v̄ | 분자 평균 열속도 | m/s |
-| L | 채널 길이 | m |
-| H | 채널 반 높이 | m |
-| AR | 종횡비 (= L/H) | 무차원 |
-| C_tp | 핵심 무차원 등각성 파라미터 | 무차원 |
-| t_sat | 포화 펄스 시간 | s |
-| x_p | 전구체 침투 깊이 | m |
-| k_B | 볼츠만 상수 | J/K |
-| T | 절대 온도 | K |
-| m | 전구체 분자 질량 | kg |
+| $p_A$, $p_{A0}$ | 전구체 분압 / 입구 분압 | Pa |
+| $\bar v_A$ | 분자 A 평균 속력 | m/s |
+| $D_A$, $D_{Kn}$, $D_{eff}$ | 기상 / Knudsen / 유효 확산계수 | m²/s |
+| $D$ | 겉보기 종방향 확산상수 (식 23) | m²/s |
+| $h$ | 수력지름 | m |
+| $H$, $W$, $L$ | 채널 높이 / 폭 / 길이 | m |
+| $c$ | **lumped sticking coefficient** | – |
+| $K$ | 흡착 평형상수 | Pa⁻¹ |
+| $q$ | 포화 흡착 밀도 | m⁻² |
+| $\theta$ | 표면 피복률 | – |
+| $P_d$ | 단위시간 탈착 확률 | s⁻¹ |
+| $Q$ | 단위 압력당 충돌률 | m⁻²s⁻¹Pa⁻¹ |
+| $x_s$, $x_t$ | 선형 압력 외삽 0점 / 선형–지수 접합점 | m |
+| $x_p$ | 절반 두께 침투 깊이 | m |
+| $gpc$, $gpc_{sat}$ | 사이클당 성장 / 포화 성장 | m |
+
+> **†각주 9**: 원 번역본의 기호 $C_{tp}$, $n_s$, $s_0$, $n_0$, $D_K$, $v_{ads}$는 원 논문 기호 체계와 다르다. 원 논문은 위 표의 기호를 사용한다.
 
 ---
 
-## 12. Mo ALD 적용 시사점 — V12/V13 3D NAND Wordline
+## 12. Mo ALD 적용 시사점 (번역자 해설)
 
-> **⚠️ 이 섹션은 원논문에 없는 내용으로, MoO₂Cl₂ 전구체를 사용한 Mo ALD의 3D NAND 워드라인 적용에 대한 번역자(ALD 전문가)의 분석 및 시사점을 정리한 것이다.**
+> **⚠️ 이 섹션은 원 논문에 없는 내용으로, MoO₂Cl₂ 기반 Mo ALD의 3D NAND 워드라인 적용에 대한 번역자의 도메인 해석이다. 원 논문의 결과와 명확히 구분한다.**
 
-### 12.1 V12/V13 구조의 기하학적 특성
+### 12.1 구조 대응
 
-| 세대 | 적층 수 | 채널 홀 AR (추정) | 워드라인 갭 AR (추정) |
-|---|---|---|---|
-| V9 (참고) | ~200단 | ~40~60 | ~500~800 |
-| V12 | ~300단 | ~60~80 | ~1000~1500 |
-| V13 | ~400단+ | ~80~100 | ~1500~2000+ |
+워드라인 충진은 슬릿→수평 리세스의 횡방향 HAR 수송 문제로, LHAR와 기하학적으로 상동이다. 리세스 높이→H, 도달 요구 거리→$x_p$ 목표로 대응하되, ⚠ 채널 홀 기둥과 형상 복잡성 때문에 수력지름 h를 실제 형상으로 재계산하고 tortuosity 보정을 D_eff에 반영해야 한다. 현 세대에서 H가 수십 nm면 완전 Knudsen 영역이므로 식 (4)가 지배한다.
 
-> **†각주 12**: V12, V13은 각각 약 300단, 400단 이상의 3D NAND 적층 구조를 의미하며, 워드라인이 삽입되는 갭의 종횡비는 기술 세대가 높아질수록 급격히 증가한다. 이 수치는 공개된 기술 자료로부터의 추정치이며, 실제 값은 회사 및 설계에 따라 상이할 수 있다.
+### 12.2 지금 할 수 있는 정량 작업
 
-### 12.2 Mo ALD (MoO₂Cl₂ 전구체) 파라미터 분석
+- 식 (8)로 MoO₂Cl₂(M≈198.9 g/mol)·MoCl₅(M≈273.2 g/mol)의 $d_A$ 추정 → 식 (2),(4),(6)으로 $\bar v_A, D_{Kn}, D_{eff}$ 산출 → TMA와 비교표 작성.
+- 식 (9)로 Mo ALD의 q 산출(ρ_Mo≈10.2 g/cm³, 실측 gpc_sat). 고밀도 금속막이라 q가 크므로 도달 $x_p$가 산화막보다 짧다.
+- 식 (23)+(19)의 $x_p\propto\sqrt{Dt}$, $D\propto p_{A0}HD_{eff}/q$로 dose·펄스·노드 마진을 계산. **침투 2배엔 펄스 4배**이므로 분압 상향이 1차 레버.
 
-**MoO₂Cl₂의 물성:**
-- 분자량: M ≈ 198 g/mol
-- 평균 열속도 (300°C): v̄ ≈ 130 m/s
-- 증기압: 상온에서 고체, ~100°C 이상에서 충분한 증기압 확보
+> **†각주 10**: ⚠ MoO₂Cl₂, 300 °C(573 K)에서 $\bar v=\sqrt{8RT/\pi M}\approx$ **247 m/s**다. (원 번역본의 130 m/s는 계산 오류.)
 
-**C_tp 계산 예시 (V12, AR = 1200):**
+### 12.3 c·K 추출로 Mo 공정 진단
 
-가정: s₀ = 0.001, n_s = 5 × 10¹⁸ m⁻², H = 5nm, AR = 1200
+LHAR(또는 등가 구조)에 현행 Mo ALD를 태우고 두께 프로파일을 이 모델로 피팅해 c, K를 얻는다.
+- **평탄+급락형(Al₂O₃형)** → 흡착 건전, 수송 제한 → dose/펄스 최적화로 개선.
+- **경사형(TiO₂형)** → K 낮음 → ⚠ HCl 부산물 재흡착/사이트 차단 또는 가역성 의심 → 퍼지·압력·온도창·co-reactant 등 **화학**을 우선 손봐야 함(dose 증량은 후순위).
 
-$$C_{tp} = rac{9 	imes 5 	imes 10^{18} 	imes 0.001}{2 	imes 130 / (5 	imes 10^{-9})} 	imes 1200^2 pprox 12.4$$
+⚠ 부산물 가설 검증: 두께뿐 아니라 깊이별 Cl 잔류(XPS)와 비저항 프로파일을 병행 측정하고, 퍼지/압력 split에서 프로파일 경사 변화를 확인한다.
 
-→ C_tp >> 1: **step coverage 심각하게 불량**
+### 12.4 Mo 비저항·불순물 관점 (도메인 지식)
 
-s₀ = 0.00005로 낮춘 경우:
+| 불순물 | 기원 | 저감 방향 |
+|---|---|---|
+| Cl | MoO₂Cl₂ 잔류 | 충분한 퍼지, 적정 고온 증착 |
+| O | O 배위·불완전 환원 | 충분한 H₂ 환원 |
 
-$$C_{tp} pprox 0.62 < 1: 	ext{ step coverage 달성 가능}$$
+> **†각주 11**: ⚠ 이 표와 비저항 목표(벌크 Mo ≈ 5.3 μΩ·cm)는 원 논문 밖 도메인 지식이다. 원 논문은 Mo·비저항·불순물을 다루지 않으며, Al₂O₃·TiO₂만 검증했다. 이 내용을 "원 논문에서 도출된다"고 인용해서는 안 된다.
 
-### 12.3 seam 최소화 전략
+### 12.5 gap-fill 예측
 
-3D NAND 워드라인에서 seam은 워드라인 저항 균일도와 신뢰성에 직접 영향을 미친다. 모델로부터 도출된 seam 최소화 전략:
-
-**전략 1: 고착 계수(s₀) 최소화**
-- 증착 온도 상승 (450°C → 550°C+): 전구체 탈착 가속, s₀ 감소 효과
-- 단, 너무 높은 온도에서는 CVD 모드 전환 또는 MoO₂Cl₂ 분해 가속화 위험
-
-**전략 2: 전구체 펄스 조건 최적화**
-- 펄스 시간 충분히 확보: t_pulse >> t_sat
-- 전구체 분압(partial pressure) 증가: n₀ ↑ → 유효 확산 속도 증가
-
-**전략 3: 반응물(co-reactant) 최적화**
-- H₂ 환원 단계에서의 충분한 퍼지/환원 시간 확보
-- Mo 산화물 → 금속 Mo로의 완전한 환원을 위한 충분한 노출 시간
-
-### 12.4 불순물(C, O, Cl) 저감과 비저항 최적화
-
-MoO₂Cl₂ 전구체 사용 시 주요 불순물:
-
-| 불순물 | 기원 | 저감 방법 | 비저항 영향 |
-|---|---|---|---|
-| **Cl** | MoO₂Cl₂ 잔류 | 충분한 퍼지 시간, 고온 증착 | Cl 1 at%당 비저항 ~수배 증가 |
-| **O** | MoO₂Cl₂의 O 배위, 불완전 환원 | 충분한 H₂ 환원, 고온 | O 1 at%당 비저항 ~2~3배 증가 |
-| **C** | 유기 오염 (가능성 낮음) | 리액터 클리닝 | 영향 소 |
-
-> **†각주 13**: MoO₂Cl₂/H₂ 시스템에서의 Mo ALD 비저항 목표는 벌크 Mo 비저항(약 5.3 μΩ·cm) 대비 50~100% 이내 (즉, ~8~10 μΩ·cm 이하)로 알려져 있다. 불순물 함량을 XPS 또는 SIMS로 모니터링하고, Cl < 1 at%, O < 2 at% 이하로 제어하는 것이 권장된다.
-
-### 12.5 모델 기반 Mo ALD 공정 설계 로드맵
-
-```
-목표: V12/V13 워드라인 seam-free Mo 충전
-(AR ~1000~2000, 목표 두께 ~8~10nm)
-
-Step 1: C_tp 목표값 설정
-  → C_tp ≤ 0.5 (95% 이상 step coverage 달성 조건)
-
-Step 2: 허용 s₀ 역산
-  → s₀ ≤ (C_tp × 2 × v̄ × H²) / (9 × n_s × L²)
-  → V12 기준: s₀ ≤ ~3 × 10⁻⁵
-
-Step 3: 온도 최적화
-  → s₀가 목표값 이하가 되는 최저 온도 탐색
-  → 통상 450~550°C 범위에서 실험적 최적화
-
-Step 4: 펄스 시간 설정
-  → t_sat 계산 후 × 3~5배 안전 마진 적용
-
-Step 5: 불순물 모니터링
-  → Cl, O 함량 측정 및 공정 피드백
-
-Step 6: 검증
-  → TEM cross-section으로 seam 유무 확인
-  → 4-probe 저항 측정으로 비저항 확인
-```
+식 (35)와 Fig. 4의 입구 폐색은 워드라인 gap-fill의 축소판이다. ⚠ 목표 충진 두께·리세스 높이에서 입구 pinch-off까지 잔여 사이클 수를 예측하면, 다단 dose·억제제(inhibitor) 스킴 설계의 정량 근거가 된다. (원 논문은 "seam"을 다루지 않으므로, seam 논의는 도메인 확장임을 명시한다.)
 
 ---
 
-## 참고 문헌 (원논문 인용 기준)
+## 참고 문헌 (원 논문 서지 기준)
 
-1. R. L. Puurunen, "Surface chemistry of atomic layer deposition: A case study for the trimethylaluminum/water process," *J. Appl. Phys.* **97**, 121301 (2005).
-2. R. G. Gordon, D. Hausmann, E. Kim, and J. Shepard, "A kinetic model for step coverage by atomic layer deposition in narrow holes or trenches," *Chem. Vap. Deposition* **9**, 73 (2003).
-3. J. Dendooven, D. Deduytsche, J. Musschoot, R. L. Puurunen, and C. Detavernier, "Conformality of Al₂O₃ and AlN deposited by plasma-enhanced atomic layer deposition," *J. Electrochem. Soc.* **157**, G111 (2010).
-4. M. Ylilammi, O. M. E. Ylivaara, and R. L. Puurunen, "Modeling growth of atomic layer deposited thin films in high aspect ratio structures," *J. Appl. Phys.* **123**, 205301 (2018).
+1. M. Ylilammi, O. M. E. Ylivaara, R. L. Puurunen, "Modeling growth kinetics of thin films made by atomic layer deposition in lateral high-aspect-ratio structures," *J. Appl. Phys.* **123**, 205301 (2018).
+2. R. G. Gordon, "A kinetic model for step coverage by atomic layer deposition in narrow holes and trenches," *Chem. Vap. Deposition* **9**, 73–78 (2003).
+3. R. L. Puurunen, "Surface chemistry of atomic layer deposition: A case study for the trimethylaluminum/water process," *J. Appl. Phys.* **97**, 121301 (2005).
+4. P. Poodt et al., "Effect of reactor pressure on the conformal coating inside porous substrates by ALD," *J. Vac. Sci. Technol. A* **35**, 021502 (2017).
+5. F. Gao, S. Arpiainen, R. L. Puurunen, "Microscopic silicon-based lateral high-aspect-ratio structures for thin film conformality analysis," *J. Vac. Sci. Technol. A* **33**, 010601 (2015).
+6. K. Knapas, M. Ritala, "In situ studies on reaction mechanisms in atomic layer deposition," *Crit. Rev. Solid State Mater. Sci.* **38**, 167–202 (2013).
 
 ---
 
-*번역 완료일: 2025년*  
-*번역자 주: 본 번역은 원논문의 내용을 최대한 정확하게 전달하고자 하였으며, Mo ALD/3D NAND 관련 기술적 시사점 분석(섹션 12)은 번역자의 전문 지식에 기반한 추가 해설임을 명시한다.*
+*교정 방침: 본 문서는 원 논문(PDF)과 1:1 대조하여 서지·수식·실험 조건·피팅 결과를 원문에 맞췄다. ⚠ 표시 항목(특히 §12)은 원 논문 밖 도메인 해석임을 명시한다.*
