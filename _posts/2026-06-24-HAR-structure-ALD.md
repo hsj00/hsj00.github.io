@@ -62,13 +62,14 @@ ALD 공정의 전형적인 reactor 압력(수 mTorr~수 Torr)과 feature 폭(수
 
 $$Kn = \lambda / d$$
 
-Kn > 1인 영역, 즉 **Knudsen flow regime**에서는 분자 간 충돌보다 분자와 벽면 사이의 충돌이 지배적이다.[^1][^2] 이 regime의 중요한 특성은 다음과 같다:
+**Kn ≫ 1**인 free molecular flow 영역에서는 분자간 충돌보다 분자–벽면 충돌이 지배적이다.[^1][^2] 이 regime의 특성은 다음과 같다.
 
-- **Penetration depth가 total exposure(P × t)에만 비례**하고, channel 높이나 partial pressure 단독에는 독립적이다.[^2][^3] 즉, 압력을 높이거나 공급 시간을 늘릴 경우 penetration depth가 증가하는 효과를 얻을 수 있다.
-- 분자가 벽면을 따라 **cosine 분포로 반사(diffuse reflection)**되며 이동하기 때문에 intermolecular scattering 없이 feature 최심부까지 도달 가능성이 유지된다.[^2]
-- 반면 continuum flow 영역에서는 feature 입구 근처에서의 농도 구배가 steep해져 내부 확산이 크게 제한된다.[^1][^2]
+- 분자는 벽면에서 **cosine 분포로 확산 반사(diffuse reflection)**되며 wall-to-wall random walk(Knudsen diffusion)로 이동하므로, 분자간 산란 없이도 feature 최심부까지 도달 가능성이 유지된다.[^2]
+- **정규화된 saturation profile(=AR 단위 침투)은 오직 exposure(P × t)와 sticking probability에만 의존하며, 압력 단독·채널 높이에는 독립적이다.**[^2][^3] 다만 이때 침투는 exposure에 **선형이 아니라 제곱근**으로 증가한다. AR ∝ √(exposure) (Gordon의 $E_{sat}\propto s_0^{-1}(\mathrm{EAR})^2$과 동치). 절대 침투 길이는 Knudsen 확산계수가 feature 치수에 비례하므로($D_K\propto d$) 채널 높이에도 의존한다.
+- 따라서 압력이나 공급 시간을 늘리면 침투가 증가하되, 목표 AR을 2배로 늘리려면 exposure를 약 4배 늘려야 한다. (동일 AR에서 hole은 trench 대비 약 4배 exposure 요구.)
+- **Kn이 감소해 transition 영역에 가까워지면** exposure-only universality가 깨지고, 같은 exposure 대비 침투가 줄며 saturation profile이 압력·채널 높이에 개별적으로 의존하게 된다. 다만 현실적 ALD 압력에서 nm급 HAR feature 내부는 λ ≫ d(Kn ~ 수백)이라 사실상 항상 free molecular flow이며 continuum으로의 전이는 일어나지 않는다.
 
-**이런 관점에서 ALD의 step coverage 문제는 단순히 "precursor 양이 충분한가"의 문제가 아니라, 주어진 공정 시간 내에 Knudsen diffusion을 통해 saturation front가 feature 최심부까지 도달하는가의 문제임을 알 수 있다.**
+결국 ALD의 step coverage는 “precursor 양이 충분한가”가 아니라, **주어진 공정 시간 내에 Knudsen diffusion을 통한 saturation front가 목표 AR까지 도달하는가**의 문제다.
 
 ---
 
