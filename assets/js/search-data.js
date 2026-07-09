@@ -537,6 +537,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/anxious_in_love/";
+            },},{id: "books-지구-끝의-온실",
+          title: '지구 끝의 온실',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/greenhouse_at_earths_end/";
             },},{id: "news-graduated-with-a-bachelor-s-degree-in-chemical-engineering",
           title: 'Graduated with a Bachelor’s degree in Chemical Engineering 🎓',
           description: "",
