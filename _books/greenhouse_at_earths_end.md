@@ -2,7 +2,7 @@
 layout: book-review
 title: 지구 끝의 온실
 author: 김초엽 (Kim Cho-yeop)
-cover: assets/img/book_covers/greenhouse_at_earths_end.jpg
+cover: assets/img/book_covers/greenhouse_at_earths_end.jpeg
 isbn: 9791191824001
 categories: fiction science-fiction korean-literature novel
 tags: sf dust post-apocalypse plants
