@@ -37,11 +37,11 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-device-physics-w1-band-fermi-workfunction",
+        },{id: "post-device-physics-for-metal-ald-w1-전자는-어디에-있고-얼마나-있고-얼마나-잘-움직이는가",
         
-          title: "Device Physics W1 Band Fermi Workfunction",
+          title: "Device Physics for Metal ALD · W1 — 전자는 어디에 있고, 얼마나 있고,...",
         
-        description: "",
+        description: "에너지 밴드, 페르미 준위, 일함수(EWF), 그리고 금속 박막의 저항. Metal ALD 공정 개발자 관점에서 소자 물리의 기초를 세운다.",
         section: "Posts",
         handler: () => {
           
