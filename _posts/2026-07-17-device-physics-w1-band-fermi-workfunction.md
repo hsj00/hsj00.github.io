@@ -30,7 +30,9 @@ toc:
 >
 > **Claude**를 사용하여 본문의 모든 그림은 인라인 SVG로 생성했고, 수치 주장도 전부 독립 재계산으로 검증했다. 참고문헌은 각주로 표기했다
 ---
+
 <style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
 /* ============================================================
    W1 study note — scoped styles (.dp prefix)
    Jekyll al-folio 포스팅에 그대로 붙여넣어도 테마 CSS와 충돌하지 않도록
@@ -196,7 +198,6 @@ toc:
 <p>W1은 소자 이야기를 하지 않는다. 대신 이후 11주 동안 계속 쓰게 될 <em>세 개의 축</em>을 세운다. 전자가 어떤 에너지에 존재할 수 있는지(밴드), 그중 실제로 몇 개가 채워져 있는지(페르미 준위와 캐리어 농도), 그 전자가 얼마나 방해받지 않고 움직이는지(산란과 저항)이다. MOS 커패시터도, 3D NAND 워드라인 저항도 전부 이 세 축의 조합으로 설명된다.</p>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">01</span>고립된 원자에서 결정의 밴드로</h2>
 
 <p>수소 원자 하나에서 전자는 1s, 2s, 2p 같은 <strong>이산적인(discrete)</strong> 에너지 준위만 가질 수 있다. 중간 값은 존재하지 않는다. 이제 같은 원자를 두 개 가까이 붙이면, 파울리 배타 원리에 의해 두 원자의 동일한 준위가 <strong>같은 에너지를 가질 수 없게</strong> 되어 위·아래로 살짝 갈라진다. 원자 <var>N</var>개를 결정 격자로 묶으면 하나의 준위가 <var>N</var>개로 갈라진다.<sup><a href="#fn1">1</a></sup></p>
@@ -222,13 +223,62 @@ toc:
     </marker>
   </defs>
 
+  <!-- axes -->
+  <line x1="70" y1="255" x2="690" y2="255" stroke="#14181c" stroke-width="1.5"/>
+  <line x1="70" y1="30" x2="70" y2="255" stroke="#14181c" stroke-width="1.5"/>
+  <text x="56" y="140" font-size="12" fill="#14181c" text-anchor="middle" transform="rotate(-90 56 140)" font-family="monospace">전자 에너지 E</text>
+  <text x="380" y="285" font-size="12" fill="#14181c" text-anchor="middle" font-family="monospace">&#8592; 원자 간 거리 감소 (결정화)</text>
+
+  <!-- Band fan.  APEX at the isolated-atom side (right), WIDENING toward the crystal (left).
+       3s and 3p broaden, overlap near x=470 (sp3 hybridisation), then re-split into
+       bonding (valence) and antibonding (conduction) bands with a gap in between. -->
+  <path d="M 640 86 L 470 62 L 300 45 L 300 80 L 470 114 Z" fill="url(#cbGrad)" stroke="#2f6fd0" stroke-width="1"/>
+  <path d="M 640 140 L 470 114 L 300 102 L 300 152 L 470 166 Z" fill="url(#vbGrad)" stroke="#b8443c" stroke-width="1"/>
+
+  <!-- discrete atomic levels on the right (large separation) -->
+  <line x1="640" y1="86" x2="678" y2="86" stroke="#2f6fd0" stroke-width="2.5"/>
+  <line x1="640" y1="140" x2="678" y2="140" stroke="#b8443c" stroke-width="2.5"/>
+  <text x="684" y="82" font-size="12" fill="#2f6fd0" font-family="monospace">3p</text>
+  <text x="684" y="145" font-size="12" fill="#b8443c" font-family="monospace">3s</text>
+  <text x="612" y="228" font-size="11.5" fill="#4d565e" text-anchor="middle">고립 원자</text>
+  <text x="612" y="243" font-size="11.5" fill="#4d565e" text-anchor="middle">이산 준위</text>
+
+  <!-- overlap / re-splitting annotation -->
+  <line x1="470" y1="118" x2="470" y2="186" stroke="#8a4b12" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <circle cx="470" cy="114" r="3" fill="#8a4b12"/>
+  <text x="478" y="184" font-size="11" fill="#8a4b12">3s&#183;3p 밴드가 겹침 &#8594; sp&#179; 혼성</text>
+  <text x="478" y="199" font-size="11" fill="#8a4b12">&#8594; 결합/반결합으로 재분리</text>
+
+  <!-- equilibrium bands on the left -->
+  <rect x="120" y="45" width="180" height="35" fill="#2f6fd0" opacity="0.16"/>
+  <rect x="120" y="102" width="180" height="50" fill="#b8443c" opacity="0.16"/>
+  <line x1="120" y1="45" x2="300" y2="45" stroke="#2f6fd0" stroke-width="0.8" stroke-dasharray="2 3"/>
+  <line x1="120" y1="80" x2="300" y2="80" stroke="#2f6fd0" stroke-width="2"/>
+  <line x1="120" y1="102" x2="300" y2="102" stroke="#b8443c" stroke-width="2"/>
+  <line x1="120" y1="152" x2="300" y2="152" stroke="#b8443c" stroke-width="0.8" stroke-dasharray="2 3"/>
+
+  <!-- band gap: double-headed arrow, marker #a1 is now actually defined -->
+  <line x1="150" y1="80" x2="150" y2="102" stroke="#14181c" stroke-width="1"
+        marker-start="url(#a1)" marker-end="url(#a1)"/>
+  <text x="158" y="95" font-size="11.5" fill="#14181c" font-weight="600" font-family="monospace">E_g = 1.12 eV</text>
+
+  <text x="152" y="66" font-size="11.5" fill="#2f6fd0" font-weight="600">전도대 E_C</text>
+  <text x="152" y="133" font-size="11.5" fill="#b8443c" font-weight="600">가전자대 E_V</text>
+  <text x="196" y="228" font-size="11.5" fill="#4d565e" text-anchor="middle">Si 결정 (a&#8320; = 0.543 nm)</text>
+  <text x="196" y="243" font-size="11.5" fill="#4d565e" text-anchor="middle">연속 밴드 + 금지대</text>
+
+  <!-- equilibrium spacing marker -->
+  <line x1="300" y1="30" x2="300" y2="255" stroke="#4d565e" stroke-width="0.8" stroke-dasharray="4 4"/>
+</svg>
+<p class="dp-cap"><b>그림 1.</b> <strong>오른쪽이 고립 원자(이산 준위), 왼쪽이 결정</strong>이다. 원자가 가까워질수록 준위가 갈라져 밴드로 <strong>넓어지고</strong>, 중간 거리에서 3s·3p 밴드가 겹쳐 sp³ 혼성을 이룬 뒤 결합(가전자대)·반결합(전도대) 밴드로 <strong>재분리</strong>된다. 실리콘의 평형 격자 상수에서 두 밴드 사이에 1.12 eV(300 K)의 금지대가 남는다. 이 금지대의 존재 여부와 크기가 금속·반도체·절연체를 가른다.<sup><a href="#fn1">1</a></sup></p>
+</div>
+
 <div class="dp-caution">
   <span class="dp-tag">흔한 오해</span>
-  <p>"밴드갭 안에는 전자가 절대 없다"는 말은 <strong>완벽한 결정에 한해서</strong> 참이다. 실제 박막에는 결함, 불순물, 계면 미결합손(dangling bond)이 만드는 <strong>갭 내 준위(gap states)</strong>가 존재한다. ALD 박막 계면에서 발생하는 트랩, high-k의 산소 공공(oxygen vacancy), Fermi-level pinning은 전부 "밴드갭 안에 생긴 상태" 이야기다. W3~W5에서 다시 만난다.</p>
+  <p>"밴드갭 안에는 전자가 절대 없다"는 말은 <strong>완벽한 결정에 한해서</strong> 참이다. 실제 박막에는 결함, 불순물, 계면 미결합손(dangling bond)이 만드는 <strong>갭 내 준위(gap states)</strong>가 존재한다. ALD 계면에서 발생하는 트랩, high-k의 산소 공공(oxygen vacancy), Fermi-level pinning은 전부 "밴드갭 안에 생긴 상태" 이야기다. W3~W5에서 다시 만난다.</p>
 </div>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">02</span>금속 · 반도체 · 절연체는 무엇이 다른가</h2>
 
 <p>세 물질의 차이는 <strong>밴드의 존재 여부가 아니라 전자가 밴드를 어떻게 채웠는가</strong>이다.</p>
@@ -247,6 +297,35 @@ toc:
   <text x="110" y="233" font-size="11.5" fill="#4d565e" text-anchor="middle">바로 위에 빈 상태가 있음</text>
   <text x="110" y="256" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">n ≈ 10²²–10²³ cm⁻³, 고정</text>
 
+  <!-- SEMICONDUCTOR -->
+  <text x="360" y="24" font-size="14" font-weight="700" fill="#14181c" text-anchor="middle">반도체 (Si, Ge)</text>
+  <rect x="285" y="40" width="150" height="45" fill="#2f6fd0" opacity="0.22" stroke="#2f6fd0"/>
+  <rect x="285" y="123" width="150" height="67" fill="#b8443c" opacity="0.45" stroke="#b8443c"/>
+  <line x1="285" y1="104" x2="435" y2="104" stroke="#14181c" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="442" y="108" font-size="12" font-weight="700" fill="#14181c" font-family="monospace">E_F</text>
+  <line x1="360" y1="85" x2="360" y2="123" stroke="#14181c" stroke-width="1"/>
+  <text x="366" y="99" font-size="11.5" fill="#14181c" font-weight="600" font-family="monospace">1.12 eV</text>
+  <text x="360" y="68" font-size="11" fill="#2f6fd0" text-anchor="middle" font-weight="600">E_C</text>
+  <text x="360" y="140" font-size="11" fill="#ffffff" text-anchor="middle" font-weight="600">E_V</text>
+  <text x="360" y="215" font-size="11.5" fill="#4d565e" text-anchor="middle">E_F가 <tspan font-weight="700">갭 안</tspan>에 위치</text>
+  <text x="360" y="233" font-size="11.5" fill="#4d565e" text-anchor="middle">열·도핑으로 캐리어 생성</text>
+  <text x="360" y="256" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">n = 10¹⁰–10²⁰ cm⁻³, 제어 가능</text>
+
+  <!-- INSULATOR -->
+  <text x="610" y="24" font-size="14" font-weight="700" fill="#14181c" text-anchor="middle">절연체 (SiO₂, Al₂O₃)</text>
+  <rect x="535" y="40" width="150" height="28" fill="#2f6fd0" opacity="0.22" stroke="#2f6fd0"/>
+  <rect x="535" y="160" width="150" height="30" fill="#b8443c" opacity="0.45" stroke="#b8443c"/>
+  <line x1="535" y1="112" x2="685" y2="112" stroke="#14181c" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="692" y="116" font-size="12" font-weight="700" fill="#14181c" font-family="monospace">E_F</text>
+  <line x1="610" y1="68" x2="610" y2="160" stroke="#14181c" stroke-width="1"/>
+  <text x="616" y="98" font-size="11.5" fill="#14181c" font-weight="600" font-family="monospace">~9 eV</text>
+  <text x="610" y="215" font-size="11.5" fill="#4d565e" text-anchor="middle">갭이 너무 커서</text>
+  <text x="610" y="233" font-size="11.5" fill="#4d565e" text-anchor="middle">열로는 넘길 수 없음</text>
+  <text x="610" y="256" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">n ≈ 0 (터널링만 가능)</text>
+</svg>
+<p class="dp-cap"><b>그림 2.</b> 세 물질의 밴드 채움 상태. 금속은 페르미 준위가 허용 밴드 내부에 있어 전자가 아주 작은 전기장에도 바로 위 빈 상태로 올라갈 수 있다. 반도체·절연체는 페르미 준위가 금지대 안에 있어 전자가 움직이려면 먼저 갭을 넘거나(열/빛) 도핑으로 캐리어를 공급받아야 한다.</p>
+</div>
+
 <div class="dp-tw">
 <table>
   <thead><tr><th>물질</th><th>E<sub>g</sub> (eV, 300 K)</th><th>공정에서의 역할</th></tr></thead>
@@ -263,7 +342,6 @@ toc:
 <p style="font-size:14px;color:#4d565e;margin-top:-14px">* Al₂O₃의 밴드갭은 <strong>같은 물질명이라도 값이 하나로 정해지지 않는다</strong>. 결정질 α-Al₂O₃ 기준의 표준 표값은 ~8.8 eV인 반면,<sup><a href="#fn4">4</a></sup> ALD로 증착한 비정질 막을 내부광방출(IPE)로 측정하면 그보다 훨씬 작은 값이 나온다.<sup><a href="#fn9">9</a></sup> 증착 방식·화학량론·결정성·후속 열처리가 모두 밴드갭을 바꾸기 때문이다. 즉 "재료 상수"가 아니라 <strong>공정 결과물의 특성값</strong>이며, 인용할 때는 <strong>어떤 막을 어떻게 측정한 값인지</strong>를 함께 적어야 한다.</p>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">03</span>페르미 준위 — 가장 많이 오해받는 개념</h2>
 
 <p>페르미 준위 E<sub>F</sub>는 <strong>전자가 존재하는 에너지가 아니다.</strong> 전자가 특정 에너지 상태를 점유할 확률을 나타내는 <em>페르미–디랙 분포</em>에서, 점유 확률이 정확히 <strong>1/2이 되는 기준선</strong>이다. 그래서 반도체에서는 E<sub>F</sub>가 밴드갭 한가운데, 즉 <strong>전자가 하나도 존재할 수 없는 곳</strong>에 놓이는 일이 자연스럽게 일어난다.</p>
@@ -280,6 +358,49 @@ toc:
   <text x="52" y="258" font-size="11" fill="#b8443c" text-anchor="end" font-family="monospace">E_V</text>
   <line x1="55" y1="150" x2="205" y2="150" stroke="#14181c" stroke-width="2" stroke-dasharray="7 4"/>
   <text x="52" y="147" font-size="11" fill="#14181c" text-anchor="end" font-weight="700" font-family="monospace">E_F</text>
+
+  <!-- few electrons in CB, holes in VB -->
+  <circle cx="85" cy="55" r="4" fill="#2f6fd0"/><circle cx="140" cy="52" r="4" fill="#2f6fd0"/><circle cx="175" cy="58" r="4" fill="#2f6fd0"/>
+  <circle cx="95" cy="245" r="4" fill="none" stroke="#b8443c" stroke-width="1.6"/>
+  <circle cx="150" cy="248" r="4" fill="none" stroke="#b8443c" stroke-width="1.6"/>
+  <circle cx="182" cy="242" r="4" fill="none" stroke="#b8443c" stroke-width="1.6"/>
+
+  <!-- connector -->
+  <line x1="215" y1="150" x2="260" y2="150" stroke="#4d565e" stroke-width="1" stroke-dasharray="3 3"/>
+
+  <!-- right: f(E).  vertical axis = E (up = high), horizontal axis = f (right = 1) -->
+  <text x="455" y="22" font-size="13" font-weight="700" fill="#14181c" text-anchor="middle">페르미–디랙 점유 확률 f(E)</text>
+  <line x1="290" y1="270" x2="640" y2="270" stroke="#14181c" stroke-width="1.5"/>
+  <line x1="290" y1="35" x2="290" y2="270" stroke="#14181c" stroke-width="1.5"/>
+  <text x="282" y="42" font-size="11" fill="#4d565e" text-anchor="end" font-family="monospace">E</text>
+  <text x="455" y="290" font-size="11.5" fill="#4d565e" text-anchor="middle" font-family="monospace">f(E) &#8594;   0 &#8231;&#8231;&#8231;&#8231;&#8231;&#8231; 0.5 &#8231;&#8231;&#8231;&#8231;&#8231;&#8231; 1</text>
+
+  <!-- f = 0.5 vertical guide -->
+  <line x1="455" y1="35" x2="455" y2="270" stroke="#4d565e" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <!-- E_F horizontal -->
+  <line x1="290" y1="150" x2="620" y2="150" stroke="#14181c" stroke-width="1.5" stroke-dasharray="7 4"/>
+  <text x="626" y="154" font-size="11" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+
+  <!-- T = 0 K step: f = 1 BELOW E_F (right side), f = 0 ABOVE E_F (left side) -->
+  <path d="M 290 45 L 290 150 L 620 150 L 620 265" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="545" y="136" font-size="11.5" fill="#6b7280" font-weight="600" text-anchor="middle">T = 0 K (계단)</text>
+
+  <!-- T = 300 K: f falls from 1 at low E to 0 at high E -->
+  <path d="M 294 45 C 296 95, 308 128, 455 150 C 602 172, 615 205, 617 265"
+        fill="none" stroke="#0d6e66" stroke-width="2.4"/>
+  <text x="316" y="107" font-size="11.5" fill="#0d6e66" font-weight="700">T = 300 K</text>
+  <circle cx="455" cy="150" r="4.5" fill="#0d6e66"/>
+  <text x="446" y="172" font-size="11.5" fill="#0d6e66" font-weight="600" text-anchor="end">f(E_F) = 0.5</text>
+
+  <!-- the "few kT" transition window -->
+  <line x1="666" y1="122" x2="666" y2="178" stroke="#8a4b12" stroke-width="1"/>
+  <line x1="662" y1="122" x2="670" y2="122" stroke="#8a4b12" stroke-width="1"/>
+  <line x1="662" y1="178" x2="670" y2="178" stroke="#8a4b12" stroke-width="1"/>
+  <text x="674" y="148" font-size="10" fill="#8a4b12" font-weight="600">~수 kT</text>
+  <text x="712" y="198" font-size="10" fill="#8a4b12" text-anchor="end">kT = 25.9 meV</text>
+</svg>
+<p class="dp-cap"><b>그림 3.</b> 페르미–디랙 분포. 0 K에서는 E<sub>F</sub> 아래가 전부 차고 위는 전부 비지만, 300 K에서는 E<sub>F</sub> 주변 <strong>몇 kT 범위</strong>에서만 확률이 부드럽게 변한다. 상온 kT는 25.9 meV로 Si 밴드갭(1.12 eV)의 약 1/43에 불과하다. 다만 <strong>지수에 실제로 들어가는 값은 43이 아니라 그 절반인 21.7</strong>이다 — 진성 Si에서 E<sub>F</sub>는 <strong>갭 한가운데</strong>에 있으므로 전자가 넘어야 할 거리가 E<sub>g</sub>가 아니라 <strong>E<sub>g</sub>/2 = 0.56 eV</strong>이기 때문이다. 그 결과 점유 확률이 exp(−21.7) ≈ 4×10⁻¹⁰까지 떨어지고, 이것을 준비된 자리 수(~10¹⁹ cm⁻³)에 곱하면 진성 전자 농도가 <strong>10¹⁰ cm⁻³ 수준</strong>이 된다. 자세한 계산은 §04.</p>
+</div>
 
 <h3>f(E)를 먼저 정확히 읽는 법</h3>
 
@@ -323,7 +444,7 @@ toc:
   <p><strong>동등하니까 반반이다. 그것이 f(E<sub>F</sub>) = 1/2 의 의미다.</strong> “전자가 반쯤 있다”가 아니라 <strong>“차 있든 비어 있든 계가 무차별하다”</strong>는 뜻이다.</p>
 </div>
 
-<p>나머지도 자동으로 따라온다. <strong>E > E<sub>F</sub></strong>이면 넣는 비용이 양수(손해)이므로 그 자리는 <strong>대체로 비어 있고</strong>, <strong>E < E<sub>F</sub></strong>이면 빼는 비용이 양수이므로 <strong>대체로 차 있다</strong>. <strong>E<sub>F</sub>는 이득도 손해도 아닌 손익분기점이다.</strong></p>
+<p>나머지도 자동으로 따라온다. <strong>E &gt; E<sub>F</sub></strong>이면 넣는 비용이 양수(손해)이므로 그 자리는 <strong>대체로 비어 있고</strong>, <strong>E &lt; E<sub>F</sub></strong>이면 빼는 비용이 양수이므로 <strong>대체로 차 있다</strong>. <strong>E<sub>F</sub>는 이득도 손해도 아닌 손익분기점이다.</strong></p>
 
 <p>반대로 생각하면 더 분명해진다. 어떤 자리에 전자를 넣는 것이 <strong>이득</strong>이라면 전자가 계속 밀려들어와 그 자리는 꽉 찰 것이고(f → 1), 빼는 것이 이득이라면 계속 빠져나가 텅 빌 것이다(f → 0). <strong>이득도 손해도 없어야만 어느 쪽으로도 쏠리지 않고 반반에서 멈춘다.</strong> 그 조건이 바로 E = E<sub>F</sub>다.</p>
 
@@ -353,7 +474,6 @@ toc:
 </ol>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">04</span>도핑 — 페르미 준위를 옮기는 일</h2>
 
 <p>진성(intrinsic) 실리콘은 300 K에서 전자와 정공 농도가 같고, 그 값이 <strong>진성 캐리어 농도 n<sub>i</sub></strong>다. 여기에 5족 원소(P, As)를 넣으면 여분의 전자가 하나 남아 E<sub>C</sub> 바로 아래(수십 meV)에 <strong>도너 준위</strong>를 만든다. 상온의 열에너지(25.9 meV)로 충분히 이온화되므로 사실상 도핑 농도만큼의 자유 전자가 생긴다. 3족(B)은 반대로 E<sub>V</sub> 바로 위에 <strong>억셉터 준위</strong>를 만들고 정공을 공급한다.</p>
@@ -368,6 +488,48 @@ toc:
   <text x="200" y="124" font-size="11" fill="#14181c" font-weight="700" font-family="monospace">E_i</text>
   <text x="115" y="145" font-size="11.5" fill="#4d565e" text-anchor="middle">갭 중앙 부근</text>
   <text x="115" y="222" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">n = p = n_i</text>
+
+  <!-- n-type -->
+  <text x="360" y="22" font-size="13" font-weight="700" fill="#14181c" text-anchor="middle">n형 (P, As 도핑)</text>
+  <rect x="285" y="40" width="150" height="35" fill="#2f6fd0" opacity="0.20" stroke="#2f6fd0"/>
+  <rect x="285" y="165" width="150" height="35" fill="#b8443c" opacity="0.40" stroke="#b8443c"/>
+  <!-- donor levels -->
+  <g stroke="#2f6fd0" stroke-width="1.6">
+    <line x1="300" y1="86" x2="320" y2="86"/><line x1="340" y1="86" x2="360" y2="86"/><line x1="380" y1="86" x2="400" y2="86"/>
+  </g>
+  <text x="440" y="90" font-size="10.5" fill="#2f6fd0" font-family="monospace">E_D</text>
+  <circle cx="310" cy="60" r="3.5" fill="#2f6fd0"/><circle cx="350" cy="56" r="3.5" fill="#2f6fd0"/>
+  <circle cx="390" cy="62" r="3.5" fill="#2f6fd0"/><circle cx="330" cy="66" r="3.5" fill="#2f6fd0"/>
+  <line x1="280" y1="95" x2="440" y2="95" stroke="#14181c" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="446" y="99" font-size="11" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+  <line x1="270" y1="120" x2="278" y2="120" stroke="#4d565e" stroke-width="1"/>
+  <text x="266" y="124" font-size="10" fill="#4d565e" text-anchor="end" font-family="monospace">E_i</text>
+  <path d="M 262 118 L 262 97" stroke="#0d6e66" stroke-width="1.4" marker-end="url(#arrUp)"/>
+  <text x="360" y="222" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">E_F ↑ (E_C 쪽), n ≫ p</text>
+
+  <!-- p-type -->
+  <text x="605" y="22" font-size="13" font-weight="700" fill="#14181c" text-anchor="middle">p형 (B 도핑)</text>
+  <rect x="530" y="40" width="150" height="35" fill="#2f6fd0" opacity="0.20" stroke="#2f6fd0"/>
+  <rect x="530" y="165" width="150" height="35" fill="#b8443c" opacity="0.40" stroke="#b8443c"/>
+  <g stroke="#b8443c" stroke-width="1.6">
+    <line x1="545" y1="153" x2="565" y2="153"/><line x1="585" y1="153" x2="605" y2="153"/><line x1="625" y1="153" x2="645" y2="153"/>
+  </g>
+  <text x="686" y="157" font-size="10.5" fill="#b8443c" font-family="monospace">E_A</text>
+  <circle cx="555" cy="182" r="3.5" fill="none" stroke="#b8443c" stroke-width="1.5"/>
+  <circle cx="600" cy="186" r="3.5" fill="none" stroke="#b8443c" stroke-width="1.5"/>
+  <circle cx="640" cy="180" r="3.5" fill="none" stroke="#b8443c" stroke-width="1.5"/>
+  <line x1="525" y1="145" x2="686" y2="145" stroke="#14181c" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="692" y="149" font-size="11" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+  <text x="605" y="222" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">E_F ↓ (E_V 쪽), p ≫ n</text>
+
+  <defs>
+    <marker id="arrUp" markerWidth="6" markerHeight="6" refX="3" refY="5" orient="auto">
+      <path d="M0,6 L3,0 L6,6 Z" fill="#0d6e66"/>
+    </marker>
+  </defs>
+</svg>
+<p class="dp-cap"><b>그림 4.</b> 도핑은 캐리어를 "넣는" 동시에 페르미 준위를 이동시킨다. 채워진 원은 전자, 빈 원은 정공. 도핑 농도가 아주 높아져 E<sub>F</sub>가 E<sub>C</sub> 위(또는 E<sub>V</sub> 아래)로 들어가면 <strong>축퇴(degenerate)</strong> 상태가 되어 금속처럼 거동한다.</p>
+</div>
 
 <p>열평형에서는 전자와 정공 농도의 곱이 도핑과 무관하게 일정하다(<code>n·p = n_i²</code>, 질량작용의 법칙). n형에서 전자를 늘리면 정공은 그만큼 줄어든다. 이 관계는 W2의 pn 접합에서 곧바로 쓰인다.</p>
 
@@ -401,7 +563,7 @@ toc:
 
 <div class="dp-fig">
 <svg viewBox="0 0 720 300" role="img" aria-label="온도에 따른 진성 캐리어 농도 Ge Si GaAs 비교와 도핑 농도 대비">
-  <text x="380" y="16" font-size="11" fill="#4d565e" text-anchor="middle">Varshni 밴드갭 + 단순 모델 계산 · 세로축은 로그 스케일(1칸 = 100배)</text>
+  <text x="380" y="16" font-size="11" fill="#4d565e" text-anchor="middle">Varshni 밴드갭 + 단순 모델 계산 &#183; 세로축은 로그 스케일(1칸 = 100배)</text>
   <g stroke="#e6e9e3" stroke-width="1">
     <line x1="100" y1="225" x2="660" y2="225"/><line x1="100" y1="195" x2="660" y2="195"/>
     <line x1="100" y1="165" x2="660" y2="165"/><line x1="100" y1="135" x2="660" y2="135"/>
@@ -421,6 +583,47 @@ toc:
   </g>
   <text x="380" y="292" font-size="12" fill="#14181c" text-anchor="middle" font-family="monospace">온도 T (K)</text>
   <text x="34" y="150" font-size="12" fill="#14181c" text-anchor="middle" transform="rotate(-90 34 150)" font-family="monospace">진성 캐리어 n_i (cm⁻³)</text>
+
+  <!-- 도핑 기준선 -->
+  <line x1="100" y1="120" x2="660" y2="120" stroke="#8a4b12" stroke-width="1.3" stroke-dasharray="6 4"/>
+  <text x="656" y="116" font-size="10.5" fill="#8a4b12" font-weight="600" text-anchor="end">전형적 바디 도핑 10¹⁵ cm⁻³</text>
+
+  <!-- 곡선 -->
+  <polyline points="100,166 109,161 119,155 128,151 138,146 147,142 157,138 166,134 176,131 185,128 195,125 204,122 214,119 223,117 233,114 242,112 252,110 261,108 271,106 280,104 290,102 299,101 309,99 318,97 328,96 337,94 347,93 356,92 366,90 375,89 385,88 394,87 404,86 413,85 423,84 432,83 442,82 451,81 461,80 470,79 480,78 489,77 499,76 508,76 518,75 527,74 537,73 546,73 556,72 565,71 575,71 584,70 594,69 603,69 613,68 622,68 632,67 641,66 651,66 660,65" fill="none" stroke="#b8443c" stroke-width="2.2"/>
+  <polyline points="100,230 109,222 119,214 128,206 138,200 147,193 157,188 166,182 176,177 185,172 195,168 204,164 214,160 223,156 233,153 242,149 252,146 261,143 271,140 280,137 290,135 299,132 309,130 318,128 328,125 337,123 347,121 356,119 366,117 375,116 385,114 394,112 404,111 413,109 423,108 432,106 442,105 451,103 461,102 470,101 480,99 489,98 499,97 508,96 518,95 527,94 537,93 546,92 556,91 565,90 575,89 584,88 594,87 603,86 613,85 622,84 632,83 641,83 651,82 660,81" fill="none" stroke="#0d6e66" stroke-width="3.2"/>
+  <polyline points="138,252 147,244 157,237 166,230 176,223 185,217 195,212 204,206 214,201 223,197 233,192 242,188 252,184 261,180 271,177 280,173 290,170 299,167 309,164 318,161 328,158 337,155 347,153 356,150 366,148 375,146 385,144 394,142 404,140 413,138 423,136 432,134 442,132 451,131 461,129 470,127 480,126 489,124 499,123 508,121 518,120 527,119 537,117 546,116 556,115 565,114 575,113 584,112 594,110 603,109 613,108 622,107 632,106 641,105 651,104 660,103" fill="none" stroke="#2f6fd0" stroke-width="2.2"/>
+  <text x="112" y="160" font-size="12" fill="#b8443c" font-weight="700">Ge</text>
+  <text x="112" y="243" font-size="12" fill="#0d6e66" font-weight="700">Si</text>
+  <text x="146" y="252" font-size="12" fill="#2f6fd0" font-weight="700">GaAs</text>
+
+  <!-- 300K 마커 -->
+  <line x1="140" y1="45" x2="140" y2="255" stroke="#4d565e" stroke-width="0.9" stroke-dasharray="3 3"/>
+  <text x="144" y="58" font-size="10.5" fill="#4d565e">300 K</text>
+  <circle cx="140" cy="198" r="4" fill="#0d6e66"/>
+
+  <!-- Ge가 도핑을 추월하는 지점 -->
+  <circle cx="211" cy="120" r="5.5" fill="none" stroke="#b8443c" stroke-width="2"/>
+  <text x="220" y="140" font-size="10.5" fill="#b8443c" font-weight="700">Ge: 389 K (116 °C)</text>
+  <text x="220" y="152" font-size="10" fill="#b8443c">여기서 이미 도핑을 추월</text>
+
+  <!-- Si가 도핑을 추월하는 지점 -->
+  <circle cx="353" cy="120" r="5.5" fill="none" stroke="#0d6e66" stroke-width="2"/>
+  <text x="362" y="112" font-size="10.5" fill="#0d6e66" font-weight="700">Si: 566 K (293 °C)</text>
+  <text x="362" y="124" font-size="10" fill="#0d6e66">소자 동작 상한의 물리적 뿌리</text>
+
+  <!-- Mo ALD 공정온도 -->
+  <rect x="601" y="45" width="59" height="210" fill="#8a4b12" opacity="0.10"/>
+  <line x1="638" y1="45" x2="638" y2="255" stroke="#8a4b12" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <circle cx="638" cy="83" r="4" fill="#8a4b12"/>
+  <text x="634" y="40" font-size="10.5" fill="#8a4b12" font-weight="700" text-anchor="end">Mo ALD 650 °C</text>
+  <text x="634" y="72" font-size="10" fill="#8a4b12" text-anchor="end">n_i ≈ 3×10¹⁷</text>
+</svg>
+<p class="dp-cap"><b>그림 4b.</b> 온도에 따른 진성 캐리어 농도. 세로축이 로그이므로 <strong>직선처럼 보이는 기울기가 실제로는 폭발적 증가</strong>다. 세 가지를 읽을 것.<br>
+<b>(1)</b> Si는 <strong>300 K에서 10 K만 올라도 n<sub>i</sub>가 2.2배</strong>가 되고, 400 K에서는 <strong>530배</strong>가 된다.<br>
+<b>(2)</b> n<sub>i</sub>가 도핑 농도(10¹⁵)를 넘어서면 <strong>도핑이 무의미해지고 소자가 동작을 멈춘다.</strong> Si는 566 K(293 °C)에서 그 지점에 닿지만, <strong>Ge는 389 K(116 °C)</strong>에 불과하다. <strong>Ge를 논리 소자 채널로 쓰지 않는 이유</strong>가 이 한 장에 들어 있다. 반대로 밴드갭이 큰 SiC·GaN이 고온·고전압용인 이유도 같다.<br>
+<b>(3)</b> 우리 공정 온도(Mo ALD 600–650 °C)에서 Si의 n<sub>i</sub>는 <strong>~3×10¹⁷ cm⁻³</strong>까지 오른다. 공정 중이라 소자가 동작하는 것은 아니지만, <strong>열예산이 왜 통합의 제약 조건인지</strong>를 보여준다.<br>
+<span style="font-size:13px;color:#8a4b12">※ 곡선은 단순 모델(N<sub>C</sub>, N<sub>V</sub> ∝ T<sup>3/2</sup>) 계산값이라 300 K에서 6.1×10⁹을 준다. 실측값 9.65×10⁹과 어긋나는 이유는 아래 상자에서 다룬다.</span></p>
+</div>
 
 <p>밴드갭이 조금만 달라져도 마찬가지다. E<sub>g</sub>를 1.12 → 1.11 eV로 <strong>10 meV</strong>만 바꿔도 n<sub>i</sub>가 <strong>1.21배</strong>로 변한다. 스트레인 엔지니어링이 밴드갭을 수십 meV 단위로 움직인다는 점을 생각하면 무시할 수 없다.</p>
 
@@ -442,7 +645,6 @@ toc:
 </div>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">05</span>진공 준위, 일함수, 전자친화도</h2>
 
 <p>지금까지의 밴드 다이어그램은 물질 하나만 그린 것이다. 서로 다른 물질을 붙이려면 <strong>공통 기준선</strong>이 필요하다. 그 기준이 <em>진공 준위(vacuum level, E<sub>vac</sub>)</em>다. 물질 밖으로 완전히 빠져나와 정지해 있는 전자의 에너지다.</p>
@@ -468,6 +670,61 @@ toc:
     </marker>
   </defs>
 
+  <!-- ENERGY SCALE: 34 px = 1 eV, applied identically to BOTH materials.
+       E_vac  y =  45
+       Mo   Phi_M = 4.60 eV -> E_F  y = 45 + 156 = 201
+       n-Si chi   = 4.05 eV -> E_C  y = 45 + 138 = 183
+            E_C-E_F = 0.25 eV       -> E_F  y = 191   (Phi_S = 4.30 eV)
+            E_g   = 1.12 eV         -> E_V  y = 221                        -->
+
+  <!-- vacuum level -->
+  <line x1="40" y1="45" x2="690" y2="45" stroke="#14181c" stroke-width="2"/>
+  <text x="365" y="35" font-size="12.5" fill="#14181c" text-anchor="middle" font-weight="700" font-family="monospace">진공 준위 E_vac (공통 기준)</text>
+
+  <!-- scale bar: 1 eV = 34 px -->
+  <line x1="24" y1="45" x2="24" y2="79" stroke="#4d565e" stroke-width="1"
+        marker-start="url(#arrG)" marker-end="url(#arrG)"/>
+  <line x1="20" y1="45" x2="28" y2="45" stroke="#4d565e" stroke-width="1"/>
+  <line x1="20" y1="79" x2="28" y2="79" stroke="#4d565e" stroke-width="1"/>
+  <text x="32" y="66" font-size="10" fill="#4d565e" font-family="monospace">1 eV</text>
+
+  <!-- METAL -->
+  <text x="150" y="310" font-size="13" font-weight="700" fill="#14181c" text-anchor="middle">금속 (예: Mo)</text>
+  <rect x="70" y="201" width="160" height="84" fill="#6b7280" opacity="0.45" stroke="#6b7280"/>
+  <line x1="70" y1="201" x2="230" y2="201" stroke="#14181c" stroke-width="2.2" stroke-dasharray="8 4"/>
+  <text x="238" y="205" font-size="11.5" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+  <line x1="150" y1="45" x2="150" y2="201" stroke="#0d6e66" stroke-width="1.8" marker-end="url(#arrD)"/>
+  <text x="158" y="120" font-size="12.5" fill="#0d6e66" font-weight="700">&#934;_M &#8776; 4.6 eV</text>
+  <text x="150" y="250" font-size="11.5" fill="#ffffff" text-anchor="middle" font-weight="600">채워진 상태</text>
+
+  <!-- SEMICONDUCTOR (n-Si) -->
+  <text x="520" y="310" font-size="13" font-weight="700" fill="#14181c" text-anchor="middle">반도체 (n형 Si)</text>
+  <rect x="410" y="150" width="220" height="33" fill="#2f6fd0" opacity="0.20" stroke="#2f6fd0"/>
+  <rect x="410" y="221" width="220" height="45" fill="#b8443c" opacity="0.40" stroke="#b8443c"/>
+  <line x1="410" y1="183" x2="630" y2="183" stroke="#2f6fd0" stroke-width="2"/>
+  <line x1="410" y1="221" x2="630" y2="221" stroke="#b8443c" stroke-width="2"/>
+  <line x1="410" y1="191" x2="630" y2="191" stroke="#14181c" stroke-width="1.8" stroke-dasharray="7 4"/>
+  <text x="638" y="180" font-size="11" fill="#2f6fd0" font-weight="700" font-family="monospace">E_C</text>
+  <text x="638" y="200" font-size="11" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+  <text x="638" y="226" font-size="11" fill="#b8443c" font-weight="700" font-family="monospace">E_V</text>
+
+  <!-- chi -->
+  <line x1="455" y1="45" x2="455" y2="183" stroke="#8a4b12" stroke-width="1.8" marker-end="url(#arrB)"/>
+  <text x="463" y="105" font-size="12.5" fill="#8a4b12" font-weight="700">&#967; = 4.05 eV</text>
+  <!-- Phi_S -->
+  <line x1="600" y1="45" x2="600" y2="191" stroke="#0d6e66" stroke-width="1.8" marker-end="url(#arrD)"/>
+  <text x="608" y="135" font-size="12" fill="#0d6e66" font-weight="700">&#934;_S &#8776; 4.3 eV</text>
+  <!-- E_g -->
+  <line x1="432" y1="183" x2="432" y2="221" stroke="#14181c" stroke-width="1"
+        marker-start="url(#arrG)" marker-end="url(#arrG)"/>
+  <text x="440" y="206" font-size="11" fill="#14181c" font-weight="600" font-family="monospace">E_g = 1.12 eV</text>
+
+  <text x="365" y="290" font-size="11.5" fill="#4d565e" text-anchor="middle">&#934;_S = &#967; + (E_C &#8722; E_F) &#8212; 도핑을 바꾸면 E_F가 움직이므로 &#934;_S도 변한다 (&#967;는 불변)</text>
+  <text x="365" y="326" font-size="10.5" fill="#4d565e" text-anchor="middle">모든 세로 길이는 동일한 축척(34 px = 1 eV)으로 그려져 있다 &#8212; 좌측 눈금 참조</text>
+</svg>
+<p class="dp-cap"><b>그림 5.</b> 일함수와 전자친화도의 정의. <strong>두 물질이 하나의 에너지 축척(34 px = 1 eV)을 공유</strong>하도록 그렸다 — 그래야 공통 기준선인 E<sub>vac</sub>가 의미를 가진다. Si의 밴드갭(1.12 eV)이 χ(4.05 eV)나 Φ(4.3–4.6 eV)에 비해 얼마나 작은지 눈으로 확인할 것. 두 물질을 접촉시키면 E<sub>F</sub>가 하나로 맞춰지고, 그 과정에서 <strong>일함수 차이(Φ<sub>M</sub> − Φ<sub>S</sub> ≈ 0.3 eV)만큼 밴드가 휘어진다</strong>. 이 차이가 곧 컨택의 장벽 높이를 결정한다(W2).</p>
+</div>
+
 <div class="dp-tw">
 <table>
   <thead><tr><th>물질</th><th>진공 일함수 (eV)</th><th>비고 / 사용처</th></tr></thead>
@@ -485,8 +742,7 @@ toc:
 <p style="font-size:14px;color:#4d565e;margin-top:-14px">값을 <strong>단일 숫자로 외우지 말 것</strong>. 일함수는 벌크가 아니라 <strong>표면의 성질</strong>이라서 결정면(예: W(110) vs W(100)), 표면 재구성, 흡착종, 산화막에 따라 0.5 eV 이상 달라진다.<sup><a href="#fn3">3</a></sup></p>
 
 <!-- ============================================================ -->
-
-<h2><span class="dp-num">06</span>실효 일함수(EWF) — 엔지니어가 실제로 다루는 값</h2>
+<h2><span class="dp-num">06</span>실효 일함수(EWF) — ALD 엔지니어가 실제로 다루는 값</h2>
 
 <p>Logic 게이트 스택에서 문턱전압을 맞추려고 “일함수 4.4 eV인 금속”을 골라도 실제 소자에서 그 값이 그대로 나오지 않는다. 게이트 금속은 진공이 아니라 <strong>high-k 유전체와 맞닿아</strong> 있고, 그 계면에서 두 가지 일이 벌어지기 때문이다.</p>
 
@@ -506,7 +762,67 @@ toc:
 
 <div class="dp-fig">
 <svg viewBox="0 0 720 300" role="img" aria-label="계면 쌍극자에 의한 진공 준위 점프와 실효 일함수의 변화">
-  <text x="360" y="16" font-size="11" fill="#4d565e" text-anchor="middle">모식도 · 쌍극자 크기 Δ는 시인성을 위해 과장함 (실제 La/Al 캡은 0.2–0.4 eV)</text>
+  <text x="360" y="16" font-size="11" fill="#4d565e" text-anchor="middle">모식도 &#183; 쌍극자 크기 &#916;는 시인성을 위해 과장함 (실제 La/Al 캡은 0.2&#8211;0.4 eV)</text>
+
+  <!-- 금속 블록 -->
+  <rect x="60" y="190" width="210" height="72" fill="#6b7280" opacity="0.45" stroke="#6b7280"/>
+  <text x="165" y="230" font-size="12" fill="#ffffff" text-anchor="middle" font-weight="600">금속 (TiN, Mo)</text>
+  <!-- E_F: 스택 전체를 관통하는 수평선 -->
+  <line x1="60" y1="190" x2="660" y2="190" stroke="#14181c" stroke-width="2" stroke-dasharray="8 4"/>
+  <text x="666" y="194" font-size="11.5" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+
+  <!-- 쌍극자 층 -->
+  <rect x="270" y="100" width="18" height="162" fill="#8a4b12" opacity="0.14" stroke="#8a4b12" stroke-dasharray="3 2"/>
+  <g font-size="12" font-weight="700" text-anchor="middle">
+    <text x="274" y="126" fill="#b8443c">+</text><text x="284" y="126" fill="#2f6fd0">&#8722;</text>
+    <text x="274" y="150" fill="#b8443c">+</text><text x="284" y="150" fill="#2f6fd0">&#8722;</text>
+    <text x="274" y="174" fill="#b8443c">+</text><text x="284" y="174" fill="#2f6fd0">&#8722;</text>
+  </g>
+  <text x="279" y="278" font-size="10.5" fill="#8a4b12" text-anchor="middle" font-weight="600">쌍극자 층</text>
+  <text x="279" y="290" font-size="9.5" fill="#8a4b12" text-anchor="middle">(&#60; 1 nm)</text>
+
+  <!-- 진공 준위: 좌측 -->
+  <line x1="60" y1="52" x2="270" y2="52" stroke="#14181c" stroke-width="2"/>
+  <text x="66" y="44" font-size="11" fill="#14181c" font-weight="600" font-family="monospace">E_vac (금속측)</text>
+  <!-- 점프 -->
+  <line x1="270" y1="52" x2="288" y2="92" stroke="#8a4b12" stroke-width="2.5"/>
+  <!-- 진공 준위: 우측 -->
+  <line x1="288" y1="92" x2="660" y2="92" stroke="#14181c" stroke-width="2"/>
+  <text x="654" y="84" font-size="11" fill="#14181c" font-weight="600" font-family="monospace" text-anchor="end">E_vac (유전체측)</text>
+
+  <!-- Delta 표시 -->
+  <line x1="308" y1="52" x2="308" y2="92" stroke="#8a4b12" stroke-width="1.4"/>
+  <line x1="303" y1="52" x2="313" y2="52" stroke="#8a4b12" stroke-width="1.4"/>
+  <line x1="303" y1="92" x2="313" y2="92" stroke="#8a4b12" stroke-width="1.4"/>
+  <text x="316" y="70" font-size="12.5" fill="#8a4b12" font-weight="700">&#916;</text>
+  <text x="330" y="70" font-size="10.5" fill="#8a4b12">쌍극자 전위 점프</text>
+  <line x1="60" y1="52" x2="60" y2="52" stroke="none"/>
+  <line x1="288" y1="52" x2="660" y2="52" stroke="#4d565e" stroke-width="0.8" stroke-dasharray="3 3"/>
+
+  <!-- Phi_M -->
+  <line x1="120" y1="52" x2="120" y2="190" stroke="#0d6e66" stroke-width="1.8"/>
+  <line x1="115" y1="52" x2="125" y2="52" stroke="#0d6e66" stroke-width="1.8"/>
+  <line x1="115" y1="190" x2="125" y2="190" stroke="#0d6e66" stroke-width="1.8"/>
+  <text x="128" y="118" font-size="12" fill="#0d6e66" font-weight="700">&#934;_M</text>
+  <text x="128" y="132" font-size="10" fill="#0d6e66">진공 일함수</text>
+
+  <!-- EWF -->
+  <line x1="380" y1="92" x2="380" y2="190" stroke="#b8443c" stroke-width="2.2"/>
+  <line x1="375" y1="92" x2="385" y2="92" stroke="#b8443c" stroke-width="2.2"/>
+  <line x1="375" y1="190" x2="385" y2="190" stroke="#b8443c" stroke-width="2.2"/>
+  <text x="390" y="136" font-size="13" fill="#b8443c" font-weight="700">EWF = &#934;_M &#8722; &#916;</text>
+  <text x="390" y="151" font-size="10.5" fill="#b8443c">유전체 기준으로 본 실효값</text>
+
+  <!-- 유전체 밴드 -->
+  <rect x="470" y="115" width="190" height="30" fill="#2f6fd0" opacity="0.18" stroke="#2f6fd0"/>
+  <rect x="470" y="245" width="190" height="30" fill="#b8443c" opacity="0.35" stroke="#b8443c"/>
+  <text x="565" y="107" font-size="10.5" fill="#2f6fd0" text-anchor="middle" font-weight="600">E_C (HfO&#8322;)</text>
+  <text x="565" y="264" font-size="10.5" fill="#ffffff" text-anchor="middle" font-weight="600">E_V</text>
+  <line x1="500" y1="92" x2="500" y2="115" stroke="#4d565e" stroke-width="1.2"/>
+  <text x="506" y="108" font-size="10.5" fill="#4d565e">&#967;</text>
+</svg>
+<p class="dp-cap"><b>그림 6a.</b> 계면 쌍극자의 작용. 쌍극자 층을 지나며 <strong>진공 준위가 Δ만큼 점프</strong>하므로, 유전체 쪽에서 본 금속의 일함수가 <strong>Φ<sub>M</sub> − Δ</strong>가 된다. <strong>금속은 그대로인데 유효값만 바뀐 것이다.</strong> E<sub>F</sub>는 평형이므로 스택 전체를 관통해 여전히 평평하다는 점에 주의(§03).</p>
+</div>
 
 <h3>쌍극자는 왜 생기나 — 그리고 어떻게 이용하나</h3>
 
@@ -534,7 +850,7 @@ toc:
 
 <div style="background:var(--panel);padding:14px 20px;border-left:3px solid var(--accent);margin:20px 0;font-size:15.5px">
   <strong>S = dΦ<sub>B</sub> / dΦ<sub>M</sub></strong> — 금속 일함수를 <strong>1 eV</strong> 바꿨을 때 실제로 <strong>몇 eV</strong>가 따라오는가<br>
-  <span style="color:#4d565e">S = 1 → 이상적(Schottky–Mott), 금속 선택이 100% 먹힘  |  S = 0 → 완전 고정(Bardeen), <strong>금속이 뭐든 무의미</strong></span>
+  <span style="color:#4d565e">S = 1 → 이상적(Schottky–Mott), 금속 선택이 100% 먹힘 &nbsp;|&nbsp; S = 0 → 완전 고정(Bardeen), <strong>금속이 뭐든 무의미</strong></span>
 </div>
 
 <p>원인은 <strong>계면 밴드갭 안에 생긴 전자 상태</strong>다. 이 상태들이 전하 저수지 역할을 해서, E<sub>F</sub>가 특정 에너지(<strong>CNL</strong>, 전하 중성 준위)에서 벗어나려 하면 전하가 쌓여 <strong>되밀어 버린다</strong>. 금속 일함수가 민 만큼을 계면 전하가 되미는 것이다.</p>
@@ -548,6 +864,52 @@ toc:
 <div class="dp-fig">
 <svg viewBox="0 0 720 290" role="img" aria-label="금속 파동함수가 유전체 밴드갭 안으로 침투하여 MIGS를 형성하는 모식도">
   <text x="360" y="18" font-size="11" fill="#4d565e" text-anchor="middle">금속 파동함수의 꼬리가 유전체 갭 안으로 지수 감쇠하며 상태를 만든다</text>
+
+  <!-- 금속 영역 -->
+  <rect x="60" y="55" width="190" height="180" fill="#6b7280" opacity="0.30" stroke="#6b7280"/>
+  <text x="155" y="48" font-size="12" fill="#14181c" text-anchor="middle" font-weight="700">금속</text>
+  <text x="155" y="150" font-size="10.5" fill="#4d565e" text-anchor="middle">전자 상태 연속</text>
+  <!-- 유전체 영역 -->
+  <rect x="250" y="55" width="410" height="180" fill="#2f6fd0" opacity="0.05" stroke="#d7dbd5"/>
+  <text x="455" y="48" font-size="12" fill="#14181c" text-anchor="middle" font-weight="700">유전체 / 반도체</text>
+  <!-- 유전체 밴드 -->
+  <line x1="250" y1="85" x2="660" y2="85" stroke="#2f6fd0" stroke-width="2.2"/>
+  <text x="666" y="89" font-size="10.5" fill="#2f6fd0" font-family="monospace">E_C</text>
+  <line x1="250" y1="205" x2="660" y2="205" stroke="#b8443c" stroke-width="2.2"/>
+  <text x="666" y="209" font-size="10.5" fill="#b8443c" font-family="monospace">E_V</text>
+  <text x="620" y="150" font-size="10.5" fill="#4d565e" text-anchor="middle">밴드갭</text>
+  <text x="620" y="163" font-size="9" fill="#4d565e" text-anchor="middle">(원래 상태 없음)</text>
+
+  <!-- 계면 -->
+  <line x1="250" y1="55" x2="250" y2="235" stroke="#14181c" stroke-width="2"/>
+  <text x="250" y="250" font-size="10" fill="#14181c" text-anchor="middle">계면</text>
+
+  <!-- 금속 E_F -->
+  <line x1="60" y1="145" x2="250" y2="145" stroke="#14181c" stroke-width="2" stroke-dasharray="7 4"/>
+  <text x="66" y="140" font-size="10.5" fill="#14181c" font-family="monospace" font-weight="700">E_F</text>
+
+  <!-- 파동함수 침투 (감쇠 곡선) -->
+  <polyline points="250,60 259,87 268,109 277,128 286,144 295,158 304,169 313,179 322,187 331,193 340,199 349,204 358,208 367,212 376,214 385,217 394,219 403,221 412,222 421,223 429,224 438,225 447,226 456,227 465,227 474,228 483,228 492,228 501,229 510,229 519,229 528,229 537,229 546,229 555,229 564,230 573,230 582,230 591,230 600,230" fill="none" stroke="#0d6e66" stroke-width="2.6"/>
+  <text x="300" y="78" font-size="11" fill="#0d6e66" font-weight="700">MIGS 밀도</text>
+  <!-- 감쇠길이 표시 -->
+  <line x1="250" y1="218" x2="303" y2="218" stroke="#8a4b12" stroke-width="1.4"/>
+  <line x1="250" y1="214" x2="250" y2="222" stroke="#8a4b12" stroke-width="1.4"/>
+  <line x1="303" y1="214" x2="303" y2="222" stroke="#8a4b12" stroke-width="1.4"/>
+  <text x="276" y="232" font-size="9.5" fill="#8a4b12" text-anchor="middle" font-weight="600">L ~ 0.3 nm</text>
+
+  <!-- CNL 표시 -->
+  <line x1="250" y1="158" x2="470" y2="158" stroke="#b8443c" stroke-width="1.6" stroke-dasharray="4 3"/>
+  <text x="476" y="162" font-size="10.5" fill="#b8443c" font-weight="700">CNL</text>
+  <text x="360" y="200" font-size="9.5" fill="#8a4b12" text-anchor="middle">이 준위 위=acceptor성, 아래=donor성</text>
+
+  <!-- 1nm 차단 표시 -->
+  <line x1="424" y1="55" x2="424" y2="235" stroke="#4d565e" stroke-width="0.8" stroke-dasharray="3 3"/>
+  <text x="428" y="120" font-size="9.5" fill="#4d565e">1 nm 지점</text>
+  <text x="428" y="132" font-size="9.5" fill="#4d565e">밀도 3.6%로 감소</text>
+  <text x="428" y="144" font-size="9" fill="#0d6e66">→ MIS 컨택의 원리</text>
+</svg>
+<p class="dp-cap"><b>그림 6c.</b> MIGS의 형성. 금속 파동함수가 계면을 넘어 유전체 갭 안으로 <strong>지수적으로 감쇠하며 침투</strong>하고(감쇠 길이 L ~ 0.3 nm), 그 꼬리가 갭 안에 전자 상태를 만든다. 이 상태들이 전하 저수지가 되어 E<sub>F</sub>를 <strong>전하 중성 준위(CNL)</strong>에 붙잡는다. 결함이 아니라 <strong>금속–유전체 접촉이라는 사실 자체의 결과</strong>이므로 공정으로 제거할 수 없다.</p>
+</div>
 
 <p>MIGS의 세 가지 성질이 pinning의 성격을 결정한다.</p>
 <ul>
@@ -599,7 +961,7 @@ toc:
 
 <div class="dp-fig">
 <svg viewBox="0 0 720 300" role="img" aria-label="EWF 대 진공 일함수 그래프에서 기울기는 pinning 절편 이동은 쌍극자">
-  <text x="370" y="16" font-size="11" fill="#4d565e" text-anchor="middle">기울기 = pinning factor S · 선의 평행이동 = 계면 쌍극자</text>
+  <text x="370" y="16" font-size="11" fill="#4d565e" text-anchor="middle">기울기 = pinning factor S &#183; 선의 평행이동 = 계면 쌍극자</text>
   <g stroke="#e6e9e3" stroke-width="1">
     <line x1="100" y1="208" x2="640" y2="208"/><line x1="100" y1="162" x2="640" y2="162"/>
     <line x1="100" y1="115" x2="640" y2="115"/><line x1="100" y1="68" x2="640" y2="68"/>
@@ -616,8 +978,48 @@ toc:
     <text x="94" y="259">4.0</text><text x="94" y="212">4.4</text><text x="94" y="166">4.8</text>
     <text x="94" y="119">5.2</text><text x="94" y="72">5.6</text>
   </g>
-  <text x="370" y="292" font-size="12" fill="#14181c" text-anchor="middle" font-family="monospace">진공 일함수 Φ_M (eV)</text>
+  <text x="370" y="292" font-size="12" fill="#14181c" text-anchor="middle" font-family="monospace">진공 일함수 &#934;_M (eV)</text>
   <text x="36" y="150" font-size="12" fill="#14181c" text-anchor="middle" transform="rotate(-90 36 150)" font-family="monospace">실효 일함수 EWF (eV)</text>
+
+  <!-- 이상 S=1 -->
+  <polyline points="100,255 640,45" fill="none" stroke="#6b7280" stroke-width="1.8" stroke-dasharray="6 4"/>
+  <text x="560" y="72" font-size="11.5" fill="#6b7280" font-weight="700">이상 S = 1</text>
+  <text x="560" y="85" font-size="10" fill="#6b7280">(Schottky&#8211;Mott)</text>
+
+  <!-- SiO2 S=0.89 -->
+  <polyline points="100,246 640,59" fill="none" stroke="#2f6fd0" stroke-width="2.4"/>
+  <text x="474" y="104" font-size="11.5" fill="#2f6fd0" font-weight="700">SiO&#8322; S = 0.89</text>
+
+  <!-- HfO2 S=0.53 -->
+  <polyline points="100,217 640,105" fill="none" stroke="#0d6e66" stroke-width="3.2"/>
+  <text x="482" y="139" font-size="12" fill="#0d6e66" font-weight="700">HfO&#8322; S = 0.53</text>
+
+  <!-- HfO2 + La cap -->
+  <polyline points="100,252 640,140" fill="none" stroke="#0d6e66" stroke-width="2.4" stroke-dasharray="7 4"/>
+  <text x="470" y="180" font-size="11" fill="#0d6e66">HfO&#8322; + La 캡</text>
+
+  <!-- 쌍극자 화살표 -->
+  <line x1="405" y1="147" x2="405" y2="182" stroke="#8a4b12" stroke-width="2"/>
+  <line x1="400" y1="147" x2="410" y2="147" stroke="#8a4b12" stroke-width="2"/>
+  <line x1="400" y1="182" x2="410" y2="182" stroke="#8a4b12" stroke-width="2"/>
+  <text x="300" y="200" font-size="11.5" fill="#8a4b12" font-weight="700">&#8597; 쌍극자: 선이 평행이동 (기울기 불변)</text>
+
+  <!-- 금속 마커 -->
+  <g fill="#0d6e66">
+    <circle cx="130" cy="210" r="4"/><circle cx="280" cy="180" r="4"/>
+    <circle cx="310" cy="173" r="4"/><circle cx="340" cy="167" r="4"/><circle cx="595" cy="115" r="4"/>
+  </g>
+  <g font-size="10" fill="#14181c" font-weight="600">
+    <text x="118" y="226">Al</text><text x="262" y="196">Mo</text><text x="304" y="163">TiN</text>
+    <text x="346" y="158">W</text><text x="586" y="108">Pt</text>
+  </g>
+
+  <!-- 기울기 주석 -->
+  <text x="112" y="60" font-size="11.5" fill="#b8443c" font-weight="700">&#934;_M을 4.1 &#8594; 5.65 eV (1.55 eV) 바꾸면</text>
+  <text x="112" y="75" font-size="11" fill="#b8443c">이상: 1.55 eV 이동 / SiO&#8322;: 1.38 / <tspan font-weight="700">HfO&#8322;: 0.82만 이동</tspan></text>
+</svg>
+<p class="dp-cap"><b>그림 6b.</b> 두 현상의 분리. <strong>기울기가 1보다 작으면 pinning</strong>, <strong>선이 통째로 평행이동하면 쌍극자</strong>다. 캡핑층을 넣으면 선이 아래로 내려갈 뿐 <strong>기울기는 그대로</strong>다 — <strong>쌍극자는 pinning을 고치지 못한다.</strong> 반대로 계면 결함(V<sub>O</sub>, Cl)을 줄이면 <strong>기울기가 올라가지만</strong> 오프셋은 바뀌지 않는다. <strong>진단이 다르면 처방도 달라야 한다.</strong></p>
+</div>
 
 <h3>EWF는 어떻게 측정하는가</h3>
 
@@ -626,7 +1028,7 @@ toc:
   <li><strong>y절편</strong> → <strong>EWF</strong></li>
   <li><strong>기울기</strong> → 유전체 내 <strong>고정전하 밀도</strong></li>
 </ul>
-<p><strong>두께 하나만으로는 EWF를 분리할 수 없다</strong> — 고정전하 기여와 섞이기 때문이다. EWF는 “금속의 물성”이 아니라 <strong>스택 전체의 특성값</strong>이며, 이것이 이 절의 제목이 “엔지니어가 실제로 다루는 값”인 이유다. W3에서 C–V 측정으로 직접 다룬다.</p>
+<p><strong>두께 하나만으로는 EWF를 분리할 수 없다</strong> — 고정전하 기여와 섞이기 때문이다. EWF는 “금속의 물성”이 아니라 <strong>스택 전체의 특성값</strong>이며, 이것이 이 절의 제목이 “ALD 엔지니어가 실제로 다루는 값”인 이유다. W3에서 C–V 측정으로 직접 다룬다.</p>
 
 <div class="dp-field">
   <span class="dp-tag">현장 포인트 — 우리가 통제할 수 있는 것과 없는 것</span>
@@ -692,7 +1094,7 @@ toc:
 
 <div class="dp-fig">
 <svg viewBox="0 0 720 300" role="img" aria-label="표면에서 깊이에 따른 전기장 감쇠: 금속과 도핑 농도별 실리콘 비교">
-  <text x="385" y="16" font-size="11" fill="#4d565e" text-anchor="middle">표면(게이트)에서 안쪽으로 들어갈 때 전기장이 얼마나 살아남는가 · 가로축 로그</text>
+  <text x="385" y="16" font-size="11" fill="#4d565e" text-anchor="middle">표면(게이트)에서 안쪽으로 들어갈 때 전기장이 얼마나 살아남는가 &#183; 가로축 로그</text>
   <g stroke="#e6e9e3" stroke-width="1">
     <line x1="110" y1="199" x2="660" y2="199"/><line x1="110" y1="148" x2="660" y2="148"/><line x1="110" y1="96" x2="660" y2="96"/>
     <line x1="233" y1="45" x2="233" y2="250"/><line x1="356" y1="45" x2="356" y2="250"/>
@@ -709,7 +1111,42 @@ toc:
     <text x="104" y="100">0.75</text><text x="104" y="49">1.0</text>
   </g>
   <text x="385" y="288" font-size="12" fill="#14181c" text-anchor="middle" font-family="monospace">표면으로부터의 깊이 (nm)</text>
-  <text x="40" y="150" font-size="11.5" fill="#14181c" text-anchor="middle" transform="rotate(-90 40 150)" font-family="monospace">살아남은 전기장 E/E₀</text>
+  <text x="40" y="150" font-size="11.5" fill="#14181c" text-anchor="middle" transform="rotate(-90 40 150)" font-family="monospace">살아남은 전기장 E/E&#8320;</text>
+
+  <!-- 1/e 기준선 -->
+  <line x1="110" y1="175" x2="660" y2="175" stroke="#8a4b12" stroke-width="1" stroke-dasharray="5 4"/>
+  <text x="664" y="179" font-size="10" fill="#8a4b12" font-weight="600">1/e</text>
+
+  <!-- 원자 간격 -->
+  <line x1="282" y1="45" x2="282" y2="250" stroke="#14181c" stroke-width="1.2" stroke-dasharray="4 3"/>
+  <text x="287" y="60" font-size="10.5" fill="#14181c" font-weight="600">원자 간격 0.25 nm</text>
+
+  <polyline points="110,79 118,84 126,90 134,96 142,103 150,110 158,119 166,128 174,138 182,148 190,159 198,170 206,181 214,192 222,203 230,213 238,222 246,230 253,236 261,241 269,244 277,247 285,248 293,249 301,250 309,250 317,250 325,250 333,250 341,250 349,250 357,250 365,250 373,250 381,250 389,250 397,250 405,250 413,250 421,250 429,250 437,250 445,250 453,250 461,250 469,250 477,250 485,250 493,250 501,250 509,250 517,250 524,250 532,250 540,250 548,250 556,250 564,250 572,250 580,250 588,250 596,250 604,250 612,250 620,250 628,250 636,250 644,250 652,250 660,250" fill="none" stroke="#6b7280" stroke-width="3.2"/>
+  <polyline points="110,47 118,47 126,47 134,47 142,48 150,48 158,49 166,49 174,50 182,51 190,52 198,53 206,54 214,56 222,57 230,59 238,62 246,64 253,67 261,70 269,74 277,78 285,83 293,89 301,95 309,101 317,109 325,117 333,126 341,136 349,146 357,157 365,168 373,179 381,190 389,201 397,211 405,220 413,228 421,235 429,240 437,244 445,247 453,248 461,249 469,250 477,250 485,250 493,250 501,250 509,250 517,250 524,250 532,250 540,250 548,250 556,250 564,250 572,250 580,250 588,250 596,250 604,250 612,250 620,250 628,250 636,250 644,250 652,250 660,250" fill="none" stroke="#b8443c" stroke-width="2.2"/>
+  <polyline points="110,45 118,45 126,45 134,45 142,45 150,45 158,45 166,45 174,46 182,46 190,46 198,46 206,46 214,46 222,46 230,46 238,47 246,47 253,47 261,48 269,48 277,49 285,49 293,50 301,51 309,52 317,53 325,54 333,55 341,57 349,59 357,61 365,63 373,66 381,69 389,73 397,77 405,81 413,87 421,92 429,99 437,106 445,114 453,123 461,132 469,142 477,153 485,164 493,175 501,186 509,197 517,208 524,217 532,226 540,233 548,238 556,243 564,246 572,248 580,249 588,250 596,250 604,250 612,250 620,250 628,250 636,250 644,250 652,250 660,250" fill="none" stroke="#0d6e66" stroke-width="3"/>
+  <polyline points="110,45 118,45 126,45 134,45 142,45 150,45 158,45 166,45 174,45 182,45 190,45 198,45 206,45 214,45 222,45 230,45 238,45 246,45 253,45 261,45 269,45 277,45 285,45 293,45 301,46 309,46 317,46 325,46 333,46 341,46 349,46 357,47 365,47 373,47 381,48 389,48 397,48 405,49 413,50 421,50 429,51 437,52 445,53 453,55 461,56 469,58 477,60 485,62 493,65 501,68 509,71 517,75 524,79 532,84 540,90 548,96 556,103 564,111 572,119 580,128 588,138 596,149 604,159 612,171 620,182 628,193 636,204 644,213 652,222 660,230" fill="none" stroke="#2f6fd0" stroke-width="2.2"/>
+
+  <circle cx="201" cy="175" r="4.5" fill="#6b7280"/>
+  <circle cx="370" cy="175" r="4" fill="#b8443c"/>
+  <circle cx="492" cy="175" r="4.5" fill="#0d6e66"/>
+  <circle cx="615" cy="175" r="4" fill="#2f6fd0"/>
+
+  <text x="120" y="72" font-size="12" fill="#6b7280" font-weight="700">Cu (금속)</text>
+  <text x="120" y="86" font-size="10.5" fill="#6b7280">&#955; = 0.055 nm</text>
+  <text x="128" y="196" font-size="10.5" fill="#6b7280" font-weight="700">전기장이 원자 하나</text>
+  <text x="128" y="208" font-size="10.5" fill="#6b7280" font-weight="700">들어가기도 전에 소멸</text>
+
+  <text x="330" y="106" font-size="11" fill="#b8443c" font-weight="700">Si n&#8314; 10&#185;&#8313;</text>
+  <text x="330" y="118" font-size="10" fill="#b8443c">1.3 nm</text>
+  <text x="452" y="86" font-size="12" fill="#0d6e66" font-weight="700">Si 10&#185;&#8311;</text>
+  <text x="452" y="99" font-size="10.5" fill="#0d6e66">12.9 nm</text>
+  <text x="576" y="66" font-size="11" fill="#2f6fd0" font-weight="700">Si 10&#185;&#8309;</text>
+  <text x="576" y="78" font-size="10" fill="#2f6fd0">129 nm</text>
+  <text x="500" y="228" font-size="11" fill="#0d6e66" font-weight="700">게이트가 채널을 제어할 수 있는 깊이</text>
+</svg>
+<p class="dp-cap"><b>그림 7b.</b> 표면에서 전기장이 살아남는 깊이. Cu의 Thomas–Fermi 스크리닝 길이는 <strong>0.55 Å = 0.055 nm</strong>로, <strong>원자 간격(약 0.25 nm)보다도 짧다.</strong> 전기장이 원자 한 층도 못 들어가고 완전히 차단된다는 뜻이다. 반면 Si는 도핑이 낮아 디바이 길이가 <strong>10 nm 스케일</strong>이라, <strong>게이트 전기장이 채널 깊숙이 들어가 캐리어를 만들었다 없앴다 할 수 있다.</strong><br>
+<b>그래서 금속으로는 트랜지스터를 만들 수 없다.</b> “n을 못 바꾼다”는 것은 공정 기술의 한계가 아니라 <strong>물리</strong>다. 이 그림은 W3의 MOS 커패시터(공핍층 형성)로 그대로 이어진다.</p>
+</div>
 
 <h3>직관과 반대되는 사실 — 금속의 전자는 오히려 느리다</h3>
 
@@ -763,8 +1200,36 @@ toc:
   <line x1="42" y1="70" x2="42" y2="180" stroke="#14181c" stroke-width="1"/>
   <text x="34" y="130" font-size="11.5" fill="#14181c" text-anchor="middle" transform="rotate(-90 34 130)" font-family="monospace">d</text>
 
-<!-- ============================================================ -->
+  <!-- grain boundaries -->
+  <line x1="240" y1="70" x2="255" y2="180" stroke="#8a4b12" stroke-width="2.5"/>
+  <line x1="430" y1="70" x2="415" y2="180" stroke="#8a4b12" stroke-width="2.5"/>
+  <text x="335" y="200" font-size="11.5" fill="#8a4b12" text-anchor="middle" font-weight="600">결정립계 산란 (Mayadas–Shatzkes)</text>
 
+  <!-- electron path -->
+  <polyline points="75,125 130,105 175,140 238,115 300,145 355,110 412,138 470,112 530,142 590,118 645,132"
+            fill="none" stroke="#2f6fd0" stroke-width="2.2"/>
+  <circle cx="75" cy="125" r="4.5" fill="#2f6fd0"/>
+  <!-- scattering events -->
+  <circle cx="130" cy="105" r="3" fill="#b8443c"/>
+  <circle cx="300" cy="145" r="3" fill="#b8443c"/>
+  <circle cx="530" cy="142" r="3" fill="#b8443c"/>
+  <text x="702" y="100" font-size="11" fill="#b8443c" text-anchor="end">● 격자 진동(포논)·불순물</text>
+
+  <!-- surface scattering -->
+  <path d="M 175 140 L 178 178" stroke="#0d6e66" stroke-width="1.4" stroke-dasharray="3 2"/>
+  <path d="M 470 112 L 468 72" stroke="#0d6e66" stroke-width="1.4" stroke-dasharray="3 2"/>
+  <text x="360" y="222" font-size="11.5" fill="#0d6e66" text-anchor="middle" font-weight="600">표면 산란 (Fuchs–Sondheimer) — 두께 d가 평균자유행정 λ에 가까워질수록 지배적</text>
+
+  <!-- lambda indicator -->
+  <line x1="75" y1="35" x2="240" y2="35" stroke="#4d565e" stroke-width="1"/>
+  <line x1="75" y1="31" x2="75" y2="39" stroke="#4d565e" stroke-width="1"/>
+  <line x1="240" y1="31" x2="240" y2="39" stroke="#4d565e" stroke-width="1"/>
+  <text x="157" y="28" font-size="11" fill="#4d565e" text-anchor="middle" font-family="monospace">평균자유행정 λ</text>
+</svg>
+<p class="dp-cap"><b>그림 6.</b> 벌크 금속에서는 포논·불순물 산란만 고려하면 되지만, 박막에서는 <strong>표면과 결정립계</strong>가 추가 산란원이 된다. 두께가 평균자유행정 λ 수준으로 얇아지면 표면 산란이 전체 저항을 지배한다.</p>
+</div>
+
+<!-- ============================================================ -->
 <h2><span class="dp-num">08</span>왜 Mo인가 — ρ₀λ 라는 하나의 숫자</h2>
 
 <div class="dp-caution" style="border-left-color:#8a4b12">
@@ -774,7 +1239,7 @@ toc:
   <p><strong>다만 §07의 결론은 그대로 유효하다</strong> — 캐리어 농도는 여전히 10²²~10²³ 스케일로 <strong>공정이 바꿀 수 없고</strong>, 따라서 <strong>저항 개선은 곧 산란 저감</strong>이다. ρ₀λ는 그 “산란”을 <strong>재료 고유의 언어로 다시 쓴 것</strong>이다.</p>
 </div>
 
-<p>여기서 metal ALD 공정 엔지니어에게 가장 실전적인 개념이 나온다. <strong>"벌크 비저항이 낮은 금속이 얇은 배선에서도 좋을 것이다"라는 직관은 틀렸다.</strong></p>
+<p>여기서 metal ALD 엔지니어에게 가장 실전적인 개념이 나온다. <strong>"벌크 비저항이 낮은 금속이 얇은 배선에서도 좋을 것이다"라는 직관은 틀렸다.</strong></p>
 
 <p>구리의 벌크 비저항은 1.7 μΩ·cm로 대단히 낮지만, 상온 평균자유행정 λ가 <strong>약 40 nm</strong>다.<sup><a href="#fn5">5</a></sup> 배선 폭이 10 nm대로 내려가면 전자가 벌크 산란을 겪기도 전에 표면에 부딪히므로, 실효 비저항이 벌크값의 <strong>몇 배로 폭증</strong>한다. 반대로 벌크 비저항은 다소 높아도 λ가 짧은 금속은 얇아져도 저항이 크게 나빠지지 않는다.</p>
 
@@ -802,6 +1267,74 @@ toc:
     </marker>
   </defs>
 
+  <text x="380" y="16" font-size="11" fill="#4d565e" text-anchor="middle">Fuchs&#8211;Sondheimer + Mayadas&#8211;Shatzkes 계산 (p = 0.3, R = 0.4, 결정립 g = d) &#183; 배리어는 사방 2 nm, 전류 미기여 가정</text>
+
+  <!-- grid -->
+  <g stroke="#e6e9e3" stroke-width="1">
+    <line x1="95" y1="208" x2="665" y2="208"/><line x1="95" y1="166" x2="665" y2="166"/>
+    <line x1="95" y1="124" x2="665" y2="124"/><line x1="95" y1="82" x2="665" y2="82"/>
+    <line x1="95" y1="40" x2="665" y2="40"/>
+  </g>
+  <!-- axes -->
+  <line x1="95" y1="250" x2="678" y2="250" stroke="#14181c" stroke-width="1.5"/>
+  <line x1="95" y1="34" x2="95" y2="250" stroke="#14181c" stroke-width="1.5"/>
+  <g font-size="10.5" fill="#4d565e" font-family="monospace" text-anchor="end">
+    <text x="88" y="254">0</text><text x="88" y="212">5</text><text x="88" y="170">10</text>
+    <text x="88" y="128">15</text><text x="88" y="86">20</text><text x="88" y="44">25</text>
+  </g>
+  <g font-size="10.5" fill="#4d565e" font-family="monospace" text-anchor="middle">
+    <text x="95" y="266">5</text><text x="227" y="266">10</text><text x="359" y="266">20</text>
+    <text x="533" y="266">50</text><text x="665" y="266">100</text>
+  </g>
+  <text x="380" y="288" font-size="12" fill="#14181c" text-anchor="middle" font-family="monospace">박막 두께 / 선폭 d (nm) &#8212; 로그 스케일</text>
+  <text x="40" y="145" font-size="12" fill="#14181c" text-anchor="middle" transform="rotate(-90 40 145)" font-family="monospace">비저항 &#961; (&#956;&#937;&#183;cm)</text>
+
+  <!-- curves: conductor cross-section only (solid) -->
+  <polyline points="665,196 655,196 646,195 636,195 626,194 617,194 607,193 597,192 588,192 578,191 568,190 559,190 549,189 539,188 530,187 520,186 510,185 501,184 491,183 481,182 472,181 462,180 452,179 443,177 433,176 423,175 414,173 404,171 394,170 385,168 375,166 366,164 356,162 346,160 337,157 327,155 317,153 308,150 298,147 288,144 279,141 269,138 259,134 250,131 240,127 230,123 221,119 211,115 201,110 192,105 182,100 172,95 163,89 153,83 143,77 134,70 124,63 114,56 105,48 95,40" fill="none" stroke="#6b7280" stroke-width="2"/>
+  <polyline points="665,229 655,228 646,228 636,228 626,227 617,227 607,226 597,226 588,225 578,225 568,224 559,224 549,223 539,223 530,222 520,221 510,220 501,220 491,219 481,218 472,217 462,216 452,215 443,214 433,213 423,212 414,210 404,209 394,208 385,206 375,205 366,203 356,202 346,200 337,198 327,196 317,194 308,192 298,190 288,187 279,185 269,182 259,179 250,177 240,174 230,170 221,167 211,163 201,160 192,156 182,152 172,147 163,143 153,138 143,133 134,128 124,122 114,116 105,110 95,103" fill="none" stroke="#b8443c" stroke-width="2"/>
+  <polyline points="665,199 655,199 646,199 636,198 626,198 617,198 607,197 597,197 588,196 578,196 568,195 559,195 549,194 539,194 530,193 520,193 510,192 501,191 491,191 481,190 472,189 462,188 452,187 443,186 433,185 423,184 414,183 404,182 394,181 385,180 375,178 366,177 356,176 346,174 337,172 327,171 317,169 308,167 298,165 288,163 279,161 269,159 259,156 250,154 240,151 230,148 221,145 211,142 201,139 192,136 182,132 172,128 163,124 153,120 143,116 134,111 124,107 114,101 105,96 95,91" fill="none" stroke="#0d6e66" stroke-width="3.2"/>
+  <!-- curves: effective line resistivity incl. 2 nm barrier (dashed) -->
+  <polyline points="665,191 655,190 646,189 636,188 626,188 617,187 607,185 597,184 588,183 578,182 568,180 559,179 549,177 539,176 530,174 520,172 510,170 501,167 491,165 481,162 472,159 462,156 452,153 443,149 433,145 423,141 414,136 404,131 394,125 385,118 375,111 366,103 356,95 346,85 337,74 327,61 317,47" fill="none" stroke="#6b7280" stroke-width="2" stroke-dasharray="6 4"/>
+  <polyline points="665,227 655,226 646,226 636,225 626,224 617,224 607,223 597,222 588,221 578,221 568,220 559,219 549,218 539,216 530,215 520,214 510,212 501,211 491,209 481,207 472,205 462,203 452,201 443,198 433,196 423,193 414,189 404,186 394,182 385,177 375,172 366,167 356,160 346,153 337,146 327,137 317,127 308,115 298,102 288,87 279,70 269,49" fill="none" stroke="#b8443c" stroke-width="2" stroke-dasharray="6 4"/>
+
+  <!-- annotation 1: Mo vs W+barrier at d = 20 nm -->
+  <line x1="359" y1="97" x2="359" y2="174" stroke="#8a4b12" stroke-width="1.2"
+        marker-start="url(#arrF)" marker-end="url(#arrF)"/>
+  <text x="367" y="128" font-size="13" fill="#8a4b12" font-weight="700">&#215;2.1</text>
+  <text x="367" y="143" font-size="10" fill="#8a4b12">20 nm에서</text>
+  <text x="367" y="155" font-size="10" fill="#8a4b12">Mo 8.8 vs W 18.2</text>
+
+  <!-- annotation 2: Cu(+barrier) / Mo crossover at 23.9 nm -->
+  <circle cx="393" cy="181" r="5.5" fill="none" stroke="#8a4b12" stroke-width="2"/>
+  <line x1="268" y1="217" x2="384" y2="187" stroke="#8a4b12" stroke-width="0.9" stroke-dasharray="3 3"/>
+  <text x="104" y="221" font-size="11.5" fill="#8a4b12" font-weight="600">&#9675; 배리어를 넣어야 비로소 &#8776;24 nm에서</text>
+  <text x="104" y="235" font-size="11.5" fill="#8a4b12" font-weight="600">Mo가 Cu를 추월한다</text>
+  <text x="660" y="243" font-size="10" fill="#4d565e" text-anchor="end">벌크 &#961;&#8320; : Cu 1.7 &#183; Mo 5.3 &#183; W 5.4 &#956;&#937;&#183;cm</text>
+
+  <!-- legend -->
+  <rect x="424" y="42" width="286" height="92" fill="#ffffff" fill-opacity="0.92" stroke="#d7dbd5"/>
+  <g stroke-width="2">
+    <line x1="434" y1="59" x2="464" y2="59" stroke="#b8443c"/>
+    <line x1="434" y1="76" x2="464" y2="76" stroke="#b8443c" stroke-dasharray="6 4"/>
+    <line x1="434" y1="93" x2="464" y2="93" stroke="#0d6e66" stroke-width="3.2"/>
+    <line x1="434" y1="110" x2="464" y2="110" stroke="#6b7280"/>
+    <line x1="434" y1="127" x2="464" y2="127" stroke="#6b7280" stroke-dasharray="6 4"/>
+  </g>
+  <g font-size="11" fill="#14181c">
+    <text x="472" y="63">Cu &#8212; 도체 단면만</text>
+    <text x="472" y="80">Cu &#8212; 배리어 2 nm 포함 (유효값)</text>
+    <text x="472" y="97" font-weight="700">Mo &#8212; 배리어리스</text>
+    <text x="472" y="114">W &#8212; 도체 단면만</text>
+    <text x="472" y="131">W &#8212; 배리어 2 nm 포함 (유효값)</text>
+  </g>
+</svg>
+<p class="dp-cap"><b>그림 7.</b> FS + MS 모델로 계산한 두께 의존 비저항. 실선은 <strong>도체 단면만</strong>, 점선은 <strong>배리어를 포함한 배선 유효 비저항</strong>이다. 세 가지를 읽어낼 것.<br>
+<b>(1) Mo는 W를 전 두께에서 이긴다.</b> 도체 단면만 비교해도 Mo가 아래에 있고(20 nm: Mo 8.8 vs W 10.4), W에 필요한 TiN 배리어·누클레이션층까지 넣으면 격차가 <strong>20 nm에서 2.1배, 10 nm에서 4.9배</strong>로 벌어진다. <strong>교차점이 아예 없다</strong> — 이것이 3D NAND 워드라인이 W에서 Mo로 가는 직접적인 근거다.<br>
+<b>(2) 반면 Cu와의 관계는 정반대로 오해되기 쉽다.</b> <em>같은 두께의 도체 단면만 비교하면 Cu는 5 nm에서도 여전히 Mo보다 저항이 낮다</em>(10 nm: Cu 9.6 vs Mo 12.3 μΩ·cm). λ가 긴 Cu가 더 가파르게 나빠지는 것은 맞지만, 벌크에서 3배나 앞서 있었기 때문에 <strong>그것만으로는 역전되지 않는다</strong>. 역전은 <strong>배리어가 도체 단면적을 잠식</strong>해야 일어난다(○, ≈24 nm). Gall이 Mo를 "Cu보다 우수"가 아니라 <strong>"Cu와 대등"</strong>이라고 결론지은 것과 정확히 일치한다.<sup><a href="#fn5">5</a></sup><br>
+<b>(3) 결국 ρ₀λ는 절반의 답이다.</b> 나머지 절반은 <strong>"배리어 없이 붙일 수 있는가"</strong>이며, 그건 재료 상수가 아니라 <strong>우리가 개발하는 ALD 공정이 결정한다</strong>.</p>
+<p class="dp-cap" style="border-left-color:#8a4b12"><b>모델 가정과 강건성.</b> 위 곡선은 정사각 단면(사방 배리어, 면적비 [d/(d−2t)]²)을 가정했다. 3D NAND 워드라인은 실제로는 <strong>슬롯 형상</strong>이라 배리어가 위·아래에서만 잠식하므로 면적비가 d/(d−2t)로 완화되고, TiN(ρ ≈ 200 μΩ·cm)도 전류를 조금은 나른다. <strong>두 완화 요인을 모두 넣어도 결론은 바뀌지 않는다</strong> — 슬롯 기하 + TiN 병렬 전도 기준으로 W는 여전히 Mo 대비 20 nm에서 1.6배, 10 nm에서 2.8배 높다. 즉 (1)의 결론은 기하 가정에 <strong>강건하다</strong>.</p>
+</div>
+
 <div class="dp-field">
   <span class="dp-tag">현장 포인트 — 3D NAND 워드라인이 W에서 Mo로 가는 이유</span>
   <p>이유는 세 가지가 겹치며, <strong>Cu 논쟁과 달리 여기서는 Mo가 W를 조건 없이 이긴다</strong>(그림 7).</p>
@@ -814,7 +1347,6 @@ toc:
 </div>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">09</span>W1 요약 · 다음 주로 이어지는 실</h2>
 
 <ul>
@@ -824,19 +1356,89 @@ toc:
   <li>도핑은 캐리어를 넣는 동시에 <strong>E<sub>F</sub>를 이동</strong>시킨다. 축퇴 도핑은 컨택 터널링의 전제다.</li>
   <li>일함수는 <strong>표면의 성질</strong>이며, 실제 소자에서는 계면 쌍극자·pinning 때문에 <strong>EWF</strong>로 다뤄야 한다.</li>
   <li>금속에서 캐리어 농도는 고정이므로 <strong>비저항 개선 = 산란 저감</strong>이다. 박막에서는 표면·결정립계 산란이 지배한다.</li>
-  <li><strong>ρ₀λ</strong>가 스케일링 시대의 금속 선택 지표다. Mo(5.99) < Cu(~6.7) < W(~8.2) [10⁻¹⁶ Ω·m², 계산값]. 상대에 따라 결론이 다르다 — <strong>W에 대해서는 Mo가 조건 없이 우위</strong>(전 두께)이지만, <strong>Cu에 대해서는 ρ₀λ만으로 대등할 뿐</strong>이고 <strong>배리어리스 통합</strong>이 있어야 비로소 앞선다(≈24 nm). 3D NAND 워드라인의 상대는 Cu가 아니라 W다.</li>
+  <li><strong>ρ₀λ</strong>가 스케일링 시대의 금속 선택 지표다. Mo(5.99) &lt; Cu(~6.7) &lt; W(~8.2) [10⁻¹⁶ Ω·m², 계산값]. 상대에 따라 결론이 다르다 — <strong>W에 대해서는 Mo가 조건 없이 우위</strong>(전 두께)이지만, <strong>Cu에 대해서는 ρ₀λ만으로 대등할 뿐</strong>이고 <strong>배리어리스 통합</strong>이 있어야 비로소 앞선다(≈24 nm). 3D NAND 워드라인의 상대는 Cu가 아니라 W다.</li>
 </ul>
 
 <p><strong>W2 예고</strong> — 두 물질을 붙였을 때 E<sub>F</sub>가 하나로 맞춰지면서 밴드가 휘는 현상을 정면으로 다룬다. pn 접합, 쇼트키 장벽, 오믹 컨택, 그리고 "우리가 증착한 금속이 왜 저항이 높게 측정되는가"의 절반은 컨택 문제라는 사실을 확인한다.</p>
 
 <!-- ============================================================ -->
-
 <h2><span class="dp-num">10</span>이해도 점검 — 퀴즈 10문항</h2>
 
 <div class="dp-quiz">
 
-<!-- ============================================================ -->
+<div class="dp-q">
+<p>고립된 Si 원자에는 밴드갭이 없다. 그런데 Si 결정에는 1.12 eV의 밴드갭이 생긴다. 밴드갭은 무엇 때문에 생기는가?</p>
+<details><summary>정답 확인</summary>
+<p>원자들이 가까워지면서 파울리 배타 원리에 의해 준위가 갈라지고(sp³ 혼성 → 결합/반결합 분리), 그 결과 <strong>전자 상태가 존재할 수 없는 에너지 구간</strong>이 남기 때문이다. 밴드갭은 "장벽"이 아니라 <strong>허용 상태의 부재</strong>다.</p>
+</details>
+</div>
 
+<div class="dp-q">
+<p>어떤 물질의 페르미 준위가 전도대 안쪽에 위치한다. 이 물질은 금속인가, 반도체인가?</p>
+<details><summary>정답 확인</summary>
+<p>둘 다 가능하다. 진짜 금속일 수도 있고, <strong>축퇴 도핑된 반도체(n+ Si)</strong>일 수도 있다. 축퇴 반도체는 전기적으로 금속처럼 거동하며, 실제로 컨택 영역에서 이를 의도적으로 만든다. 구분은 밴드 구조 자체(갭의 유무)로 해야 한다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>진성 Si의 페르미 준위는 밴드갭 한가운데 있다. 그런데 그 에너지에는 전자가 존재할 수 있는 상태가 없다. 모순인가?</p>
+<details><summary>정답 확인</summary>
+<p>모순이 아니다. E<sub>F</sub>는 전자가 있는 위치가 아니라 <strong>점유 확률이 1/2이 되는 기준 에너지</strong>다. 그 에너지에 상태가 없으면 전자가 없을 뿐, E<sub>F</sub>의 정의는 그대로 성립한다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>Mo 게이트 / HfO₂ / p-Si 스택에 전압을 걸지 않았다. 이 스택을 관통하는 E<sub>F</sub>는 어떤 모양인가?</p>
+<details><summary>정답 확인</summary>
+<p>열평형이므로 <strong>전 구간에서 하나의 수평 직선</strong>이다. 대신 물질마다 진공 준위 기준 위치가 다르므로 <strong>밴드가 휘어져서(band bending)</strong> E<sub>F</sub>가 평평해지도록 맞춘다. 이 휘어짐이 곧 내장 전위이며 V<sub>FB</sub>·V<sub>T</sub>의 기원이다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>n형 Si의 도핑 농도를 10배 올렸다. 전자친화도 χ와 일함수 Φ<sub>S</sub>는 각각 어떻게 되는가?</p>
+<details><summary>정답 확인</summary>
+<p>χ = E<sub>vac</sub> − E<sub>C</sub>는 <strong>변하지 않는다</strong>(4.05 eV, 재료 고유값). 반면 E<sub>F</sub>가 E<sub>C</sub> 쪽으로 올라가므로 Φ<sub>S</sub> = χ + (E<sub>C</sub> − E<sub>F</sub>)는 <strong>작아진다</strong>. "반도체의 일함수"는 도핑에 종속된 값이다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>ALD TiN의 진공 일함수가 문헌에 4.4 eV로 나와 있다. 이 값을 그대로 써서 게이트 스택의 V<sub>T</sub>를 예측하면 왜 틀리는가?</p>
+<details><summary>정답 확인</summary>
+<p>실제 스택에서는 (1) high-k/계면층에 형성되는 <strong>계면 쌍극자</strong>, (2) 갭 내 결함에 의한 <strong>Fermi-level pinning</strong>, (3) ALD 조건에 따른 <strong>TiN 조성·불순물 변동</strong> 때문에 <strong>실효 일함수(EWF)</strong>가 진공값과 수백 meV까지 어긋난다. V<sub>T</sub> 예측에는 C–V 측정으로 얻은 EWF를 써야 한다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>Mo 박막의 비저항을 낮추기 위해 "캐리어 농도를 올리는" 공정을 개발하겠다고 제안했다. 무엇이 잘못됐는가?</p>
+<details><summary>정답 확인</summary>
+<p>금속의 캐리어 농도는 ~10²² cm⁻³로 <strong>고정</strong>되어 있고 공정으로 바꿀 수 없다. ρ = 1/(qnμ)에서 금속의 유일한 레버는 <strong>이동도 μ</strong>, 즉 <strong>산란 저감</strong>이다. 결정립 성장, 불순물(Cl/C/O) 제거, 표면 거칠기 개선이 실제 개선 경로다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>벌크 비저항만 보면 Cu(1.7 μΩ·cm)가 Mo(5.3 μΩ·cm)보다 3배 이상 좋다. 그런데 왜 좁은 배선에서는 Mo가 검토되는가?</p>
+<details><summary>정답 확인</summary>
+<p>두 단계로 답해야 한다. (1) Cu의 λ가 약 40 nm로 매우 길어, 치수가 λ 이하로 내려가면 표면·결정립계 산란이 지배해 실효 비저항이 벌크의 몇 배로 급증한다. 스케일링 지표 <strong>ρ₀ × λ</strong>에서 Mo(≈6.0×10⁻¹⁶ Ω·m²)가 Cu(6.8)보다 작다.<sup><a href="#fn5">5</a></sup> (2) <strong>하지만 그것만으로는 부족하다.</strong> 같은 두께의 도체 단면만 비교하면 Cu는 10 nm에서도 여전히 Mo보다 낮다(9.6 vs 12.3 μΩ·cm). Cu가 실제로 지는 이유는 <strong>배리어/라이너가 도체 단면적을 잠식</strong>하기 때문이다 — 배리어가 필요 없는 Mo는 같은 물리적 치수에서 <strong>도체 유효 단면적이 훨씬 크다</strong>. “ρ₀λ”와 “배리어리스”는 <strong>둘 다 있어야</strong> 답이 완성된다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>동일한 두께의 Mo 박막인데 (011) 배향 시료가 (001) 배향 시료보다 비저항이 낮게 나왔다. 이유는?</p>
+<details><summary>정답 확인</summary>
+<p>(011) 표면에 수직인 방향의 평균 페르미 속도 성분이 작아 <strong>표면 산란이 덜 일어나기</strong> 때문이다. 측정된 실효 평균자유행정은 Mo(011) 11.7 nm, Mo(001) 14.4 nm로, (011)이 크기 효과에 더 강하다.<sup><a href="#fn6">6</a></sup> 실무적으로는 <strong>ALD/후속 열처리로 텍스처를 제어</strong>하는 것이 저항 개선 수단이 된다.</p>
+</details>
+</div>
+
+<div class="dp-q">
+<p>3D NAND 워드라인을 W에서 Mo로 바꾸면, ρ₀λ 이득 외에 <strong>추가로</strong> 얻는 저항 이득이 있다. 무엇인가?</p>
+<details><summary>정답 확인</summary>
+<p><strong>배리어/누클레이션 층의 제거 또는 축소</strong>다. W CVD는 TiN 배리어와 SiH₄/B₂H₆ 기반 누클레이션층이 필요한데, 이 고저항 층들이 얇아진 워드라인의 단면적을 잠식한다. Mo는 배리어리스 통합 가능성이 있어 <strong>같은 물리적 두께에서 도체 유효 단면적이 커진다</strong>. 정량적으로는 사방 2 nm 배리어 가정 시 W의 유효 비저항이 Mo 대비 <strong>20 nm에서 2.1배, 10 nm에서 4.9배</strong>가 된다(그림 7). 저항은 비저항뿐 아니라 <strong>단면적의 함수</strong>임을 기억할 것.<br><br>덧붙여 <strong>Cu와 혼동하지 말 것</strong> — Mo는 Cu에 대해서는 배리어를 넣어야 겨우 역전하지만(≈24 nm), <strong>W에 대해서는 배리어 없이도 전 두께에서 이긴다</strong>. 3D NAND 워드라인의 상대는 Cu가 아니라 W다.</p>
+</details>
+</div>
+
+</div>
+
+<!-- ============================================================ -->
 <section class="dp-supp">
 <h2><span class="dp-num">S</span>Supplementary — 수식 정리</h2>
 
@@ -864,7 +1466,7 @@ $$ E_F \equiv \mu = \left( \frac{\partial F}{\partial N} \right)_{T,V} $$
 <p>E = E<sub>F</sub>이면 두 비용이 <strong>모두 정확히 0</strong>이다. 넣는 것도 공짜, 빼는 것도 공짜이므로 계는 어느 쪽으로도 기울 이유가 없다. 따라서 그 상태는 차 있을 확률과 비어 있을 확률이 같아야 한다.</p>
 <div class="dp-caution" style="border-left-color:#0d6e66">
   <span class="dp-tag" style="color:#0d6e66">핵심</span>
-  <p>f(E<sub>F</sub>) = 1/2 은 <strong>“전자가 반쯤 있다”가 아니라 “차 있든 비어 있든 계가 무차별하다”</strong>는 뜻이다. E > E<sub>F</sub>면 전자를 넣는 것이 손해라 대체로 비어 있고, E < E<sub>F</sub>면 빼는 것이 손해라 대체로 차 있다. <strong>E<sub>F</sub>는 그 손익분기점이다.</strong></p>
+  <p>f(E<sub>F</sub>) = 1/2 은 <strong>“전자가 반쯤 있다”가 아니라 “차 있든 비어 있든 계가 무차별하다”</strong>는 뜻이다. E &gt; E<sub>F</sub>면 전자를 넣는 것이 손해라 대체로 비어 있고, E &lt; E<sub>F</sub>면 빼는 것이 손해라 대체로 차 있다. <strong>E<sub>F</sub>는 그 손익분기점이다.</strong></p>
 </div>
 
 <h4 style="font-size:17px;font-weight:600;margin:28px 0 10px">(3) 대칭축으로서의 E<sub>F</sub> — 전자와 정공의 거울</h4>
@@ -899,6 +1501,52 @@ $$ \therefore \; f(E_F + \Delta) = 1 - f(E_F - \Delta) $$
   <g font-size="10.5" fill="#4d565e" font-family="monospace" text-anchor="end">
     <text x="112" y="44">+0.30</text><text x="112" y="149">0</text><text x="112" y="254">−0.30</text>
   </g>
+
+  <!-- E_F 수평선 -->
+  <line x1="120" y1="145" x2="560" y2="145" stroke="#14181c" stroke-width="1.6" stroke-dasharray="7 4"/>
+  <text x="568" y="149" font-size="11.5" fill="#14181c" font-weight="700" font-family="monospace">E_F</text>
+
+  <!-- T = 0 K 계단 -->
+  <polyline points="120,40 120,145 560,145 560,250" fill="none" stroke="#6b7280" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="126" y="60" font-size="11" fill="#6b7280" font-weight="600">T = 0 K (계단)</text>
+
+  <polyline points="120,40 120,42 120,45 120,47 120,49 120,52 120,54 120,57 120,59 120,61 120,64 120,66 120,68 120,71 120,73 120,75 120,78 120,80 120,82 120,85 120,87 120,90 120,92 120,94 120,97 120,99 120,101 120,104 120,106 120,108 120,111 120,113 120,116 120,118 120,120 120,123 121,125 121,127 123,130 126,132 133,134 147,137 175,139 224,141 298,144 382,146 456,149 505,151 533,153 547,156 554,158 557,160 559,163 559,165 560,167 560,170 560,172 560,174 560,177 560,179 560,182 560,184 560,186 560,189 560,191 560,193 560,196 560,198 560,200 560,203 560,205 560,208 560,210 560,212 560,215 560,217 560,219 560,222 560,224 560,226 560,229 560,231 560,233 560,236 560,238 560,241 560,243 560,245 560,248 560,250" fill="none" stroke="#2f6fd0" stroke-width="2"/>
+  <polyline points="120,40 120,42 120,45 120,47 120,49 120,52 120,54 120,57 120,59 120,61 120,64 120,66 120,68 120,71 120,73 120,75 120,78 120,80 120,82 121,85 121,87 121,90 121,92 122,94 122,97 123,99 124,101 125,104 126,106 128,108 130,111 133,113 136,116 141,118 147,120 154,123 163,125 175,127 188,130 205,132 224,134 246,137 271,139 298,141 326,144 354,146 382,149 409,151 434,153 456,156 475,158 492,160 505,163 517,165 526,167 533,170 539,172 544,174 547,177 550,179 552,182 554,184 555,186 556,189 557,191 558,193 558,196 559,198 559,200 559,203 559,205 560,208 560,210 560,212 560,215 560,217 560,219 560,222 560,224 560,226 560,229 560,231 560,233 560,236 560,238 560,241 560,243 560,245 560,248 560,250" fill="none" stroke="#0d6e66" stroke-width="3"/>
+  <polyline points="121,40 122,42 122,45 122,47 122,49 123,52 123,54 123,57 124,59 124,61 125,64 126,66 126,68 127,71 128,73 129,75 130,78 132,80 133,82 135,85 137,87 140,90 142,92 145,94 148,97 152,99 156,101 161,104 166,106 171,108 178,111 185,113 192,116 200,118 209,120 219,123 229,125 240,127 252,130 264,132 277,134 291,137 304,139 319,141 333,144 347,146 361,149 376,151 389,153 403,156 416,158 428,160 440,163 451,165 461,167 471,170 480,172 488,174 495,177 502,179 509,182 514,184 519,186 524,189 528,191 532,193 535,196 538,198 540,200 543,203 545,205 547,208 548,210 550,212 551,215 552,217 553,219 554,222 554,224 555,226 556,229 556,231 557,233 557,236 557,238 558,241 558,243 558,245 558,248 559,250" fill="none" stroke="#8a4b12" stroke-width="2"/>
+  <polyline points="133,40 134,42 135,45 136,47 138,49 139,52 141,54 142,57 144,59 146,61 148,64 150,66 152,68 154,71 157,73 160,75 163,78 166,80 169,82 173,85 176,87 180,90 185,92 189,94 194,97 199,99 204,101 209,104 215,106 221,108 227,111 234,113 240,116 247,118 254,120 262,123 269,125 277,127 285,130 293,132 302,134 310,137 319,139 327,141 336,144 344,146 353,149 361,151 370,153 378,156 387,158 395,160 403,163 411,165 418,167 426,170 433,172 440,174 446,177 453,179 459,182 465,184 471,186 476,189 481,191 486,193 491,196 495,198 500,200 504,203 507,205 511,208 514,210 517,212 520,215 523,217 526,219 528,222 530,224 532,226 534,229 536,231 538,233 539,236 541,238 542,241 544,243 545,245 546,248 547,250" fill="none" stroke="#b8443c" stroke-width="2"/>
+
+  <!-- 피벗 -->
+  <circle cx="340" cy="145" r="6" fill="none" stroke="#14181c" stroke-width="2.2"/>
+  <circle cx="340" cy="145" r="2.5" fill="#14181c"/>
+  <line x1="340" y1="145" x2="392" y2="105" stroke="#14181c" stroke-width="0.9"/>
+  <text x="396" y="100" font-size="12" fill="#14181c" font-weight="700">피벗: f(E_F) = 1/2</text>
+  <text x="396" y="115" font-size="10.5" fill="#4d565e">온도와 무관하게 고정</text>
+
+  <!-- 300K의 3kT 창 -->
+  <line x1="592" y1="118" x2="592" y2="172" stroke="#0d6e66" stroke-width="1.4"/>
+  <line x1="588" y1="118" x2="596" y2="118" stroke="#0d6e66" stroke-width="1.4"/>
+  <line x1="588" y1="172" x2="596" y2="172" stroke="#0d6e66" stroke-width="1.4"/>
+  <text x="602" y="138" font-size="10.5" fill="#0d6e66" font-weight="600">±3kT</text>
+  <text x="602" y="151" font-size="10" fill="#0d6e66">(300 K: ±78 meV)</text>
+  <text x="602" y="166" font-size="10" fill="#4d565e">이 밖은 사실상</text>
+  <text x="602" y="178" font-size="10" fill="#4d565e">0 또는 1</text>
+
+  <!-- 범례 -->
+  <g stroke-width="2.4">
+    <line x1="130" y1="222" x2="158" y2="222" stroke="#2f6fd0"/>
+    <line x1="130" y1="236" x2="158" y2="236" stroke="#0d6e66" stroke-width="3"/>
+  </g>
+  <g stroke-width="2.4">
+    <line x1="228" y1="222" x2="256" y2="222" stroke="#8a4b12"/>
+    <line x1="228" y1="236" x2="256" y2="236" stroke="#b8443c"/>
+  </g>
+  <g font-size="11" fill="#14181c">
+    <text x="164" y="226">100 K</text><text x="164" y="240" font-weight="700">300 K</text>
+    <text x="262" y="226">600 K</text><text x="262" y="240">1000 K</text>
+  </g>
+</svg>
+<p class="dp-cap"><b>그림 S1.</b> 페르미–디랙 분포의 온도 의존성. <strong>E<sub>F</sub>는 온도가 흔들어도 움직이지 않는 피벗이고, kT는 그 주변이 얼마나 뭉개지는지만 정한다.</strong> 실무 감각: E<sub>F</sub>보다 <strong>3kT 위</strong>면 점유 확률이 0.047로 사실상 비어 있고, <strong>3kT 아래</strong>면 0.953으로 사실상 차 있다. 애매한 구간은 300 K에서 <strong>±78 meV, 폭 약 0.16 eV</strong>뿐이다. 이 창이 Si 밴드갭(1.12 eV)에 비해 매우 좁다는 사실이 반도체 물리의 거의 모든 근사(볼츠만 근사, 공핍 근사)의 출발점이다.</p>
+</div>
 
 <p>E − E<sub>F</sub> ≫ 3kT 이면 분모의 지수항이 1을 압도하므로 <strong>볼츠만 근사</strong>가 성립한다. S2의 캐리어 농도 식은 전부 이 근사 위에 서 있다.</p>
 <div class="dp-eq">
@@ -984,7 +1632,7 @@ $$ \frac{1}{\mu_{tot}} = \frac{1}{\mu_{phonon}} + \frac{1}{\mu_{impurity}} + \fr
 <p>저항으로 표현하면 ρ<sub>tot</sub> = ρ<sub>phonon</sub> + ρ<sub>imp</sub> + ρ<sub>GB</sub> + ρ<sub>surf</sub>. 가장 큰 항이 전체를 지배하므로, <strong>지배 산란원을 먼저 식별</strong>한 뒤 공정을 손봐야 한다.</p>
 
 <h3>S5. 박막 크기 효과 — Fuchs–Sondheimer 근사</h3>
-<p>두께 d가 평균자유행정 λ보다 충분히 클 때(d > λ), FS 모델의 1차 근사는 다음과 같다.</p>
+<p>두께 d가 평균자유행정 λ보다 충분히 클 때(d &gt; λ), FS 모델의 1차 근사는 다음과 같다.</p>
 <div class="dp-eq">
 $$ \frac{\rho_{film}}{\rho_0} \approx 1 + \frac{3}{8}(1-p)\frac{\lambda}{d} $$
 </div>
@@ -994,22 +1642,22 @@ $$ \frac{\rho_{film}}{\rho_0} \approx 1 + \frac{3}{8}(1-p)\frac{\lambda}{d} $$
 </section>
 
 <!-- ============================================================ -->
-
 <section class="dp-fn">
 <h3 style="color:#14181c">참고문헌</h3>
 <ol>
   <li id="fn1">D. A. Neamen, <em>Semiconductor Physics and Devices: Basic Principles</em>, 4th ed., McGraw-Hill. — Ch. 3 (Introduction to the Quantum Theory of Solids), Ch. 4 (The Semiconductor in Equilibrium), Ch. 5 (Carrier Transport Phenomena).</li>
-  <li id="fn2">S. M. Sze & M. K. Lee, <em>Semiconductor Devices: Physics and Technology</em>, 3rd ed., Wiley. — Ch. 1–3 (Energy Bands, Carrier Concentration, Metal–Semiconductor Contacts).</li>
+  <li id="fn2">S. M. Sze &amp; M. K. Lee, <em>Semiconductor Devices: Physics and Technology</em>, 3rd ed., Wiley. — Ch. 1–3 (Energy Bands, Carrier Concentration, Metal–Semiconductor Contacts).</li>
   <li id="fn3">H. B. Michaelson, "The work function of the elements and its periodicity," <em>J. Appl. Phys.</em> <strong>48</strong>, 4729 (1977). DOI: 10.1063/1.323539 — 원소별 일함수의 표준 참고표이며 결정면 의존성을 명시한다.</li>
-  <li id="fn4">J. Robertson & R. M. Wallace, "High-K materials and metal gates for CMOS applications," <em>Mater. Sci. Eng. R</em> <strong>88</strong>, 1–41 (2015). DOI: 10.1016/j.mser.2014.11.001 — 계면 쌍극자, Fermi-level pinning, 실효 일함수(EWF) 개념의 표준 리뷰.</li>
+  <li id="fn4">J. Robertson &amp; R. M. Wallace, "High-K materials and metal gates for CMOS applications," <em>Mater. Sci. Eng. R</em> <strong>88</strong>, 1–41 (2015). DOI: 10.1016/j.mser.2014.11.001 — 계면 쌍극자, Fermi-level pinning, 실효 일함수(EWF) 개념의 표준 리뷰.</li>
   <li id="fn5">D. Gall, "Electron mean free path in elemental metals," <em>J. Appl. Phys.</em> <strong>119</strong>, 085101 (2016). DOI: 10.1063/1.4942216 — ρ₀λ 지표로 가장 전도성이 높은 20개 금속을 평가. 좁은 배선의 극한에서 Rh·Ir·Ni는 Cu보다 각각 2.1·1.8·1.6배 우수하고, Mo·Co·Ru는 Cu와 <strong>대략 대등</strong>하다는 결론.</li>
   <li id="fn6">A. Jog, P. Zheng, T. Zhou, D. Gall, "Anisotropic Resistivity Size Effect in Epitaxial Mo(001) and Mo(011) Layers," <em>Nanomaterials</em> <strong>13</strong>(6), 957 (2023). DOI: 10.3390/nano13060957 — 측정 λ* = 14.4 nm [Mo(001)], 11.7 nm [Mo(011)]; ρ₀λ* = 7.7 및 6.2 ×10⁻¹⁶ Ω·m².</li>
   <li id="fn7">K. Fuchs, <em>Proc. Camb. Phil. Soc.</em> <strong>34</strong>, 100 (1938); E. H. Sondheimer, <em>Adv. Phys.</em> <strong>1</strong>, 1 (1952) — 표면 산란 모델의 원전.</li>
-  <li id="fn8">A. F. Mayadas & M. Shatzkes, "Electrical-Resistivity Model for Polycrystalline Films," <em>Phys. Rev. B</em> <strong>1</strong>, 1382 (1970). DOI: 10.1103/PhysRevB.1.1382 — 결정립계 산란 모델의 원전.</li>
+  <li id="fn8">A. F. Mayadas &amp; M. Shatzkes, "Electrical-Resistivity Model for Polycrystalline Films," <em>Phys. Rev. B</em> <strong>1</strong>, 1382 (1970). DOI: 10.1103/PhysRevB.1.1382 — 결정립계 산란 모델의 원전.</li>
   <li id="fn9">V. V. Afanas'ev, M. Houssa, A. Stesmans, M. M. Heyns, "Band alignments in metal–oxide–silicon structures with atomic-layer deposited Al₂O₃ and ZrO₂," <em>J. Appl. Phys.</em> <strong>91</strong>, 3079 (2002). DOI: 10.1063/1.1436299 — ALD 비정질 Al₂O₃의 밴드 정렬을 내부광방출(IPE)로 측정. 증착·열처리 이력에 따라 장벽 높이가 이동함을 보고.</li>
   <li id="fn11">W. Mönch, "Role of virtual gap states and defects in metal-semiconductor contacts," <em>Phys. Rev. Lett.</em> <strong>58</strong>, 1260 (1987). DOI: 10.1103/PhysRevLett.58.1260 — MIGS 기반으로 pinning factor S를 고주파 유전율 ε<sub>∞</sub>의 함수로 준 경험식 S ≈ 1/[1 + 0.1(ε<sub>∞</sub> − 1)²]의 원전.</li>
-  <li id="fn10">A. M. Cowley & S. M. Sze, "Surface States and Barrier Height of Metal-Semiconductor Systems," <em>J. Appl. Phys.</em> <strong>36</strong>, 3212 (1965). DOI: 10.1063/1.1702952 — pinning factor S = dΦ<sub>Bn</sub>/dΦ<sub>M</sub>의 선형 근사 원전. n형 Si의 실험적 S ≈ 0.16은 이후 다수의 실측·제일원리 연구에서 재확인되었다.</li>
+  <li id="fn10">A. M. Cowley &amp; S. M. Sze, "Surface States and Barrier Height of Metal-Semiconductor Systems," <em>J. Appl. Phys.</em> <strong>36</strong>, 3212 (1965). DOI: 10.1063/1.1702952 — pinning factor S = dΦ<sub>Bn</sub>/dΦ<sub>M</sub>의 선형 근사 원전. n형 Si의 실험적 S ≈ 0.16은 이후 다수의 실측·제일원리 연구에서 재확인되었다.</li>
 </ol>
+<p style="margin-top:24px;font-size:13px">본 자료의 그림은 모두 인라인 SVG로 작성되어 있어 Jekyll(al-folio) 포스팅에 그대로 붙여넣어도 외부 이미지 파일 없이 렌더링된다. 수식은 MathJax 3 문법(<code>$$...$$</code>)을 따른다.</p>
 </section>
 
 </article>
