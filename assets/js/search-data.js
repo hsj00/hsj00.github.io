@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-har-structure에서의-ald-step-coverage-process-parameter와-mechanism",
+        },{id: "post-device-physics-w1-band-fermi-workfunction",
+        
+          title: "Device Physics W1 Band Fermi Workfunction",
+        
+        description: "",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/device-physics-w1-band-fermi-workfunction/";
+          
+        },
+      },{id: "post-har-structure에서의-ald-step-coverage-process-parameter와-mechanism",
         
           title: "HAR structure에서의 ALD step coverage - Process parameter와 mechanism",
         
