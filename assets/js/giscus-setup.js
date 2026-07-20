@@ -21,7 +21,7 @@ function determineGiscusTheme() {
     "data-repo": "hsj00/hsj00.github.io",
     "data-repo-id": "R_kgDOR2syTg",
     "data-category": "Comments",
-    "data-category-id": "DIC_kwDOR2syTs4C_6F_",
+    "data-category-id": "DIC_kwDOR2syTs4C_6M0",
     "data-mapping": "title",
     "data-strict": "1",
     "data-reactions-enabled": "1",
