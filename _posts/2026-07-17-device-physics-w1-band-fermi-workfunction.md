@@ -20,6 +20,8 @@ published: true
 giscus_comments: true
 share: true
 use_math: true
+toc:
+  beginning: true
 ---
 > Metal ALD 공정 개발 엔지니어 입장에서 3D NAND, DRAM, Logic device의 동작 원리를 이해하고, 내가 개발하는 단위 공정이 소자 스펙과 어떻게 만나는지 파악하기 위한 공부를 좀 해보려고 한다. **Neamen** 교재와 **Sze** 교재를 **Claude**에 집어넣어 12주 커리큘럼을 짰다. 이 글은 **Claude**로 작성한 12주 커리큘럼의 **첫 번째 학습자료**이다. 중간중간 잘 이해가 안가는 내용들이 나올 때마다 내용을 보충하여 내가 필요할 때 참고할 수 있는 자료를 만드는게 목표다.
 > 
@@ -1026,7 +1028,7 @@ use_math: true
   <li><strong>y절편</strong> → <strong>EWF</strong></li>
   <li><strong>기울기</strong> → 유전체 내 <strong>고정전하 밀도</strong></li>
 </ul>
-<p><strong>두께 하나만으로는 EWF를 분리할 수 없다</strong> — 고정전하 기여와 섞이기 때문이다. EWF는 “금속의 물성”이 아니라 <strong>스택 전체의 특성값</strong>이며, 이것이 이 절의 제목이 “ALD 엔지니어가 실제로 다루는 값”인 이유다. W3에서 C–V 측정으로 직접 다룬다.</p>
+<p><strong>두께 하나만으로는 EWF를 분리할 수 없다</strong> — 고정전하 기여와 섞이기 때문이다. EWF는 “금속의 물성”이 아니라 <strong>스택 전체의 특성값</strong>이며, 이것이 이 절의 제목이 “공정 엔지니어가 실제로 다루는 값”인 이유다. W3에서 C–V 측정으로 직접 다룬다.</p>
 
 <div class="dp-field">
   <span class="dp-tag">현장 포인트 — 우리가 통제할 수 있는 것과 없는 것</span>
