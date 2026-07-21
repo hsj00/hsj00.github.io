@@ -555,6 +555,29 @@ toc:
   <p>지수의 분모에 붙은 <strong>2</strong>가 §03의 핵심 개념과 직결된다. 전자는 <strong>밴드갭 전체를 뛰어넘을 필요가 없다.</strong> 확률의 기준선은 E<sub>F</sub>이고, 진성 Si에서 E<sub>F</sub>는 <strong>갭 한가운데</strong>에 있으므로 전도대까지의 거리는 E<sub>g</sub>가 아니라 <strong>E<sub>g</sub>/2 = 0.56 eV</strong>다. 이 절반 인수를 놓치면 exp(−43.3) = 1.5×10⁻¹⁹로 <strong>10⁹배를 틀리게 된다.</strong></p>
 </div>
 
+<h3>그런데 전자는 실제로 E<sub>g</sub>를 뛰어넘는다 — 역설의 해소</h3>
+
+<p>위 설명을 곱씹으면 이상한 점이 남는다. 열적 여기는 <strong>가전자대의 전자가 전도대로 올라오는 사건</strong>이고, 그 에너지 비용은 분명히 <strong>E<sub>g</sub> 전체</strong>(1.12 eV)다. 그런데 왜 n<sub>i</sub>의 지수에는 절반(E<sub>g</sub>/2)만 들어가는가? “확률의 기준선이 E<sub>F</sub>라서”라는 답은 회계적으로 맞지만, <strong>물리적으로 비용이 어디로 갔는지</strong>는 말해주지 않는다.</p>
+
+<p>답은 <strong>쌍 생성(pair generation)</strong>에 있다. 전자 하나가 전도대로 올라오면 가전자대에는 <strong>반드시 정공 하나가 남는다</strong> — 여기(excitation)는 언제나 전자–정공 <strong>쌍 단위의 사건</strong>이다. 비용 E<sub>g</sub>는 이 쌍 전체에 대한 값이므로, 볼츠만 인자는 쌍의 곱에 붙는다.</p>
+
+<div style="background:var(--panel);padding:14px 20px;border-left:3px solid var(--accent);margin:20px 0;font-family:'IBM Plex Mono',monospace;font-size:15px;text-align:center">
+  n · p &#8733; exp(&#8722;E_g/kT) &nbsp;&nbsp;&#8592; 비용 E_g는 여기 온전히 있다
+</div>
+
+<p>진성 반도체에서는 전자와 정공이 쌍으로만 생기므로 <strong>n = p</strong>다. 그러면:</p>
+
+<div style="background:var(--panel);padding:14px 20px;border-left:3px solid var(--accent);margin:20px 0;font-family:'IBM Plex Mono',monospace;font-size:15px;text-align:center">
+  n_i = &#8730;(n·p) &#8733; exp(&#8722;E_g/2kT)
+</div>
+
+<p><strong>절반은 “비용이 반이라서”가 아니라, 비용 E<sub>g</sub>를 전자와 정공 두 입자가 나눠 갖기 때문에 생긴다</strong> — 제곱근이 지수를 반으로 가른 것이다. 실제로 §04 표의 두 숫자가 이 관계를 그대로 보여준다: exp(−E<sub>g</sub>/kT) = 1.5×10⁻¹⁹의 제곱근이 정확히 exp(−E<sub>g</sub>/2kT) = 3.9×10⁻¹⁰이다. 그리고 “E<sub>F</sub>가 갭 한가운데 앉는다”(§03)는 것은 바로 이 <strong>반씩 나눠 갖기의 회계적 표현</strong>이다 — 두 관점은 같은 물리의 두 얼굴이다.</p>
+
+<div class="dp-field">
+  <span class="dp-tag">현장 포인트 — 질량작용 법칙의 실전 사용법</span>
+  <p>위의 n·p ∝ exp(−E<sub>g</sub>/kT)를 정리하면 그림 4 캡션에서 예고한 <strong>질량작용의 법칙 n·p = n<sub>i</sub>²</strong>이 된다. 이 법칙의 힘은 <strong>도핑을 해도 열평형이면 그대로 성립</strong>한다는 데 있다. 그래서 소수 캐리어 농도가 즉시 나온다: p형 Si(N<sub>A</sub> = 10¹⁷)에서 정공은 ≈10¹⁷, 전자는 n = n<sub>i</sub>²/N<sub>A</sub> ≈ <strong>9×10² cm⁻³</strong>. 다수 캐리어를 10⁷배 늘리면 소수 캐리어는 10⁷배 줄어든다 — 곱이 고정이라서다. 이 소수 캐리어 농도가 <strong>pn 접합의 누설 전류·확산 전류를 지배</strong>하므로(W2), 접합 소자의 온도 민감성은 결국 n<sub>i</sub>²(∝ exp(−E<sub>g</sub>/kT))의 온도 민감성이다 — DRAM 리텐션이 온도에 지수적으로 나빠지는 뿌리가 여기다.</p>
+</div>
+
 <p>이 농도가 얼마나 희박한지 감을 잡아 두자. Si 원자 밀도가 5×10²² cm⁻³이므로, <strong>원자 약 7조(7×10¹²)개당 자유전자 1개</strong>인 셈이다. 금속(~10²² cm⁻³)과는 <strong>10¹² 배</strong> 차이다. <strong>진성 실리콘은 사실상 부도체다.</strong> 실리콘이 반도체로 쓰이는 이유는 진성 상태 때문이 아니라 <strong>도핑으로 캐리어를 넣고 뺄 수 있기 때문</strong>이다.</p>
 
 <h3>지수의 폭력성 — 온도가 10 K 오르면 2배가 된다</h3>
@@ -618,7 +641,7 @@ toc:
   <text x="634" y="40" font-size="10.5" fill="#8a4b12" font-weight="700" text-anchor="end">Mo ALD 650 °C</text>
   <text x="634" y="72" font-size="10" fill="#8a4b12" text-anchor="end">n_i ≈ 3×10¹⁷</text>
 </svg>
-<p class="dp-cap"><b>그림 4b.</b> 온도에 따른 진성 캐리어 농도. 세로축이 로그이므로 <strong>직선처럼 보이는 기울기가 실제로는 폭발적 증가</strong>다. 세 가지를 읽을 것.<br>
+<p class="dp-cap"><b>그림 5.</b> 온도에 따른 진성 캐리어 농도. 세로축이 로그이므로 <strong>직선처럼 보이는 기울기가 실제로는 폭발적 증가</strong>다. 세 가지를 읽을 것.<br>
 <b>(1)</b> Si는 <strong>300 K에서 10 K만 올라도 n<sub>i</sub>가 2.2배</strong>가 되고, 400 K에서는 <strong>530배</strong>가 된다.<br>
 <b>(2)</b> n<sub>i</sub>가 도핑 농도(10¹⁵)를 넘어서면 <strong>도핑이 무의미해지고 소자가 동작을 멈춘다.</strong> Si는 566 K(293 °C)에서 그 지점에 닿지만, <strong>Ge는 389 K(116 °C)</strong>에 불과하다. <strong>Ge를 논리 소자 채널로 쓰지 않는 이유</strong>가 이 한 장에 들어 있다. 반대로 밴드갭이 큰 SiC·GaN이 고온·고전압용인 이유도 같다.<br>
 <b>(3)</b> 우리 공정 온도(Mo ALD 600–650 °C)에서 Si의 n<sub>i</sub>는 <strong>~3×10¹⁷ cm⁻³</strong>까지 오른다. 공정 중이라 소자가 동작하는 것은 아니지만, <strong>열예산이 왜 통합의 제약 조건인지</strong>를 보여준다.<br>
@@ -722,7 +745,7 @@ toc:
   <text x="365" y="290" font-size="11.5" fill="#4d565e" text-anchor="middle">&#934;_S = &#967; + (E_C &#8722; E_F) &#8212; 도핑을 바꾸면 E_F가 움직이므로 &#934;_S도 변한다 (&#967;는 불변)</text>
   <text x="365" y="326" font-size="10.5" fill="#4d565e" text-anchor="middle">모든 세로 길이는 동일한 축척(34 px = 1 eV)으로 그려져 있다 &#8212; 좌측 눈금 참조</text>
 </svg>
-<p class="dp-cap"><b>그림 5.</b> 일함수와 전자친화도의 정의. <strong>두 물질이 하나의 에너지 축척(34 px = 1 eV)을 공유</strong>하도록 그렸다 — 그래야 공통 기준선인 E<sub>vac</sub>가 의미를 가진다. Si의 밴드갭(1.12 eV)이 χ(4.05 eV)나 Φ(4.3–4.6 eV)에 비해 얼마나 작은지 눈으로 확인할 것. 두 물질을 접촉시키면 E<sub>F</sub>가 하나로 맞춰지고, 그 과정에서 <strong>일함수 차이(Φ<sub>M</sub> − Φ<sub>S</sub> ≈ 0.3 eV)만큼 밴드가 휘어진다</strong>. 이 차이가 곧 컨택의 장벽 높이를 결정한다(W2).</p>
+<p class="dp-cap"><b>그림 6.</b> 일함수와 전자친화도의 정의. <strong>두 물질이 하나의 에너지 축척(34 px = 1 eV)을 공유</strong>하도록 그렸다 — 그래야 공통 기준선인 E<sub>vac</sub>가 의미를 가진다. Si의 밴드갭(1.12 eV)이 χ(4.05 eV)나 Φ(4.3–4.6 eV)에 비해 얼마나 작은지 눈으로 확인할 것. 두 물질을 접촉시키면 E<sub>F</sub>가 하나로 맞춰지고, 그 과정에서 <strong>일함수 차이(Φ<sub>M</sub> − Φ<sub>S</sub> ≈ 0.3 eV)만큼 밴드가 휘어진다</strong>. 이 차이가 곧 컨택의 장벽 높이를 결정한다(W2).</p>
 </div>
 
 <div class="dp-tw">
@@ -821,7 +844,7 @@ toc:
   <line x1="500" y1="92" x2="500" y2="115" stroke="#4d565e" stroke-width="1.2"/>
   <text x="506" y="108" font-size="10.5" fill="#4d565e">&#967;</text>
 </svg>
-<p class="dp-cap"><b>그림 6a.</b> 계면 쌍극자의 작용. 쌍극자 층을 지나며 <strong>진공 준위가 Δ만큼 점프</strong>하므로, 유전체 쪽에서 본 금속의 일함수가 <strong>Φ<sub>M</sub> − Δ</strong>가 된다. <strong>금속은 그대로인데 유효값만 바뀐 것이다.</strong> E<sub>F</sub>는 평형이므로 스택 전체를 관통해 여전히 평평하다는 점에 주의(§03).</p>
+<p class="dp-cap"><b>그림 7.</b> 계면 쌍극자의 작용. 쌍극자 층을 지나며 <strong>진공 준위가 Δ만큼 점프</strong>하므로, 유전체 쪽에서 본 금속의 일함수가 <strong>Φ<sub>M</sub> − Δ</strong>가 된다. <strong>금속은 그대로인데 유효값만 바뀐 것이다.</strong> E<sub>F</sub>는 평형이므로 스택 전체를 관통해 여전히 평평하다는 점에 주의(§03).</p>
 </div>
 
 <h3>쌍극자는 왜 생기나 — 그리고 어떻게 이용하나</h3>
@@ -908,7 +931,7 @@ toc:
   <text x="428" y="132" font-size="9.5" fill="#4d565e">밀도 3.6%로 감소</text>
   <text x="428" y="144" font-size="9" fill="#0d6e66">→ MIS 컨택의 원리</text>
 </svg>
-<p class="dp-cap"><b>그림 6c.</b> MIGS의 형성. 금속 파동함수가 계면을 넘어 유전체 갭 안으로 <strong>지수적으로 감쇠하며 침투</strong>하고(감쇠 길이 L ~ 0.3 nm), 그 꼬리가 갭 안에 전자 상태를 만든다. 이 상태들이 전하 저수지가 되어 E<sub>F</sub>를 <strong>전하 중성 준위(CNL)</strong>에 붙잡는다. 결함이 아니라 <strong>금속–유전체 접촉이라는 사실 자체의 결과</strong>이므로 공정으로 제거할 수 없다.</p>
+<p class="dp-cap"><b>그림 8.</b> MIGS의 형성. 금속 파동함수가 계면을 넘어 유전체 갭 안으로 <strong>지수적으로 감쇠하며 침투</strong>하고(감쇠 길이 L ~ 0.3 nm), 그 꼬리가 갭 안에 전자 상태를 만든다. 이 상태들이 전하 저수지가 되어 E<sub>F</sub>를 <strong>전하 중성 준위(CNL)</strong>에 붙잡는다. 결함이 아니라 <strong>금속–유전체 접촉이라는 사실 자체의 결과</strong>이므로 공정으로 제거할 수 없다.</p>
 </div>
 
 <p>MIGS의 세 가지 성질이 pinning의 성격을 결정한다.</p>
@@ -1018,7 +1041,7 @@ toc:
   <text x="112" y="60" font-size="11.5" fill="#b8443c" font-weight="700">&#934;_M을 4.1 &#8594; 5.65 eV (1.55 eV) 바꾸면</text>
   <text x="112" y="75" font-size="11" fill="#b8443c">이상: 1.55 eV 이동 / SiO&#8322;: 1.38 / <tspan font-weight="700">HfO&#8322;: 0.82만 이동</tspan></text>
 </svg>
-<p class="dp-cap"><b>그림 6b.</b> 두 현상의 분리. <strong>기울기가 1보다 작으면 pinning</strong>, <strong>선이 통째로 평행이동하면 쌍극자</strong>다. 캡핑층을 넣으면 선이 아래로 내려갈 뿐 <strong>기울기는 그대로</strong>다 — <strong>쌍극자는 pinning을 고치지 못한다.</strong> 반대로 계면 결함(V<sub>O</sub>, Cl)을 줄이면 <strong>기울기가 올라가지만</strong> 오프셋은 바뀌지 않는다. <strong>진단이 다르면 처방도 달라야 한다.</strong></p>
+<p class="dp-cap"><b>그림 9.</b> 두 현상의 분리. <strong>기울기가 1보다 작으면 pinning</strong>, <strong>선이 통째로 평행이동하면 쌍극자</strong>다. 캡핑층을 넣으면 선이 아래로 내려갈 뿐 <strong>기울기는 그대로</strong>다 — <strong>쌍극자는 pinning을 고치지 못한다.</strong> 반대로 계면 결함(V<sub>O</sub>, Cl)을 줄이면 <strong>기울기가 올라가지만</strong> 오프셋은 바뀌지 않는다. <strong>진단이 다르면 처방도 달라야 한다.</strong></p>
 </div>
 
 <h3>EWF는 어떻게 측정하는가</h3>
@@ -1144,7 +1167,7 @@ toc:
   <text x="576" y="78" font-size="10" fill="#2f6fd0">129 nm</text>
   <text x="500" y="228" font-size="11" fill="#0d6e66" font-weight="700">게이트가 채널을 제어할 수 있는 깊이</text>
 </svg>
-<p class="dp-cap"><b>그림 7b.</b> 표면에서 전기장이 살아남는 깊이. Cu의 Thomas–Fermi 스크리닝 길이는 <strong>0.55 Å = 0.055 nm</strong>로, <strong>원자 간격(약 0.25 nm)보다도 짧다.</strong> 전기장이 원자 한 층도 못 들어가고 완전히 차단된다는 뜻이다. 반면 Si는 도핑이 낮아 디바이 길이가 <strong>10 nm 스케일</strong>이라, <strong>게이트 전기장이 채널 깊숙이 들어가 캐리어를 만들었다 없앴다 할 수 있다.</strong><br>
+<p class="dp-cap"><b>그림 10.</b> 표면에서 전기장이 살아남는 깊이. Cu의 Thomas–Fermi 스크리닝 길이는 <strong>0.55 Å = 0.055 nm</strong>로, <strong>원자 간격(약 0.25 nm)보다도 짧다.</strong> 전기장이 원자 한 층도 못 들어가고 완전히 차단된다는 뜻이다. 반면 Si는 도핑이 낮아 디바이 길이가 <strong>10 nm 스케일</strong>이라, <strong>게이트 전기장이 채널 깊숙이 들어가 캐리어를 만들었다 없앴다 할 수 있다.</strong><br>
 <b>그래서 금속으로는 트랜지스터를 만들 수 없다.</b> “n을 못 바꾼다”는 것은 공정 기술의 한계가 아니라 <strong>물리</strong>다. 이 그림은 W3의 MOS 커패시터(공핍층 형성)로 그대로 이어진다.</p>
 </div>
 
@@ -1226,7 +1249,7 @@ toc:
   <line x1="240" y1="31" x2="240" y2="39" stroke="#4d565e" stroke-width="1"/>
   <text x="157" y="28" font-size="11" fill="#4d565e" text-anchor="middle" font-family="monospace">평균자유행정 λ</text>
 </svg>
-<p class="dp-cap"><b>그림 6.</b> 벌크 금속에서는 포논·불순물 산란만 고려하면 되지만, 박막에서는 <strong>표면과 결정립계</strong>가 추가 산란원이 된다. 두께가 평균자유행정 λ 수준으로 얇아지면 표면 산란이 전체 저항을 지배한다.</p>
+<p class="dp-cap"><b>그림 11.</b> 벌크 금속에서는 포논·불순물 산란만 고려하면 되지만, 박막에서는 <strong>표면과 결정립계</strong>가 추가 산란원이 된다. 두께가 평균자유행정 λ 수준으로 얇아지면 표면 산란이 전체 저항을 지배한다.</p>
 </div>
 
 <!-- ============================================================ -->
@@ -1328,7 +1351,7 @@ toc:
     <text x="472" y="131">W &#8212; 배리어 2 nm 포함 (유효값)</text>
   </g>
 </svg>
-<p class="dp-cap"><b>그림 7.</b> FS + MS 모델로 계산한 두께 의존 비저항. 실선은 <strong>도체 단면만</strong>, 점선은 <strong>배리어를 포함한 배선 유효 비저항</strong>이다. 세 가지를 읽어낼 것.<br>
+<p class="dp-cap"><b>그림 12.</b> FS + MS 모델로 계산한 두께 의존 비저항. 실선은 <strong>도체 단면만</strong>, 점선은 <strong>배리어를 포함한 배선 유효 비저항</strong>이다. 세 가지를 읽어낼 것.<br>
 <b>(1) Mo는 W를 전 두께에서 이긴다.</b> 도체 단면만 비교해도 Mo가 아래에 있고(20 nm: Mo 8.8 vs W 10.4), W에 필요한 TiN 배리어·누클레이션층까지 넣으면 격차가 <strong>20 nm에서 2.1배, 10 nm에서 4.9배</strong>로 벌어진다. <strong>교차점이 아예 없다</strong> — 이것이 3D NAND 워드라인이 W에서 Mo로 가는 직접적인 근거다.<br>
 <b>(2) 반면 Cu와의 관계는 정반대로 오해되기 쉽다.</b> <em>같은 두께의 도체 단면만 비교하면 Cu는 5 nm에서도 여전히 Mo보다 저항이 낮다</em>(10 nm: Cu 9.6 vs Mo 12.3 μΩ·cm). λ가 긴 Cu가 더 가파르게 나빠지는 것은 맞지만, 벌크에서 3배나 앞서 있었기 때문에 <strong>그것만으로는 역전되지 않는다</strong>. 역전은 <strong>배리어가 도체 단면적을 잠식</strong>해야 일어난다(○, ≈24 nm). Gall이 Mo를 "Cu보다 우수"가 아니라 <strong>"Cu와 대등"</strong>이라고 결론지은 것과 정확히 일치한다.<sup><a href="#fn5">5</a></sup><br>
 <b>(3) 결국 ρ₀λ는 절반의 답이다.</b> 나머지 절반은 <strong>"배리어 없이 붙일 수 있는가"</strong>이며, 그건 재료 상수가 아니라 <strong>우리가 개발하는 ALD 공정이 결정한다</strong>.</p>
@@ -1337,7 +1360,7 @@ toc:
 
 <div class="dp-field">
   <span class="dp-tag">현장 포인트 — 3D NAND 워드라인이 W에서 Mo로 가는 이유</span>
-  <p>이유는 세 가지가 겹치며, <strong>Cu 논쟁과 달리 여기서는 Mo가 W를 조건 없이 이긴다</strong>(그림 7).</p>
+  <p>이유는 세 가지가 겹치며, <strong>Cu 논쟁과 달리 여기서는 Mo가 W를 조건 없이 이긴다</strong>(그림 12).</p>
   <ol style="margin-bottom:14px">
     <li><strong>ρ₀λ</strong> — 계산 기준 Mo가 W보다 27%, 측정 기준 40% 작다.<sup><a href="#fn5">5</a>,<a href="#fn6">6</a></sup> 도체 단면만 비교해도 20 nm에서 Mo 8.8 vs W 10.4 μΩ·cm로 Mo가 앞선다.</li>
     <li><strong>배리어/누클레이션 층</strong> — W CVD는 TiN 배리어와 SiH₄/B₂H₆ 누클레이션층이 필요하고, 이 고저항 층이 얇아진 워드라인의 <strong>도체 단면적을 잡아먹는다</strong>. 이 효과까지 넣으면 격차가 <strong>20 nm에서 2.1배, 10 nm에서 4.9배</strong>로 벌어진다. Mo는 배리어리스 통합 가능성이 있어 같은 물리적 두께에서 유효 단면적을 그대로 지킨다.</li>
@@ -1432,7 +1455,7 @@ toc:
 <div class="dp-q">
 <p>3D NAND 워드라인을 W에서 Mo로 바꾸면, ρ₀λ 이득 외에 <strong>추가로</strong> 얻는 저항 이득이 있다. 무엇인가?</p>
 <details><summary>정답 확인</summary>
-<p><strong>배리어/누클레이션 층의 제거 또는 축소</strong>다. W CVD는 TiN 배리어와 SiH₄/B₂H₆ 기반 누클레이션층이 필요한데, 이 고저항 층들이 얇아진 워드라인의 단면적을 잠식한다. Mo는 배리어리스 통합 가능성이 있어 <strong>같은 물리적 두께에서 도체 유효 단면적이 커진다</strong>. 정량적으로는 사방 2 nm 배리어 가정 시 W의 유효 비저항이 Mo 대비 <strong>20 nm에서 2.1배, 10 nm에서 4.9배</strong>가 된다(그림 7). 저항은 비저항뿐 아니라 <strong>단면적의 함수</strong>임을 기억할 것.<br><br>덧붙여 <strong>Cu와 혼동하지 말 것</strong> — Mo는 Cu에 대해서는 배리어를 넣어야 겨우 역전하지만(≈24 nm), <strong>W에 대해서는 배리어 없이도 전 두께에서 이긴다</strong>. 3D NAND 워드라인의 상대는 Cu가 아니라 W다.</p>
+<p><strong>배리어/누클레이션 층의 제거 또는 축소</strong>다. W CVD는 TiN 배리어와 SiH₄/B₂H₆ 기반 누클레이션층이 필요한데, 이 고저항 층들이 얇아진 워드라인의 단면적을 잠식한다. Mo는 배리어리스 통합 가능성이 있어 <strong>같은 물리적 두께에서 도체 유효 단면적이 커진다</strong>. 정량적으로는 사방 2 nm 배리어 가정 시 W의 유효 비저항이 Mo 대비 <strong>20 nm에서 2.1배, 10 nm에서 4.9배</strong>가 된다(그림 12). 저항은 비저항뿐 아니라 <strong>단면적의 함수</strong>임을 기억할 것.<br><br>덧붙여 <strong>Cu와 혼동하지 말 것</strong> — Mo는 Cu에 대해서는 배리어를 넣어야 겨우 역전하지만(≈24 nm), <strong>W에 대해서는 배리어 없이도 전 두께에서 이긴다</strong>. 3D NAND 워드라인의 상대는 Cu가 아니라 W다.</p>
 </details>
 </div>
 
@@ -1617,7 +1640,7 @@ $$ \text{EWF} \;=\; \Phi_M \;-\; \Delta $$
 <div class="dp-eq">
 $$ \text{EWF} \;=\; \underbrace{S \cdot \Phi_M + (1-S)\,\Phi_{\text{CNL}}}_{\text{pinning: 기울기 } S} \;-\; \underbrace{\Delta}_{\text{쌍극자: 평행이동}} $$
 </div>
-<p>Φ<sub>M</sub>에 대한 <strong>기울기가 S</strong>(pinning), <strong>절편의 이동이 Δ</strong>(쌍극자)다. 그림 6b의 그래프가 정확히 이 식을 그린 것이며, <strong>실험적으로 두 효과를 분리하는 근거</strong>가 된다. 캡핑층을 넣어도 S는 변하지 않고, 결함을 줄여도 Δ는 변하지 않는다.</p>
+<p>Φ<sub>M</sub>에 대한 <strong>기울기가 S</strong>(pinning), <strong>절편의 이동이 Δ</strong>(쌍극자)다. 그림 9의 그래프가 정확히 이 식을 그린 것이며, <strong>실험적으로 두 효과를 분리하는 근거</strong>가 된다. 캡핑층을 넣어도 S는 변하지 않고, 결함을 줄여도 Δ는 변하지 않는다.</p>
 
 <p>W2에서 상세히 다룬다.</p>
 
