@@ -1627,7 +1627,7 @@ $$ S \;\approx\; \frac{1}{1 + 0.1\,(\varepsilon_{\infty} - 1)^{2}} $$
 </div>
 <p>ε<sub>∞</sub>가 클수록 금속 파동함수의 침투(MIGS)가 강해져 S가 작아진다. 이 식으로 계산한 값이 §06의 표다 — SiO₂ 0.89, HfO₂ 0.53, Si 0.08. <strong>“high-k로 간다”는 것은 곧 “pinning을 각오한다”는 뜻</strong>임을 정량적으로 보여준다.</p>
 
-<h3>S3b. 계면 쌍극자와 실효 일함수</h3>
+<h3>S4. 계면 쌍극자와 실효 일함수</h3>
 <p>계면 쌍극자는 면전하 밀도 ±σ가 거리 d만큼 떨어져 있는 전하 이중층으로 모형화된다. 이 층을 통과할 때의 <strong>전위 점프</strong>는 다음과 같다.</p>
 <div class="dp-eq">
 $$ \Delta \;=\; \frac{q\,\sigma\,d}{\varepsilon_0 \varepsilon_{\text{int}}} $$
@@ -1644,7 +1644,7 @@ $$ \text{EWF} \;=\; \underbrace{S \cdot \Phi_M + (1-S)\,\Phi_{\text{CNL}}}_{\tex
 
 <p>W2에서 상세히 다룬다.</p>
 
-<h3>S4. 드리프트 전류와 마티센 법칙</h3>
+<h3>S5. 드리프트 전류와 마티센 법칙</h3>
 <div class="dp-eq">
 $$ J = q n \mu E, \qquad \rho = \frac{1}{q n \mu}, \qquad \mu = \frac{q \tau}{m^*} $$
 </div>
@@ -1654,7 +1654,7 @@ $$ \frac{1}{\mu_{tot}} = \frac{1}{\mu_{phonon}} + \frac{1}{\mu_{impurity}} + \fr
 </div>
 <p>저항으로 표현하면 ρ<sub>tot</sub> = ρ<sub>phonon</sub> + ρ<sub>imp</sub> + ρ<sub>GB</sub> + ρ<sub>surf</sub>. 가장 큰 항이 전체를 지배하므로, <strong>지배 산란원을 먼저 식별</strong>한 뒤 공정을 손봐야 한다.</p>
 
-<h3>S5. 박막 크기 효과 — Fuchs–Sondheimer 근사</h3>
+<h3>S6. 박막 크기 효과 — Fuchs–Sondheimer 근사</h3>
 <p>두께 d가 평균자유행정 λ보다 충분히 클 때(d &gt; λ), FS 모델의 1차 근사는 다음과 같다.</p>
 <div class="dp-eq">
 $$ \frac{\rho_{film}}{\rho_0} \approx 1 + \frac{3}{8}(1-p)\frac{\lambda}{d} $$
