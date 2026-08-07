@@ -1,7 +1,7 @@
 ---
 title: "Device Physics for Metal ALD · W2 — 두 물질을 붙이면 밴드가 휜다 (2) pn 접합"
 layout: post
-date: 2026-08-07 11:00:00+0900
+date: 2026-08-07 09:30:00+0900
 description: "밴드 벤딩의 교과서적 사례인 pn 접합을 본다. 내장 전위의 세 가지 얼굴, 도핑이 정하는 공핍폭, 그리고 공핍층을 커패시터로 읽는 C-V 프로파일링까지 정리한다."
 tags:
     - Device physics

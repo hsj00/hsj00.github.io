@@ -1,7 +1,7 @@
 ---
 title: "Device Physics for Metal ALD · W2 — 두 물질을 붙이면 밴드가 휜다 (1) 접촉과 밴드 벤딩"
 layout: post
-date: 2026-08-07 10:00:00+0900
+date: 2026-08-07 09:00:00+0900
 description: "일함수가 다른 두 물질을 붙였을 때 전자가 어디로 흐르고, 어느 쪽이 어떤 부호로 대전되며, 왜 진공 준위가 계단 모양으로 점프하는지를 정리한다."
 tags:
     - Device physics

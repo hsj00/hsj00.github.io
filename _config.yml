@@ -159,6 +159,11 @@ collections:
 # Jekyll settings
 # -----------------------------------------------------------------------------
 
+# Build in KST so post dates are interpreted and displayed in local time.
+# Without this the CI runner builds in UTC, and a post written before 09:00 KST
+# would be filed under the previous day.
+timezone: Asia/Seoul
+
 # Markdown and syntax highlight
 markdown: kramdown
 highlighter: rouge
