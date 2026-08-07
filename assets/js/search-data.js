@@ -37,7 +37,40 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "post-device-physics-for-metal-ald-w1-전자는-어디에-있고-얼마나-있고-얼마나-잘-움직이는가",
+        },{id: "post-device-physics-for-metal-ald-w2-두-물질을-붙이면-밴드가-휜다-3-쇼트키-장벽과-오믹-컨택",
+        
+          title: "Device Physics for Metal ALD · W2 — 두 물질을 붙이면 밴드가 휜다...",
+        
+        description: "같은 금속과 같은 반도체인데 왜 어떤 것은 다이오드가 되고 어떤 것은 저항이 되는가. 세 가지 전송 방식과 컨택 비저항을 정리하고, 컨택의 레버가 왜 금속이 아니라 도핑인지를 본다.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/w2c-schottky-ohmic/";
+          
+        },
+      },{id: "post-device-physics-for-metal-ald-w2-두-물질을-붙이면-밴드가-휜다-2-pn-접합",
+        
+          title: "Device Physics for Metal ALD · W2 — 두 물질을 붙이면 밴드가 휜다...",
+        
+        description: "밴드 벤딩의 교과서적 사례인 pn 접합을 본다. 내장 전위의 세 가지 얼굴, 도핑이 정하는 공핍폭, 그리고 공핍층을 커패시터로 읽는 C-V 프로파일링까지 정리한다.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/w2b-pn-junction/";
+          
+        },
+      },{id: "post-device-physics-for-metal-ald-w2-두-물질을-붙이면-밴드가-휜다-1-접촉과-밴드-벤딩",
+        
+          title: "Device Physics for Metal ALD · W2 — 두 물질을 붙이면 밴드가 휜다...",
+        
+        description: "일함수가 다른 두 물질을 붙였을 때 전자가 어디로 흐르고, 어느 쪽이 어떤 부호로 대전되며, 왜 진공 준위가 계단 모양으로 점프하는지를 정리한다.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2026/w2a-band-bending/";
+          
+        },
+      },{id: "post-device-physics-for-metal-ald-w1-전자는-어디에-있고-얼마나-있고-얼마나-잘-움직이는가",
         
           title: "Device Physics for Metal ALD · W1 — 전자는 어디에 있고, 얼마나 있고,...",
         
