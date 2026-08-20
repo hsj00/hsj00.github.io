@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>비즈니스 영어 레벨 테스트 결과 보고서</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Malgun Gothic', 'Apple SD Gothic Neo', sans-serif; background:#f0f4f8; color:#2d3748; line-height:1.7; }
+.page { max-width:960px; margin:0 auto; padding:40px 24px; }
+.cover { background:#1e3a5f; color:white; border-radius:16px; padding:50px 48px; margin-bottom:24px; }
+.cover-label { font-size:11px; letter-spacing:3px; text-transform:uppercase; color:#93c5fd; margin-bottom:12px; }
+.cover-title { font-size:34px; font-weight:800; line-height:1.2; margin-bottom:6px; }
+.cover-subtitle { font-size:16px; color:#bfdbfe; margin-bottom:36px; }
+.cover-meta { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; background:rgba(255,255,255,0.1); border-radius:10px; padding:20px; }
+.cover-meta-item label { font-size:10px; letter-spacing:1px; color:#93c5fd; display:block; margin-bottom:4px; text-transform:uppercase; }
+.cover-meta-item span { font-size:14px; font-weight:600; }
+.card { background:white; border-radius:12px; padding:28px; margin-bottom:20px; border:1px solid #e2e8f0; }
+.card-title { font-size:16px; font-weight:700; color:#1e3a5f; margin-bottom:20px; padding-bottom:10px; border-bottom:2px solid #e2e8f0; }
+.score-hero { display:flex; align-items:center; gap:32px; margin-bottom:24px; }
+.score-circle { width:120px; height:120px; border-radius:50%; background:#1e3a5f; display:flex; flex-direction:column; align-items:center; justify-content:center; flex-shrink:0; }
+.score-circle .num { font-size:36px; font-weight:800; color:white; line-height:1; }
+.score-circle .denom { font-size:14px; color:#93c5fd; }
+.level-badge { display:inline-block; background:#dbeafe; color:#1e40af; padding:3px 12px; border-radius:20px; font-size:12px; font-weight:700; margin-bottom:8px; }
+.score-info h3 { font-size:22px; font-weight:700; color:#1e3a5f; margin-bottom:8px; }
+.score-info p { color:#4a5568; font-size:13px; line-height:1.7; }
+.part-scores { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.psi { background:#f8fafc; border-radius:8px; padding:16px; border:1px solid #e2e8f0; }
+.psi .pname { font-size:12px; color:#718096; margin-bottom:4px; font-weight:500; }
+.psi .pnum { font-size:20px; font-weight:700; color:#1e3a5f; margin-bottom:8px; }
+.pbar { background:#e2e8f0; border-radius:4px; height:7px; overflow:hidden; }
+.pf { height:100%; border-radius:4px; }
+.sh { display:flex; align-items:center; gap:10px; margin-bottom:16px; padding-bottom:10px; border-bottom:2px solid #e2e8f0; }
+.snum { width:30px; height:30px; background:#2563eb; color:white; border-radius:50%; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:13px; flex-shrink:0; }
+.stitle { font-size:16px; font-weight:700; color:#1e3a5f; }
+.sscore { margin-left:auto; font-size:14px; font-weight:700; color:#2563eb; }
+.tbl { width:100%; border-collapse:collapse; font-size:13px; margin-bottom:14px; }
+.tbl th { background:#1e3a5f; color:white; padding:9px 10px; text-align:left; font-weight:600; }
+.tbl td { padding:9px 10px; border-bottom:1px solid #e2e8f0; vertical-align:top; }
+.tbl tr:nth-child(even) td { background:#f8fafc; }
+.ok { color:#22c55e; font-weight:700; }
+.ng { color:#ef4444; font-weight:700; }
+.warn { color:#f59e0b; font-weight:700; }
+.err-box { background:#fff7ed; border:1px solid #fed7aa; border-left:4px solid #f59e0b; border-radius:8px; padding:14px 18px; margin-top:4px; }
+.err-box strong { color:#92400e; font-size:14px; display:block; margin-bottom:6px; }
+.err-box span { font-size:13px; color:#78350f; line-height:1.8; }
+.ok-box { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:8px; padding:14px 18px; margin-top:4px; }
+.wt { font-weight:700; color:#1e3a5f; font-size:14px; margin-bottom:10px; padding:7px 12px; background:#eff6ff; border-radius:6px; }
+.lbl { font-size:11px; font-weight:700; letter-spacing:1px; margin-bottom:5px; margin-top:10px; }
+.orig { background:#fef2f2; border:1px solid #fecaca; border-radius:6px; padding:12px 14px; margin-bottom:6px; font-size:13px; line-height:1.8; }
+.corr { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:6px; padding:12px 14px; margin-bottom:10px; font-size:13px; line-height:1.8; }
+del { color:#dc2626; }
+ins { color:#16a34a; text-decoration:none; font-weight:600; }
+.two-col { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+.str-box { background:#f0fdf4; border:1px solid #bbf7d0; border-radius:10px; padding:18px; }
+.imp-box { background:#fff7ed; border:1px solid #fed7aa; border-radius:10px; padding:18px; }
+.bt { font-weight:700; font-size:14px; margin-bottom:12px; }
+.str-box .bt { color:#166534; }
+.imp-box .bt { color:#92400e; }
+.cl { list-style:none; padding:0; }
+.cl li { font-size:13px; padding:5px 0; border-bottom:1px solid rgba(0,0,0,0.06); display:flex; align-items:flex-start; gap:8px; }
+.cl li:last-child { border-bottom:none; }
+.str-box .cl li::before { content:"✓"; color:#22c55e; font-weight:700; flex-shrink:0; }
+.imp-box .cl li::before { content:"→"; color:#f59e0b; font-weight:700; flex-shrink:0; }
+.cur-box { background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:18px; margin-bottom:14px; }
+.cur-month { font-weight:700; color:#1e40af; font-size:15px; margin-bottom:10px; }
+.cur-tags { display:flex; flex-wrap:wrap; gap:6px; }
+.tag { background:#dbeafe; color:#1e40af; padding:3px 10px; border-radius:20px; font-size:12px; }
+.footer { text-align:center; padding:24px; color:#718096; font-size:12px; border-top:1px solid #e2e8f0; margin-top:32px; }
+.ws { margin-bottom:24px; }
+</style>
+</head>
+<body>
+<div class="page">
+
+<div class="cover">
+  <div class="cover-label">Business English Assessment Report</div>
+  <div class="cover-title">비즈니스 영어<br>레벨 테스트 결과 보고서</div>
+  <div class="cover-subtitle">Business English Level Test Report</div>
+  <div class="cover-meta">
+    <div class="cover-meta-item"><label>직무</label><span>반도체 공정 개발 엔지니어</span></div>
+    <div class="cover-meta-item"><label>테스트 일자</label><span>2026년 8월 20일</span></div>
+    <div class="cover-meta-item"><label>학습 목표</label><span>3개월 내 기술 미팅 주관</span></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">종합 결과 (Overall Score)</div>
+  <div class="score-hero">
+    <div class="score-circle"><div class="num">7.7</div><div class="denom">/ 10</div></div>
+    <div class="score-info">
+      <div class="level-badge">CEFR B1+</div>
+      <h3>중급 초입~중반 수준</h3>
+      <p>비즈니스 상황별 표현 감각이 우수하며, Collocation과 자유 발화 정확도를<br>집중 보완하면 <strong>3개월 내 B2 수준 달성이 충분히 가능합니다.</strong></p>
+    </div>
+  </div>
+  <div class="part-scores">
+    <div class="psi"><div class="pname">Part 1 · Vocabulary</div><div class="pnum">7 / 10</div><div class="pbar"><div class="pf" style="width:70%;background:#22c55e;"></div></div></div>
+    <div class="psi"><div class="pname">Part 2 · Grammar &amp; Collocation</div><div class="pnum">8 / 10</div><div class="pbar"><div class="pf" style="width:80%;background:#2563eb;"></div></div></div>
+    <div class="psi"><div class="pname">Part 3 · Situational Expressions</div><div class="pnum">10 / 10</div><div class="pbar"><div class="pf" style="width:100%;background:#7c3aed;"></div></div></div>
+    <div class="psi"><div class="pname">Part 4 · Free Writing</div><div class="pnum">5.8 / 10</div><div class="pbar"><div class="pf" style="width:58%;background:#f59e0b;"></div></div></div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sh"><div class="snum">1</div><div class="stitle">Part 1 — Vocabulary</div><div class="sscore">7 / 10</div></div>
+  <table class="tbl">
+    <thead><tr><th>문항</th><th>제출 답안</th><th>정답</th><th>결과</th><th>핵심 포인트</th></tr></thead>
+    <tbody>
+      <tr><td>Q1</td><td>(c) delaying</td><td>(b) behind schedule</td><td><span class="ng">✗</span></td><td>"behind schedule" — 지연 상태 표현의 정석</td></tr>
+      <tr><td>Q2</td><td>(a) summarize</td><td>(a) summarize</td><td><span class="ok">✓</span></td><td>—</td></tr>
+      <tr><td>Q3</td><td>(b) fix</td><td>(c) address the issue</td><td><span class="ng">✗</span></td><td>비즈니스에서는 "address"가 훨씬 프로페셔널</td></tr>
+      <tr><td>Q4</td><td>(b) push back</td><td>(b) push back</td><td><span class="ok">✓</span></td><td>—</td></tr>
+      <tr><td>Q5</td><td>(c) 둘 다</td><td>(c) 둘 다</td><td><span class="ok">✓</span></td><td>—</td></tr>
+      <tr><td>Q6</td><td>(c) volatile</td><td>(c) volatile</td><td><span class="ok">✓</span></td><td>—</td></tr>
+      <tr><td>Q7</td><td>(c) 둘 다</td><td>(c) 둘 다</td><td><span class="ok">✓</span></td><td>—</td></tr>
+      <tr><td>Q8</td><td>(c) bottleneck</td><td>(c) bottleneck</td><td><span class="ok">✓</span></td><td>—</td></tr>
+      <tr><td>Q9</td><td>(d) 없음</td><td>(a) doing → conducting</td><td><span class="warn">△</span></td><td>"conduct an analysis"가 자연스러운 collocation</td></tr>
+      <tr><td>Q10</td><td>(d) I mean to say</td><td>(c) What I mean is</td><td><span class="ng">✗</span></td><td>"What I mean is ~" — clarification 시 핵심 표현</td></tr>
+    </tbody>
+  </table>
+  <div class="err-box">
+    <strong>핵심 오류 패턴</strong>
+    <span><b>1. 격식체 vs. 캐주얼체 구분</b> — "fix" 보다 "address", "do" 보다 "conduct"처럼 비즈니스 미팅에서는 격식체 동사 선택이 중요합니다.<br><b>2. 상태 vs. 행위 표현</b> — "We are delaying"(의도적 지연) vs. "We are behind schedule"(지연 상태)의 뉘앙스 차이를 기억하세요.</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sh"><div class="snum">2</div><div class="stitle">Part 2 — Grammar &amp; Collocation</div><div class="sscore">8 / 10</div></div>
+  <table class="tbl">
+    <thead><tr><th>문항</th><th>제출 답안</th><th>정답</th><th>결과</th><th>핵심 포인트</th></tr></thead>
+    <tbody>
+      <tr><td>Q1</td><td>(a) on</td><td>(d) during / at / in</td><td><span class="ng">✗</span></td><td>회의에는 "on" 불가 — during/at/in 구분 필요</td></tr>
+      <tr><td>Q2</td><td>(b) hearing</td><td>(b) hearing</td><td><span class="ok">✓</span></td><td>look forward to + V-ing</td></tr>
+      <tr><td>Q3</td><td>(a) up to</td><td>(a) up to</td><td><span class="ok">✓</span></td><td>not up to expectations</td></tr>
+      <tr><td>Q4</td><td>(b) do a presentation</td><td>(b) do a presentation</td><td><span class="ok">✓</span></td><td>정확한 표현은 "give a presentation"</td></tr>
+      <tr><td>Q5</td><td>(b) take</td><td>(b) take</td><td><span class="ok">✓</span></td><td>take a closer look</td></tr>
+      <tr><td>Q6</td><td>(a) revert back</td><td>(a) revert back</td><td><span class="ok">✓</span></td><td>revert = go back → "back" 중복 표현</td></tr>
+      <tr><td>Q7</td><td>(b) show</td><td>(d) walk / guide</td><td><span class="ng">✗</span></td><td>"walk/guide me through" — show+through 불가</td></tr>
+      <tr><td>Q8</td><td>(c) Kindly do the needful</td><td>(c) Kindly do the needful</td><td><span class="ok">✓</span></td><td>인도식 영어 — 글로벌 비즈니스에서 피해야 할 표현</td></tr>
+      <tr><td>Q9</td><td>(b) due</td><td>(b) due</td><td><span class="ok">✓</span></td><td>due to + 명사</td></tr>
+      <tr><td>Q10</td><td>(b) discussed</td><td>(b) discussed</td><td><span class="ok">✓</span></td><td>과거 특정 시점 → 단순과거 사용</td></tr>
+    </tbody>
+  </table>
+  <div class="err-box">
+    <strong>핵심 오류 패턴</strong>
+    <span><b>1. 전치사 at / in / during 구분</b> — 회의에는 "on" 불가. "at the meeting"(장소), "in the meeting"(내부), "during the meeting"(진행 중) 상황에 맞게 선택하세요.<br><b>2. Walk / Guide me through</b> — "show through"는 없는 표현입니다. "Could you walk me through the process?"를 꼭 기억하세요.</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sh"><div class="snum">3</div><div class="stitle">Part 3 — Situational Expressions</div><div class="sscore">10 / 10</div></div>
+  <table class="tbl">
+    <thead><tr><th>문항</th><th>상황</th><th>정답 표현</th><th>결과</th></tr></thead>
+    <tbody>
+      <tr><td>Q1</td><td>못 알아들었을 때</td><td>Could you say that again, please?</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q2</td><td>의견 말하기 전 운을 뗄 때</td><td>From my perspective, I would say that...</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q3</td><td>부드럽게 반박할 때</td><td>That's a good point, but have you considered...?</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q4</td><td>확인 후 회신하겠다고 할 때</td><td>Let me look into that and get back to you.</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q5</td><td>미팅 마무리 시</td><td>Let's wrap up. Here are the next steps...</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q6</td><td>속도 늦춰달라 요청 시</td><td>Could you slow down a little? I want to make sure I follow.</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q7</td><td>이메일 첨부파일 안내</td><td>Please refer to the attached document for your reference.</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q8</td><td>데이터 설명 요청 시</td><td>둘 다 자연스럽다 (b, c)</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q9</td><td>합의 확인 시</td><td>Are we all on the same page on this?</td><td><span class="ok">✓</span></td></tr>
+      <tr><td>Q10</td><td>이해 확인 시</td><td>세 가지 모두 자연스럽다</td><td><span class="ok">✓</span></td></tr>
+    </tbody>
+  </table>
+  <div class="ok-box">
+    <strong style="color:#166534;">만점 달성!</strong>
+    <span style="font-size:13px; color:#166534; margin-left:8px;">비즈니스 상황별 표현 감각이 매우 우수합니다. 이 감각을 자유 발화와 작문으로 연결하는 것이 핵심 과제입니다.</span>
+  </div>
+</div>
+
+<div class="card">
+  <div class="sh"><div class="snum">4</div><div class="stitle">Part 4 — Free Writing</div><div class="sscore">5.8 / 10</div></div>
+  <div class="ws">
+    <div class="wt">Q1. 비즈니스 이메일 작성 — 5.5 / 10</div>
+    <div class="lbl" style="color:#dc2626;">원문 (Original)</div>
+    <div class="orig">"As we discussed yesterday, we decided to <del>adapt</del> new <del>etching</del> process next quarter. I believe <del>every guys</del> already know the details. Please send me an email if you have any questions. <del>Thanks.</del>"</div>
+    <div class="lbl" style="color:#16a34a;">첨삭본 (Corrected)</div>
+    <div class="corr">"As we discussed yesterday, we have decided to <ins>adopt</ins> <ins>a</ins> new etching process starting next quarter. Please refer to the meeting notes for further details. Feel free to reach out if you have any questions.<br><ins>Best regards,</ins>"</div>
+    <table class="tbl">
+      <thead><tr><th>오류 유형</th><th>원문</th><th>교정</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>어휘 혼동</td><td>adapt</td><td>adopt</td><td>adapt=적응하다 / adopt=도입하다 (완전히 다른 뜻!)</td></tr>
+        <tr><td>관사 누락</td><td>new etching process</td><td>a new etching process</td><td>단수 가산명사 앞 관사 필수</td></tr>
+        <tr><td>문법 오류</td><td>every guys</td><td>everyone</td><td>every + 단수 / guys는 캐주얼 표현</td></tr>
+        <tr><td>마무리 톤</td><td>Thanks.</td><td>Best regards,</td><td>비즈니스 이메일 격식체 마무리 필요</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ws">
+    <div class="wt">Q2. 미팅 중 반박 발언 — 6 / 10</div>
+    <div class="lbl" style="color:#dc2626;">원문 (Original)</div>
+    <div class="orig">"<del>You claimed that</del> the reason <del>of</del> low yield rate was due to equipment. <del>I know what you mean but</del> I think that the process parameters can cause this issue, too. We already checked the process parameter data based on wafer level test. Please consider that the process parameters are the reason <del>seriously</del>."</div>
+    <div class="lbl" style="color:#16a34a;">첨삭본 (Corrected)</div>
+    <div class="corr">"<ins>I understand your point about</ins> the equipment issue. However, based on our wafer-level test data, I'd also like to suggest that process parameters could be a contributing factor. The data we reviewed shows some correlation with parameter variations. I'd strongly recommend we investigate both possibilities before drawing a conclusion."</div>
+    <table class="tbl">
+      <thead><tr><th>오류 유형</th><th>원문</th><th>교정</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>전치사 오류</td><td>reason of</td><td>reason for</td><td>reason for가 올바른 collocation</td></tr>
+        <tr><td>톤 문제</td><td>You claimed that...</td><td>I understand your point about...</td><td>'claimed'는 공격적 뉘앙스</td></tr>
+        <tr><td>표현 약함</td><td>I know what you mean but</td><td>I see your point, however...</td><td>더 프로페셔널한 전환 표현</td></tr>
+        <tr><td>어색한 구조</td><td>...the reason seriously</td><td>I'd strongly recommend we investigate...</td><td>부사 위치 및 문장 강도 조절 필요</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <div class="ws">
+    <div class="wt">Q3. 공정 현황 설명 — 6 / 10</div>
+    <div class="lbl" style="color:#dc2626;">원문 (Original)</div>
+    <div class="orig">"We are testing a new process concept. The initial data showed <del>a good results</del>, but we need more optimization <del>based on this condition</del>. Let me share with you the results <del>after checking the follow-up action</del>."</div>
+    <div class="lbl" style="color:#16a34a;">첨삭본 (Corrected)</div>
+    <div class="corr">"We are currently testing a new process concept, and so far the initial results look <ins>promising</ins>. However, we still need <ins>further optimization</ins> to stabilize the process. I'll keep you updated and share the detailed results <ins>once we've completed the follow-up actions</ins>."</div>
+    <table class="tbl">
+      <thead><tr><th>오류 유형</th><th>원문</th><th>교정</th><th>설명</th></tr></thead>
+      <tbody>
+        <tr><td>관사 오류</td><td>a good results</td><td>good results</td><td>results는 복수 → 관사 불필요</td></tr>
+        <tr><td>표현 약함</td><td>showed a good results</td><td>look promising</td><td>더 세련된 비즈니스 표현</td></tr>
+        <tr><td>어색한 표현</td><td>based on this condition</td><td>further optimization</td><td>의미 불명확, 직접적 표현으로 대체</td></tr>
+        <tr><td>구조 어색</td><td>after checking the follow-up action</td><td>once we've completed the follow-up actions</td><td>once + 완료형이 더 자연스러움</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">강점 &amp; 보완 포인트 (Strengths &amp; Areas to Improve)</div>
+  <div class="two-col">
+    <div class="str-box">
+      <div class="bt">강점 (Strengths)</div>
+      <ul class="cl">
+        <li>비즈니스 상황별 표현 감각 우수 (Part 3 만점)</li>
+        <li>격식체 표현을 직관적으로 잘 구분함</li>
+        <li>기술 미팅 맥락과 흐름 이해도 높음</li>
+        <li>문법 기초 (시제, to부정사 등) 양호</li>
+        <li>핵심 비즈니스 어휘 인지 (push back, bottleneck 등)</li>
+      </ul>
+    </div>
+    <div class="imp-box">
+      <div class="bt">보완 포인트 (Areas to Improve)</div>
+      <ul class="cl">
+        <li>관사 (a / the / 무관사) 정확한 사용</li>
+        <li>Collocation — reason for, conduct analysis, walk through</li>
+        <li>격식체 동사 전환 — fix→address, do→conduct</li>
+        <li>비즈니스 이메일 구조 및 톤 앤 매너</li>
+        <li>자유 발화 시 자연스러운 문장 흐름 (fluency)</li>
+        <li>미팅에서의 반박·동의 고급 표현</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-title">3개월 커리큘럼 방향 (Curriculum Overview)</div>
+  <p style="color:#4a5568; font-size:13px; margin-bottom:16px;">학습 계획: 평일 30분 · 주말 30분 &nbsp;|&nbsp; 최소: 평일 15분 · 주말 30분</p>
+  <div class="cur-box">
+    <div class="cur-month">Month 1 — 기초 다지기 (Foundation)</div>
+    <div class="cur-tags"><span class="tag">관사 집중 훈련</span><span class="tag">핵심 Collocation 30</span><span class="tag">비즈니스 이메일 구조</span><span class="tag">격식체 동사 전환</span><span class="tag">전치사 패턴</span></div>
+  </div>
+  <div class="cur-box">
+    <div class="cur-month">Month 2 — 실전 회화 훈련 (Speaking Practice)</div>
+    <div class="cur-tags"><span class="tag">미팅 진행 표현</span><span class="tag">의견 제시·반박 표현</span><span class="tag">기술 설명 영어</span><span class="tag">반도체 도메인 어휘</span><span class="tag">Fluency 훈련</span></div>
+  </div>
+  <div class="cur-box">
+    <div class="cur-month">Month 3 — 고급화 &amp; 통합 훈련 (Advanced Integration)</div>
+    <div class="cur-tags"><span class="tag">미팅 주관 롤플레이</span><span class="tag">프레젠테이션 영어</span><span class="tag">협상·설득 표현</span><span class="tag">종합 모의 미팅</span><span class="tag">이메일 고급 표현</span></div>
+  </div>
+</div>
+
+<div class="footer">비즈니스 영어 회화 레벨 테스트 결과 보고서 &nbsp;·&nbsp; 2026년 8월 20일 &nbsp;·&nbsp; 반도체 공정 개발 엔지니어 맞춤 커리큘럼</div>
+</div>
+</body>
+</html>
