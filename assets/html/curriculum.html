@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>비즈니스 영어 회화 3개월 맞춤 커리큘럼</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-light: #eff6ff;
+      --fg: #111827;
+      --fg-muted: #6b7280;
+      --border: #d1d5db;
+      --bg: #ffffff;
+      --month1: #2563eb;
+      --month2: #0891b2;
+      --month3: #0f766e;
+      --radius: 8px;
+      --green: #16a34a;
+      --amber: #d97706;
+      --red: #dc2626;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background: #f9fafb;
+      color: var(--fg);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .page {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 32px 24px;
+    }
+
+    /* Header */
+    .report-header {
+      border-bottom: 2px solid var(--primary);
+      padding-bottom: 16px;
+      margin-bottom: 24px;
+    }
+    .report-header .label {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--primary);
+      margin-bottom: 4px;
+    }
+    .report-header h1 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 4px;
+    }
+    .report-header .meta {
+      font-size: 12px;
+      color: var(--fg-muted);
+    }
+
+    /* Profile Card */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .profile-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 12px 14px;
+      background: var(--bg);
+    }
+    .profile-card .card-label {
+      font-size: 11px;
+      color: var(--fg-muted);
+      font-weight: 500;
+      margin-bottom: 4px;
+    }
+    .profile-card .card-value {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--fg);
+    }
+
+    /* Score Summary */
+    .score-summary {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      background: var(--bg);
+      margin-bottom: 24px;
+      align-items: center;
+    }
+    .score-main {
+      text-align: center;
+      border-right: 1px solid var(--border);
+      padding-right: 24px;
+      min-width: 120px;
+    }
+    .score-main .big-num {
+      font-size: 44px;
+      font-weight: 800;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .score-main .score-label {
+      font-size: 11px;
+      color: var(--fg-muted);
+      margin-top: 4px;
+    }
+    .score-main .level-badge {
+      display: inline-block;
+      margin-top: 8px;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 700;
+      padding: 3px 10px;
+      border-radius: 4px;
+      border: 1px solid #bfdbfe;
+    }
+    .score-parts { flex: 1; }
+    .part-row {
+      display: grid;
+      grid-template-columns: 180px 1fr 48px;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+    .part-row:last-child { margin-bottom: 0; }
+    .part-name { font-size: 12px; color: var(--fg-muted); }
+    .bar-track {
+      background: #f3f4f6;
+      border-radius: 4px;
+      height: 8px;
+      overflow: hidden;
+    }
+    .bar-fill {
+      height: 100%;
+      border-radius: 4px;
+      background: var(--primary);
+    }
+    .part-score { font-size: 12px; font-weight: 700; text-align: right; color: var(--fg); }
+
+    /* Section Title */
+    .section-title {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--fg-muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      margin-bottom: 14px;
+      margin-top: 28px;
+    }
+
+    /* Strength / Weakness */
+    .sw-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+    .sw-card {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 14px;
+      background: var(--bg);
+    }
+    .sw-card .sw-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 10px;
+    }
+    .sw-card.strength .sw-title { color: var(--green); }
+    .sw-card.weakness .sw-title { color: var(--amber); }
+    .sw-list { list-style: none; }
+    .sw-list li {
+      font-size: 13px;
+      padding: 4px 0;
+      display: flex;
+      align-items: flex-start;
+      gap: 6px;
+    }
+    .sw-list li::before {
+      content: '';
+      display: inline-block;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      margin-top: 6px;
+      flex-shrink: 0;
+    }
+    .strength .sw-list li::before { background: var(--green); }
+    .weakness .sw-list li::before { background: var(--amber); }
+
+    /* Timeline / Curriculum */
+    .month-block {
+      margin-bottom: 24px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: var(--bg);
+    }
+    .month-header {
+      padding: 12px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .month-header.m1 { background: #eff6ff; border-bottom: 2px solid var(--month1); }
+    .month-header.m2 { background: #ecfeff; border-bottom: 2px solid var(--month2); }
+    .month-header.m3 { background: #f0fdfa; border-bottom: 2px solid var(--month3); }
+    .month-badge {
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 4px;
+    }
+    .m1 .month-badge { background: var(--month1); color: #fff; }
+    .m2 .month-badge { background: var(--month2); color: #fff; }
+    .m3 .month-badge { background: var(--month3); color: #fff; }
+    .month-title {
+      font-size: 15px;
+      font-weight: 700;
+    }
+    .m1 .month-title { color: var(--month1); }
+    .m2 .month-title { color: var(--month2); }
+    .m3 .month-title { color: var(--month3); }
+    .month-goal {
+      font-size: 12px;
+      color: var(--fg-muted);
+      margin-left: auto;
+    }
+
+    .weeks-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .week-card {
+      padding: 14px 16px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+    .week-card:nth-child(even) { border-right: none; }
+    .week-card:nth-last-child(-n+2) { border-bottom: none; }
+    .week-num {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-muted);
+      margin-bottom: 4px;
+    }
+    .week-title {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 6px;
+    }
+    .week-sub {
+      font-size: 12px;
+      color: var(--fg-muted);
+      margin-bottom: 8px;
+    }
+    .tag-row { display: flex; flex-wrap: wrap; gap: 4px; }
+    .tag {
+      font-size: 10px;
+      padding: 2px 7px;
+      border-radius: 3px;
+      font-weight: 600;
+      border: 1px solid;
+    }
+    .tag-theory { background: #eff6ff; color: var(--month1); border-color: #bfdbfe; }
+    .tag-practice { background: #f0fdf4; color: #15803d; border-color: #bbf7d0; }
+    .tag-writing { background: #fefce8; color: #a16207; border-color: #fde68a; }
+    .tag-speaking { background: #fdf4ff; color: #7e22ce; border-color: #e9d5ff; }
+    .tag-vocab { background: #fff7ed; color: #c2410c; border-color: #fed7aa; }
+
+    /* Session Structure */
+    .session-box {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px;
+      background: var(--bg);
+      margin-bottom: 16px;
+    }
+    .session-title {
+      font-size: 13px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      color: var(--fg);
+    }
+    .session-row {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 8px;
+      margin-bottom: 6px;
+      font-size: 12px;
+    }
+    .session-time {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    .session-desc { color: var(--fg-muted); }
+
+    /* Key Expressions Table */
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 12px;
+      margin-bottom: 16px;
+    }
+    th {
+      background: #f3f4f6;
+      font-weight: 700;
+      padding: 8px 12px;
+      text-align: left;
+      border: 1px solid var(--border);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+      color: var(--fg-muted);
+    }
+    td {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
+      color: var(--fg);
+      vertical-align: top;
+    }
+    tr:nth-child(even) td { background: #fafafa; }
+
+    /* Footer */
+    .footer {
+      margin-top: 40px;
+      border-top: 1px solid var(--border);
+      padding-top: 12px;
+      font-size: 11px;
+      color: var(--fg-muted);
+      display: flex;
+      justify-content: space-between;
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- Header -->
+  <div class="report-header">
+    <div class="label">Business English — Personalized Curriculum</div>
+    <h1>비즈니스 영어 회화 3개월 맞춤 커리큘럼</h1>
+    <div class="meta">작성일: 2025 &nbsp;|&nbsp; 대상: 반도체 공정 개발 엔지니어 &nbsp;|&nbsp; 레벨: CEFR B1+ &nbsp;|&nbsp; 목표: 기술 미팅 주관 가능</div>
+  </div>
+
+  <!-- Profile -->
+  <div class="section-title">학습자 프로파일</div>
+  <div class="profile-grid">
+    <div class="profile-card"><div class="card-label">직무</div><div class="card-value">반도체 공정 개발 엔지니어</div></div>
+    <div class="profile-card"><div class="card-label">현재 레벨</div><div class="card-value">CEFR B1+ (중급 초입~중반)</div></div>
+    <div class="profile-card"><div class="card-label">목표 레벨</div><div class="card-value">CEFR B2 (기술 미팅 주관 가능)</div></div>
+    <div class="profile-card"><div class="card-label">학습 빈도</div><div class="card-value">주 3~4일</div></div>
+    <div class="profile-card"><div class="card-label">학습 시간</div><div class="card-value">평일 15~30분 / 주말 30분</div></div>
+    <div class="profile-card"><div class="card-label">학습 방식</div><div class="card-value">이론 + 실전 혼합</div></div>
+  </div>
+
+  <!-- Score Summary -->
+  <div class="section-title">레벨 테스트 결과 요약</div>
+  <div class="score-summary">
+    <div class="score-main">
+      <div class="big-num">7.7</div>
+      <div class="score-label">종합 점수 / 10</div>
+      <div class="level-badge">CEFR B1+</div>
+    </div>
+    <div class="score-parts">
+      <div class="part-row">
+        <div class="part-name">Part 1 — Vocabulary</div>
+        <div class="bar-track"><div class="bar-fill" style="width:70%"></div></div>
+        <div class="part-score">7/10</div>
+      </div>
+      <div class="part-row">
+        <div class="part-name">Part 2 — Grammar & Collocation</div>
+        <div class="bar-track"><div class="bar-fill" style="width:80%"></div></div>
+        <div class="part-score">8/10</div>
+      </div>
+      <div class="part-row">
+        <div class="part-name">Part 3 — Situational Expressions</div>
+        <div class="bar-track"><div class="bar-fill" style="width:100%"></div></div>
+        <div class="part-score">10/10</div>
+      </div>
+      <div class="part-row">
+        <div class="part-name">Part 4 — Free Writing</div>
+        <div class="bar-track"><div class="bar-fill" style="width:58%"></div></div>
+        <div class="part-score">5.8/10</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Strength / Weakness -->
+  <div class="sw-grid">
+    <div class="sw-card strength">
+      <div class="sw-title">강점 (Strengths)</div>
+      <ul class="sw-list">
+        <li>비즈니스 상황별 표현 감각이 우수함</li>
+        <li>격식체 표현을 직관적으로 잘 선택함</li>
+        <li>기술 미팅 맥락 이해도 높음</li>
+        <li>문법 기본기가 안정적으로 잡혀 있음</li>
+      </ul>
+    </div>
+    <div class="sw-card weakness">
+      <div class="sw-title">보완 포인트 (Focus Areas)</div>
+      <ul class="sw-list">
+        <li>관사 (a / the / zero article) 정확도 향상 필요</li>
+        <li>Collocation 오류 (adopt vs adapt 등)</li>
+        <li>자유 발화 시 문장 흐름 (fluency) 부족</li>
+        <li>비즈니스 이메일 구조 및 격식 톤 보완</li>
+        <li>전치사 활용 (on/in/at/during) 정확도</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- ===================== CURRICULUM ===================== -->
+  <div class="section-title">3개월 맞춤 커리큘럼 로드맵</div>
+
+  <!-- Month 1 -->
+  <div class="month-block">
+    <div class="month-header m1">
+      <span class="month-badge">Month 1</span>
+      <span class="month-title">Foundation — 기초 다지기</span>
+      <span class="month-goal">목표: 정확한 문장으로 기본 비즈니스 소통 가능</span>
+    </div>
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-num">Week 1</div>
+        <div class="week-title">관사 & 전치사 집중 훈련</div>
+        <div class="week-sub">Articles (a/the/zero) &amp; Prepositions (in/on/at/during) — 테스트에서 반복 오류가 발생한 핵심 영역</div>
+        <div class="tag-row">
+          <span class="tag tag-theory">Theory</span>
+          <span class="tag tag-practice">Practice</span>
+          <span class="tag tag-vocab">Grammar</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 2</div>
+        <div class="week-title">비즈니스 Collocation 핵심 50</div>
+        <div class="week-sub">make/do/take/run/reach 계열 collocations — adopt vs adapt, conduct vs do 등 혼동 표현 정리</div>
+        <div class="tag-row">
+          <span class="tag tag-theory">Theory</span>
+          <span class="tag tag-vocab">Vocab</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 3</div>
+        <div class="week-title">비즈니스 이메일 Writing</div>
+        <div class="week-sub">이메일 구조 (Subject / Opening / Body / Closing) — 격식체 vs 캐주얼체 구분, 첨부파일·팔로우업 표현</div>
+        <div class="tag-row">
+          <span class="tag tag-writing">Writing</span>
+          <span class="tag tag-theory">Theory</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 4</div>
+        <div class="week-title">기본 미팅 표현 & 월 복습</div>
+        <div class="week-sub">미팅 오프닝·클로징, 확인 요청 표현 — Month 1 전체 복습 및 롤플레이 실전 연습</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Month 2 -->
+  <div class="month-block">
+    <div class="month-header m2">
+      <span class="month-badge">Month 2</span>
+      <span class="month-title">Core Skills — 핵심 스킬 구축</span>
+      <span class="month-goal">목표: 의견 제시·반박·데이터 설명을 자연스럽게</span>
+    </div>
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-num">Week 5</div>
+        <div class="week-title">의견 표현 & 제안하기</div>
+        <div class="week-sub">From my perspective / I'd suggest / Building on that point — 격식체 의견 표현 레퍼토리 확장</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-theory">Theory</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 6</div>
+        <div class="week-title">동의 · 반박 · 설득 표현</div>
+        <div class="week-sub">That's a valid point, however / I see your point, but / I'd strongly recommend — 부드럽고 설득력 있는 반박 기술</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-practice">Practice</span>
+          <span class="tag tag-vocab">Vocab</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 7</div>
+        <div class="week-title">기술 데이터 & 결과 설명</div>
+        <div class="week-sub">yield rate / root cause / parameter / optimization 관련 표현 — 수치·트렌드·원인 설명하는 영어 구조</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-vocab">Vocab</span>
+          <span class="tag tag-writing">Writing</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 8</div>
+        <div class="week-title">Clarification & 월 복습</div>
+        <div class="week-sub">Could you elaborate / If I understand correctly / Just to confirm — 이해 확인·재질문 표현 + Month 2 롤플레이</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Month 3 -->
+  <div class="month-block">
+    <div class="month-header m3">
+      <span class="month-badge">Month 3</span>
+      <span class="month-title">Advanced Practice — 실전 완성</span>
+      <span class="month-goal">목표: 기술 미팅 직접 주관 및 Q&amp;A 처리</span>
+    </div>
+    <div class="weeks-grid">
+      <div class="week-card">
+        <div class="week-num">Week 9</div>
+        <div class="week-title">미팅 진행 & 퍼실리테이션</div>
+        <div class="week-sub">Agenda 설정 / 발언권 넘기기 / 시간 관리 / 결론 도출 — 미팅을 주관하는 사람의 필수 표현 세트</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-practice">Practice</span>
+          <span class="tag tag-vocab">Vocab</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 10</div>
+        <div class="week-title">Q&A 처리 & 어려운 상황 대응</div>
+        <div class="week-sub">모르는 질문 대응 / 시간 벌기 표현 / 압박 질문 처리 — That's a great question / Let me get back to you on that</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 11</div>
+        <div class="week-title">기술 프레젠테이션 실전</div>
+        <div class="week-sub">반도체 공정 맥락의 프레젠테이션 구조 — 도입/본론/결론 영어 흐름, 슬라이드 설명 표현 집중 훈련</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-writing">Writing</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+      <div class="week-card">
+        <div class="week-num">Week 12</div>
+        <div class="week-title">모의 미팅 & 최종 평가</div>
+        <div class="week-sub">전체 커리큘럼 복습 — 실전 모의 기술 미팅 진행 (주관 역할), 최종 레벨 재평가 및 피드백</div>
+        <div class="tag-row">
+          <span class="tag tag-speaking">Speaking</span>
+          <span class="tag tag-practice">Practice</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session Structure -->
+  <div class="section-title">회차별 수업 구성 (Session Structure)</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-bottom:24px;">
+    <div class="session-box">
+      <div class="session-title">평일 수업 (15~30분)</div>
+      <div class="session-row"><span class="session-time">0~5분</span><span class="session-desc">지난 수업 핵심 표현 복습 (Warm-up)</span></div>
+      <div class="session-row"><span class="session-time">5~15분</span><span class="session-desc">핵심 이론 & 예문 학습 (Theory)</span></div>
+      <div class="session-row"><span class="session-time">15~25분</span><span class="session-desc">실전 연습문제 & 상황 표현 (Practice)</span></div>
+      <div class="session-row"><span class="session-time">25~30분</span><span class="session-desc">오늘의 핵심 표현 3가지 정리 (Wrap-up)</span></div>
+    </div>
+    <div class="session-box">
+      <div class="session-title">주말 수업 (30분)</div>
+      <div class="session-row"><span class="session-time">0~5분</span><span class="session-desc">주간 복습 & 어휘 퀴즈 (Review)</span></div>
+      <div class="session-row"><span class="session-time">5~15분</span><span class="session-desc">이론 심화 또는 심화 어휘 학습</span></div>
+      <div class="session-row"><span class="session-time">15~25분</span><span class="session-desc">롤플레이 또는 자유 작문 실전 훈련</span></div>
+      <div class="session-row"><span class="session-time">25~30분</span><span class="session-desc">피드백 & 다음 주 예고 (Feedback)</span></div>
+    </div>
+  </div>
+
+  <!-- Key Expressions Preview -->
+  <div class="section-title">커리큘럼 핵심 표현 미리보기</div>
+  <table>
+    <thead>
+      <tr>
+        <th>상황</th>
+        <th>학습 표현 예시</th>
+        <th>수업 월</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>일정 지연 보고</td><td>We are behind schedule due to ~ / The timeline has been pushed back.</td><td>Month 1</td></tr>
+      <tr><td>이메일 첨부</td><td>Please find the attached report for your review.</td><td>Month 1</td></tr>
+      <tr><td>데이터 설명</td><td>The yield improvement was attributed to ~ / The data suggests ~</td><td>Month 2</td></tr>
+      <tr><td>부드러운 반박</td><td>I see your point. However, based on our data, I'd like to suggest ~</td><td>Month 2</td></tr>
+      <tr><td>미팅 오프닝</td><td>Let's get started. Today's agenda covers ~ / Shall we kick things off?</td><td>Month 3</td></tr>
+      <tr><td>Q&A 시간 벌기</td><td>That's a great question. Let me look into that and get back to you.</td><td>Month 3</td></tr>
+      <tr><td>합의 확인</td><td>Are we aligned on this? / Are we all on the same page?</td><td>Month 2~3</td></tr>
+      <tr><td>프레젠테이션</td><td>I'd like to walk you through our latest test results. / As you can see from this slide ~</td><td>Month 3</td></tr>
+    </tbody>
+  </table>
+
+  <!-- Footer -->
+  <div class="footer">
+    <span>비즈니스 영어 회화 맞춤 커리큘럼 — 반도체 공정 개발 엔지니어 대상</span>
+    <span>CEFR B1+ → B2 목표 &nbsp;|&nbsp; 3개월 / 주 3~4일 과정</span>
+  </div>
+
+</div>
+</body>
+</html>
